@@ -64,7 +64,6 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(0)
         local ped = PlayerPedId()
-        print('disabled p and stealth')
         DisableControlAction(0, 199, true)
          DisableControlAction(2, 36, true) -- Disable going stealth
         if IsPedArmed(ped, 6) then
