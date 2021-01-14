@@ -78,13 +78,13 @@ function Blackmarket() {
 
 function Recylce() {
     var shopItems = [
-        { item_id: "aluminium", id: 0, name: "craft", information: "{}", slot: 1, amount: 5 },
-        { item_id: "plastic", id: 0, name: "craft", information: "{}", slot: 2, amount: 5 },
-        { item_id: "copper", id: 0, name: "craft", information: "{}", slot: 3, amount: 5 },
-        { item_id: "electronics", id: 0, name: "craft", information: "{}", slot: 4, amount: 1 },
-        { item_id: "rubber", id: 0, name: "craft", information: "{}", slot: 5, amount: 1 },
-        { item_id: "scrapmetal", id: 0, name: "craft", information: "{}", slot: 6, amount: 1 },
-        {item_id: "steel", id: 0, name: "craft", information: "{}", slot: 7, amount: 1 },
+        { item_id: "aluminium", id: 0, name: "craft", information: "{}", slot: 1, amount: 100 },
+        { item_id: "plastic", id: 0, name: "craft", information: "{}", slot: 2, amount: 100 },
+        { item_id: "copper", id: 0, name: "craft", information: "{}", slot: 3, amount: 100 },
+        { item_id: "electronics", id: 0, name: "craft", information: "{}", slot: 4, amount: 100 },
+        { item_id: "rubber", id: 0, name: "craft", information: "{}", slot: 5, amount: 100 },
+        { item_id: "scrapmetal", id: 0, name: "craft", information: "{}", slot: 6, amount: 100 },
+        {item_id: "steel", id: 0, name: "craft", information: "{}", slot: 7, amount: 100 },
 
         
         
