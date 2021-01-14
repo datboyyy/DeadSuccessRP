@@ -4,7 +4,7 @@ AddEventHandler('3dme:shareDisplay', function(text, log)
 end)
 
 RegisterCommand('me', function(source, args)
-    local text = GetCharacterName(source).. "" ..table.concat(args, " ") .. ""
+    local text = GetCharacterName(source).. " " ..table.concat(args, " ") .. ""
     TriggerClientEvent('3dme:shareDisplay', -1, text, source)
     local threedme = {
         {

@@ -47,7 +47,9 @@ AddEventHandler("EasyAdmin:fillBanlist", function(thebanlist)
 end)
 
 AddEventHandler("EasyAdmin:fillCachedPlayers", function(thecached)
-	cachedplayers = thecached
+	if permissions.ban then
+		cachedplayers = thecached
+	end
 end)
 
 AddEventHandler("EasyAdmin:GetPlayerList", function(players)
@@ -70,20 +72,53 @@ Citizen.CreateThread( function()
   end
 end)
 
-AddEventHandler('EasyAdmin:requestSpectate', function(playerId)
-	local playerId = GetPlayerFromServerId(playerId)
+AddEventHandler('EasyAdmin:requestSpectate', function(playerServerId, tgtCoords)
+	local localPlayerPed = PlayerPedId()
+	if ((not tgtCoords) or (tgtCoords.z == 0.0)) then tgtCoords = GetEntityCoords(GetPlayerPed(GetPlayerFromServerId(playerServerId))) end
+	if playerServerId == GetPlayerServerId(PlayerId()) then 
+		if oldCoords then
+			RequestCollisionAtCoord(oldCoords.x, oldCoords.y, oldCoords.z)
+			Wait(500)
+			SetEntityCoords(playerPed, oldCoords.x, oldCoords.y, oldCoords.z, 0, 0, 0, false)
+			oldCoords=nil
+		end
+		spectatePlayer(GetPlayerPed(PlayerId()),GetPlayerFromServerId(PlayerId()),GetPlayerName(PlayerId()))
+		frozen = false
+		return 
+	else
+		if not oldCoords then
+			oldCoords = GetEntityCoords(PlayerPedId())
+		end
+	end
+	SetEntityCoords(localPlayerPed, tgtCoords.x, tgtCoords.y, tgtCoords.z - 10.0, 0, 0, 0, false)
+	frozen = true
+	local adminPed = localPlayerPed
+	local playerId = GetPlayerFromServerId(playerServerId)
+	repeat
+		Wait(200)
+		playerId = GetPlayerFromServerId(playerServerId)
+	until ((GetPlayerPed(playerId) > 0) and (playerId ~= -1))
 	spectatePlayer(GetPlayerPed(playerId),playerId,GetPlayerName(playerId))
 end)
 
-AddEventHandler('EasyAdmin:TeleportRequest', function(px,py,pz)
-	SetEntityCoords(PlayerPedId(), px,py,pz,0,0,0, false)
+AddEventHandler('EasyAdmin:TeleportRequest', function(id, tgtCoords)
+	if id then
+		if (tgtCoords.x == 0.0 and tgtCoords.y == 0.0 and tgtCoords.z == 0.0) then
+			local tgtPed = GetPlayerPed(GetPlayerFromServerId(id))
+			tgtCoords = GetEntityCoords(tgtPed)
+		end
+		SetEntityCoords(PlayerPedId(), tgtCoords.x, tgtCoords.y, tgtCoords.z,0,0,0, false)
+	else
+		SetEntityCoords(PlayerPedId(), tgtCoords.x, tgtCoords.y, tgtCoords.z,0,0,0, false)
+	end
 end)
 
 AddEventHandler('EasyAdmin:SlapPlayer', function(slapAmount)
-	if slapAmount > GetEntityHealth(PlayerPedId()) then
-		SetEntityHealth(PlayerPedId(), 0)
+	local ped = PlayerPedId()
+	if slapAmount > GetEntityHealth(ped) then
+		ApplyDamageToPed(ped, 5000, false, true,true)
 	else
-		SetEntityHealth(PlayerPedId(), GetEntityHealth(PlayerPedId())-slapAmount)
+		ApplyDamageToPed(ped, slapAmount, false, true,true)
 	end
 end)
 
@@ -125,36 +160,43 @@ end)
 
 
 AddEventHandler('EasyAdmin:CaptureScreenshot', function(toggle, url, field)
-	exports['screenshot-basic']:requestScreenshotUpload('https://api.imgbb.com/1/upload?key=4604f7128da7b0f970c6b27cc96cc42d', "image", function(data)
-	   --print(json.decode(data).data.link)
-	   TriggerServerEvent('EasyAdmin:TookScreenshot', json.decode(data).data.url)
-	   --print(json.decode(data).data.url)
+	exports['screenshot-basic']:requestScreenshotUpload(GetConvar("ea_screenshoturl", 'https://wew.wtf/upload.php'), GetConvar("ea_screenshotfield", 'files[]'), function(data)
+			TriggerServerEvent("EasyAdmin:TookScreenshot", data)
 	end)
 end)
 
 function spectatePlayer(targetPed,target,name)
 	local playerPed = PlayerPedId() -- yourself
 	enable = true
-	if targetPed == playerPed then enable = false end
-
+	if (target == PlayerId() or target == -1) then enable = false end
 	if(enable)then
-
+			if targetPed == playerPed then
+				Wait(500)
+				targetPed = GetPlayerPed(target)
+			end
 			local targetx,targety,targetz = table.unpack(GetEntityCoords(targetPed, false))
 
 			RequestCollisionAtCoord(targetx,targety,targetz)
 			NetworkSetInSpectatorMode(true, targetPed)
 
 			DrawPlayerInfo(target)
-			ShowNotification(string.format(GetLocalisedText("spectatingUser"), name))
+			if not RedM then
+				ShowNotification(string.format(GetLocalisedText("spectatingUser"), name))
+			end
 	else
-
-			local targetx,targety,targetz = table.unpack(GetEntityCoords(targetPed, false))
-
-			RequestCollisionAtCoord(targetx,targety,targetz)
+			if oldCoords then
+				RequestCollisionAtCoord(oldCoords.x, oldCoords.y, oldCoords.z)
+				Wait(500)
+				SetEntityCoords(playerPed, oldCoords.x, oldCoords.y, oldCoords.z, 0, 0, 0, false)
+				oldCoords=nil
+			end
 			NetworkSetInSpectatorMode(false, targetPed)
-
 			StopDrawPlayerInfo()
-			ShowNotification(GetLocalisedText("stoppedSpectating"))
+			if not RedM then
+				ShowNotification(GetLocalisedText("stoppedSpectating"))
+			end
+			frozen = false
+
 	end
 end
 

@@ -17,11 +17,29 @@ function SetVoiceData(key, value, target)
 	TriggerServerEvent("mumble:SetVoiceData", key, value, target)
 end
 
+function loadAnimDict( dict )
+	while ( not HasAnimDictLoaded( dict ) ) do
+		RequestAnimDict( dict )
+		Citizen.Wait( 0 )
+	end
+end
+
 function PlayMicClick(channel, value)
 	if channel <= mumbleConfig.radioClickMaxChannel then
 		if mumbleConfig.micClicks then
 			if (value and mumbleConfig.micClickOn) or (not value and mumbleConfig.micClickOff) then
-				SendNUIMessage({ sound = (value and "audio_on" or "audio_off"), volume = mumbleConfig.micClickVolume })
+				print(value)
+				if value == true then
+				soundFile = 'mic_click_on'
+				loadAnimDict( "random@arrests" )
+				TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 3.0, soundFile, mumbleConfig.micClickVolume)
+				local ped = PlayerPedId()
+				TaskPlayAnim(ped, "random@arrests", "generic_radio_enter", 8.0, 2.0, -1, 50, 2.0, 0, 0, 0 )
+				else
+					local ped = PlayerPedId()
+					TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 3.0, 'mic_click_off', mumbleConfig.micClickVolume)
+					ClearPedTasks(ped)
+				end
 			end
 		end
 	end
