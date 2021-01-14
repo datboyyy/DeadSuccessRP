@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<SInteriorOrderData>
+  <startFrom value="2000" />
+  <proxies>
+    <Item>taco_milo_</Item>
+    <Item>int_poolhouse_milo</Item>
+    <Item>j17_courthouse_milo_</Item>     
+    <Item>ult-yachtclub_milo_</Item> 
+    <Item>ult-yachtclub2_milo_</Item> 
+    <Item>ult-yachtclub3_milo_</Item> 
+    <Item>bowl</Item> 
+    <Item>bowlingdoors</Item> 
+    <Item>dons_wp_studio_milo_</Item> 
+     <Item>hei_dt1_23_strm_0</Item> 
+      <Item>hei_dt1_rd1_strm_5</Item> 
+       <Item>opstvrata</Item> 
+        <Item>v_ch_mp_placement</Item> 
+        <Item>dons_megamall_milo_</Item> 
+         <Item>bobo_prison_milo_</Item> 
+          <Item>lr_cs6_04_critical_0</Item> 
+           <Item>lr_cs6_04_critical_2</Item> 
+           <Item>lr_cs6_04_long_3</Item> 
+           <Item>lr_cs6_04_strm_3</Item> 
+        <!-- Ballers House  -->
+        <Item>int_ballas_gang_milo_</Item>
+        <Item>int_garagel_ballas_gang_milo_</Item>
+        <Item>int_warehouse_one_ballas_gang_milo_</Item>
+        <Item>int_warehouse_two_ballas_gang_milo_</Item>
+
+        <!-- Bean Machine -->
+        <Item>int_bin_milo_</Item>
+
+        <!-- Burgershot  -->
+        <Item>vespucci_burgershot_milo_</Item>
+
+        <!-- Comedy Club -->
+        <Item>int_standup_milo_</Item>
+
+        <!-- Digital Den -->
+        <Item>int_magazel1_milo_</Item>
+
+        <!-- Gabz Hater Shop -->
+        <Item>gabz_haters_milo_</Item>
+
+        <!-- Familes -->
+        <Item>int_families_gang_milo_</Item>
+
+        <!-- Family Pharamacy -->
+        <Item>int_apteka2_milo_</Item>
+
+        <!-- Gabz House -->
+        <Item>gabz_mp_house_10_1_milo_</Item>
+        <Item>gabz_mp_house_10_2_milo_</Item>
+        <Item>gabz_mp_house_10_3_milo_</Item>
+
+        <!-- Gabz Pillbox -->
+       <Item>gabz_pillbox_milo_</Item> 
+
+        <!-- Store -->
+        <Item>int_storedt_milo_</Item>
+
+        <!-- Marabunta -->
+        <Item>int_marabunta_gang_milo_</Item>
+
+        <!-- Prison -->
+        <Item>int_prison_first_milo_</Item>
+        <Item>int_prison_main_milo_</Item>
+        <Item>int_prison_recep_milo_</Item>
+        <Item>int_prison_second_milo_</Item>
+
+        <!-- Studio 1 -->
+        <Item>dons_stulo_1a_milo_</Item>
+
+        <!-- Studio 3 -->
+        <Item>dons_wp_studio_milo_</Item>
+
+        <!-- Vagos Interior -->
+        <Item>int_vagos_gang_milo_</Item>
+
+        <!-- Vinewood Cinema -->
+        <Item>v_cinemavine_milo_</Item>
+
+        <!-- Vinewood Court -->
+        <Item>retssal_bobo_milo_</Item>
+
+        <!-- Casino -->
+        <Item>hei_ch3_03_interior_v_gun2_milo_</Item>
+        <Item>hei_ch3_03_interior_v_shop_247_milo_</Item>
+        <Item>hei_ch3_08_interior_ch3_08_dam_corr_milo_</Item>
+
+        <!-- Pearls -->
+        <Item>sibaaa_pearls_milo_</Item>
+        <Item>sibaaa_pearls_og_milo_</Item>
+
+        <!-- Weed Store -->
+        <Item>int_weed_milo_</Item>
+
+        <!-- Vespucci Beach -->
+        <Item>int_beachcon_milo_</Item>
+
+        <!-- Golf Club -->
+        <Item>hyper_avr_mexicano_mafia_milo_</Item>
+
+        <!-- Rebel Radio -->
+        <Item>int_rebelrad_milo_</Item>
+        <Item>int_rebelserv_milo_</Item>
+
+        <!-- Hospital -->
+        <Item>1florholl_milo_</Item>
+        <Item>1florrooms2_milo_</Item>
+        <Item>4floorhollh_milo_</Item>
+        <Item>4floorrooms2h_milo_</Item>
+        <Item>5floorrooms1_milo_</Item>
+        <Item>5floorrooms2_milo_</Item>
+        <Item>elevatorbig_milo_</Item>
+        <Item>elevatorsmale_milo_</Item>
+        <Item>stairs1h_milo_</Item>
+        <Item>stairs2h_milo_</Item>
+
+        <!-- Smoky -->
+        <Item>smokey_baraky_milo_</Item>
+        <Item>smokey_baraky_milo_1_</Item>
+	<Item>pw-yachtclub_milo_</Item>
+	<Item>pw-yachtclub_milo2_</Item>
+	<Item>pw-yachtclub_milo3_</Item>
+	<Item>vb_occl_01</Item>
+  <Item>j17_courthouse_milo_</Item>
+  <Item>j17_ch_ext</Item>
+  <Item>gabz_pillbox</Item>
+  <Item>vw_int_placement_vw_interior_0_dlc_casino_main_milo_</Item>
+<Item>vw_int_placement_vw_interior_1_dlc_casino_apart_milo_</Item>
+<Item>vw_int_placement_vw_interior_2_dlc_casino_garage_milo_</Item>
+<Item>vw_int_placement_vw_interior_4_dlc_casino_carpark_milo_</Item>
+<Item>vw_casino_penthouse</Item>
+<Item>vw_casino_carpark</Item>
+<Item>vw_casino_main</Item>
+<Item>vw_casino_garage</Item>
+<Item>ballas2_milo_</Item>
+<Item>int_bloods2_milo_</Item>
+<Item>int_green_milo_</Item>
+<Item>int_coke1_milo_</Item>
+<Item>int_meth1_milo_</Item>
+<Item>int_money_milo_</Item>
+<Item>int_weed1_milo_</Item>
+<Item>int_mafc_milo_</Item>
+<Item>int_mara_milo_</Item>
+<Item>int_vagos_milo_</Item>
+<Item>int_italy2_milo_</Item>
+<Item>int_shosp_milo_</Item>
+<Item>int_hospb_milo_</Item>
+<Item>vespucci_burgershot_milo_</Item>
+<Item>v_cinemavine_milo_</Item>
+<Item>int_standup_milo_</Item>
+<Item>int_rusty_milo_</Item>
+<Item>lr_cs4_14_interior_v_hicksbar_milo_</Item>
+<Item>ba_int_placement_ba_interior_0_dlc_int_01_ba_milo_</Item>
+<Item>int_nightclub_milo_</Item>
+<Item>int_autoscool_milo_</Item>
+<Item>int_cityhall_milo_</Item>
+<Item>int_lspd_milo_</Item>
+<Item>int_prison_milo_</Item>
+<Item>int_sheriff2_milo_</Item>
+<Item>int_sheriff_milo_</Item>
+<Item>int_wnews_milo_</Item>
+<Item>int_house_milo_</Item>
+<Item>int_pbmotel_milo_</Item>
+<Item>rchse_dt1_15_interior_v_shitholesave_milo_</Item>
+<Item>int_apteka2_milo_</Item>
+<Item>int_apteka_milo_</Item>
+<Item>int_apteka3_milo_</Item>
+<Item>int_apteka4_milo_</Item>
+<Item>int_storedt_milo_</Item>
+<Item>int_magazel_milo_</Item>
+<Item>int_magel2_milo_</Item>
+<Item>magazls_milo_</Item>
+<Item>magazsh_milo_</Item>
+<Item>1florholl_milo_</Item>
+<Item>1florrooms2_milo_</Item>
+<Item>4floorhollh_milo_</Item>
+<Item>4floorrooms2h_milo_</Item>
+<Item>5floorrooms1_milo_</Item>
+<Item>5floorrooms2_milo_</Item>
+<Item>elevatorbig_milo_</Item>
+<Item>elevatorsmale_milo_</Item>
+<Item>stairs1h_milo_</Item>
+<Item>stairs2h_milo_</Item>
+<Item>phxlsmc_interior_milo_</Item>
+<Item>int_ballas_gang_milo_</Item>
+<Item>int_families_gang_milo_</Item>
+<Item>int_marabunta_gang_milo_</Item>
+<Item>int_vagos_gang_milo_</Item>
+<Item>lr_cs4_14_interior_v_hicksbar_milo_</Item>
+<Item>darkangels_mlo_math</Item>
+<Item>darkangels2_mlo_math</Item>
+<Item>phxballas_interior_milo</Item>
+<Item>phxballas_interior</Item>
+<Item>math_cabaret_milo</Item>
+<Item>math_cabaret</Item>
+<Item>cabaret</Item>
+<Item>gta_iv_interior_playboypent_milo_</Item>
+<Item>int_bank_milo_</Item>
+<Item>int_luxury_milo_</Item>
+<Item>int_sheriff_milo_</Item>
+<Item>int_hospb_milo_</Item>
+<Item>slb2k11_larry_milo</Item>
+<Item>int_apteka3_milo_</Item>
+<Item>int_apteka2_milo_</Item>
+<Item>int_apteka4_milo_</Item>
+<Item>jail_milo_</Item>
+<Item>whitewater_milo_</Item>
+<Item>askammer_milo_</Item>
+<Item>int_clawles_sheriff_milo_</Item>
+<Item>int_aschool_milo_</Item>
+<Item>int_hospital_0fl_milo_</Item>
+<Item>int_hospital_1fl_milo_</Item>
+<Item>int_hospital_2fl_milo_</Item>
+<Item>armaf_milo_</Item>
+<Item>restauracja_milo_</Item>
+<Item>int_taxi_milo_</Item>
+<Item>slb2k11_sheriff_davis</Item>
+<Item>pablito_delperro_milo_</Item>
+<Item>slb2k11_paleto_fire_mlo</Item>
+<Item>v_pizza_mp_placement</Item>
+<Item>mimis_milo_</Item>
+<Item>taco_milo_</Item>
+<Item>int_fuzzbarn_milo</Item>
+<Item>hs_lic_milo</Item>
+<Item>gbmarket_milo_</Item>
+<Item>retssal_bobo_milo_</Item>
+<Item>nightclub_rockford_milo_</Item>
+<Item>diner</Item>
+<Item>bobo_church_milo_</Item>
+<Item>brown_prison_milo_</Item>
+<Item>int_bin_milo_</Item>
+<Item>int_vesp_01_1_milo_</Item>
+<Item>int_vesp_01_2_milo_</Item>
+<Item>int_vesp_1_1_milo_</Item>
+<Item>int_vesp_1_2_milo_</Item>
+<Item>int_vesp_02_1_milo_</Item>
+<Item>int_vesp_02_2_milo_</Item>
+<Item>int_vesp_03_1_milo_</Item>
+<Item>int_vesp_3_1_milo_</Item>
+<Item>int_vesp_3_2_milo_</Item>
+<Item>int_vesp_4_2_milo_</Item>
+<Item>int_vesp_5_2_milo_</Item>
+<Item>int_vesp_big_lift_milo_</Item>
+<Item>int_vesp_big_stair_milo_</Item>
+<Item>int_vesp_slift_milo_</Item>
+<Item>int_vesp_smole_stair_milo_</Item>
+<Item>int_wnews_milo_</Item>
+<Item>nutt_mosleys_milo_</Item>
+<Item>gabz_pillbox_milo_</Item>
+<Item>smokin_axels_milo_</Item>
+<Item>smokin_axels_basement_milo_</Item>
+<Item>lr_sc1_rd_strm_1</Item>
+<Item>lr_sc1_03_strm_0</Item>
+<Item>dons_mp_tavern_milo_</Item>
+<Item>int_ballasgarage_milo_</Item>
+<Item>gabz_imp_impexp_interior_placement_interior_1_impexp_intwaremed_milo_</Item>
+<Item>gabz_haters_milo_</Item>
+<Item>sibaaa_pearls_milo_</Item>
+<Item>sibaaa_pearls_og_milo_</Item>
+<Item>int_arcade_milo_</Item>
+<Item>int_plan_milo_</Item>
+<Item>int_plan_road_milo_</Item>
+<Item>sibaaa_hs_whitewiddow_milo_</Item>
+  <Item>vw_int_placement_vw_interior_0_dlc_casino_main_milo_</Item>
+  <Item>vw_int_placement_vw_interior_1_dlc_casino_apart_milo_</Item>
+  <Item>vw_int_placement_vw_interior_2_dlc_casino_garage_milo_</Item>
+  <Item>vw_int_placement_vw_interior_4_dlc_casino_carpark_milo_</Item>
+  <Item>vw_casino_penthouse</Item>
+  <Item>vw_casino_carpark</Item>
+  <Item>vw_casino_main</Item>
+  <Item>vw_casino_garage</Item>
+  <Item>vagos_rcustoms_milo</Item>
+  <Item>gabz_mp_house_08_2_milo_</Item>
+  <Item>gabz_mp_house_08_3_milo_</Item>
+  <Item>gabz_franklins_milo_</Item>
+  <Item>int_plan_milo_</Item>
+  <Item>int_arcade_milo_</Item>
+  <Item>int_plan_road_milo_</Item>
+	<Item>ballas2_milo_</Item>
+	<Item>int_ballasgarage_milo_</Item>
+  <Item>vagos_rcustoms_milo_</Item>
+  <Item>gabz_mp_house_08_3_milo_</Item>
+  <Item>int_fuzzbarn_milo_</Item>
+  <Item>int_frd_milo_</Item>
+  <Item>int_parkrls_milo_</Item>
+	<Item>int_bloods2_milo_</Item>
+	<Item>int_green_milo_</Item>
+	<Item>int_coke1_milo_</Item>
+	<Item>int_meth1_milo_</Item>
+	<Item>int_money_milo_</Item>
+	<Item>v_pizza_mp_placement</Item>
+	<Item>tor_ballas_outside</Item>
+	<Item>int_prison_first_milo_</Item>
+	<Item>int_prison_main_milo_</Item>
+	<Item>int_prison_recep_milo_</Item>
+	<Item>int_prison_second_milo_</Item>
+	<Item>gabz_mp_house_10_1_milo_</Item>
+	<Item>gabz_mp_house_10_2_milo_</Item>
+	<Item>gabz_mp_house_10_3_milo_</Item>
+	<Item>rcustoms_milo</Item>
+	<Item>int_taxi_milo_</Item>
+	<Item>sibaaa_pearls_og_milo_</Item>
+	<Item>sibaaa_pearls_milo_</Item>
+	<Item>int_luxury_milo_</Item>
+	<Item>int_weed1_milo_</Item>
+	<Item>v_motel2_milo_</Item>
+	<Item>v_lesters_milo_</Item>
+	<Item>vtrev2_milo_</Item>
+	<Item>vtrev1_milo_</Item>
+	<Item>rchse_dt1_15_interior_v_shitholesave_milo_</Item>
+	<Item>V_house2_milo_</Item>
+	<Item>hs_hotel_milo_</Item>
+	<Item>int_house_milo_</Item>
+	<Item>v_fran_milo_</Item>
+	<Item>vtrev1_milo_</Item>
+	<Item>gabz_diner_milo_</Item>
+  <Item>int_vesp_01_1_milo_</Item>
+  <Item>int_vesp_01_2_milo_</Item>
+  <Item>int_vesp_02_1_milo_</Item>
+  <Item>int_vesp_02_2_milo_</Item>
+  <Item>int_vesp_03_1_milo_</Item>
+  <Item>int_vesp_1_1_milo_</Item>
+  <Item>int_vesp_1_2_milo_</Item>
+  <Item>int_vesp_2_1_milo_</Item>
+  <Item>int_vesp_3_1_milo_</Item>
+  <Item>int_vesp_3_2_milo_</Item>
+  <Item>int_vesp_4_2_milo_</Item>
+  <Item>int_vesp_5_2_milo_</Item>
+  <Item>int_vesp_big_lift_milo_</Item>
+  <Item>int_vesp_big_stair_milo_</Item>
+  <Item>int_vesp_slift_milo_</Item>
+  <Item>int_vesp_smole_stair_milo_</Item>
+	<Item>int_mafc_milo_</Item>
+	<Item>int_mara_milo_</Item>
+	<Item>int_vagos_milo_</Item>
+	<Item>int_italy2_milo_</Item>
+	<Item>int_shosp_milo_</Item>
+	<Item>int_hospb_milo_</Item>
+	<Item>int_bin_milo_</Item>
+	<Item>brown_fightclub_milo_</Item>
+	<Item>brown_fightclub2_milo_</Item>
+	<Item>brown_prison_milo_</Item>
+	<Item>lr_cs6_03_interior_v_carmod10_milo_</Item>
+	<Item>brown_church_milo_</Item>
+	<Item>brown_cluckingbell_milo_</Item>
+	<Item>brown_cluckingbell2_milo_</Item>
+	<Item>brown_cluckingbell3_milo_</Item>
+	<Item>vespucci_burgershot_milo_</Item>
+	<Item>v_cinemavine_milo_</Item>
+	<Item>int_standup_milo_</Item>
+	<Item>int_rusty_milo_</Item>
+	<Item>lr_cs4_14_interior_v_hicksbar_milo_</Item>
+	<Item>ba_int_placement_ba_interior_0_dlc_int_01_ba_milo_</Item>
+	<Item>int_nightclub_milo_</Item>
+	<Item>int_autoscool_milo_</Item>
+	<Item>int_cityhall_milo_</Item>
+	<Item>int_lspd_milo_</Item>
+	<Item>int_prison_milo_</Item>
+	<Item>int_sheriff2_milo_</Item>
+	<Item>int_sheriff_milo_</Item>
+	<Item>int_wnews_milo_</Item>
+	<Item>int_house_milo_</Item>
+	<Item>int_pbmotel_milo_</Item>
+	<Item>rchse_dt1_15_interior_v_shitholesave_milo_</Item>
+	<Item>int_apteka2_milo_</Item>
+	<Item>int_apteka_milo_</Item>
+	<Item>int_apteka3_milo_</Item>
+	<Item>int_apteka4_milo_</Item>
+	<Item>int_storedt_milo_</Item>
+	<Item>int_magazel_milo_</Item>
+	<Item>int_magel2_milo_</Item>
+	<Item>magazls_milo_</Item>
+	<Item>magazsh_milo_</Item>
+	<Item>1florholl_milo_</Item>
+	<Item>1florrooms2_milo_</Item>
+	<Item>4floorhollh_milo_</Item>
+	<Item>4floorrooms2h_milo_</Item>
+	<Item>5floorrooms1_milo_</Item>
+	<Item>5floorrooms2_milo_</Item>
+	<Item>elevatorbig_milo_</Item>
+	<Item>elevatorsmale_milo_</Item>
+	<Item>stairs1h_milo_</Item>
+	<Item>stairs2h_milo_</Item>
+  <Item>hei_sm_19_interior_iv_burger_milo_</Item>
+  <Item>prison_cells_milo_</Item>
+	<Item>prison_cafeteria_milo_</Item>
+	<Item>prison_visit_milo_</Item>
+	<Item>bkr_biker_interior_placement_interior_0_biker_dlc_int_01_np_milo_</Item>
+	<Item>bkr_biker_dlc_int_room_milo_</Item>
+	<Item>brown_paletomedical_milo_</Item>
+	<Item>brown_amfsted_milo_</Item>
+	<Item>brown_amfsted_milo2_</Item>
+	<Item>brown_amfsted_milo3_</Item>
+	<Item>brown_amfsted_milo4_</Item>
+	<Item>int_bin_milo_</Item>
+	<Item>int_mafc_milo_</Item>
+	<Item>int_bank_milo_</Item>
+	<Item>int_apteka4_milo_</Item>
+	<Item>int_italy2_milo_</Item>
+	<Item>int_hospb_milo_</Item>
+	<Item>int_cityhall_milo_</Item>
+	<Item>int_standup_milo_</Item>
+	<Item>v_cinemavine_milo_</Item>
+	<Item>int_sheriff2_milo_</Item>
+	<Item>bkr_v_carmod3_milo_</Item>
+	<Item>brown_casinoclub_milo_</Item>
+	<Item>brown_cluckingbell_milo_</Item>
+	<Item>brown_cluckingbell2_milo_</Item>
+	<Item>brown_cluckingbell3_milo_</Item>
+	<Item>vespucci_burgershot_milo_</Item>
+	<Item>gabz_pillbox_milo_</Item>
+	<Item>imp_impexp_interior_placement_interior_1_impexp_intwaremed_np_milo_</Item>
+	<Item>vu_fight_club_milo_</Item>
+	<Item>int_luxury_milo_</Item>
+	<Item>lr_cs4_14_interior_v_hicksbar_np_milo_</Item>
+	<Item>school_interior_upper</Item>
+  <Item>brown_goldreserve_milo_</Item>
+	<Item>hei_hw1_blimp_interior_v_garagem_sp_np_milo_</Item>  
+  </proxies>
+  </SInteriorOrderData>
