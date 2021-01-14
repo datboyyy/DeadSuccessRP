@@ -1,0 +1,380 @@
+<html>
+    <head>
+        <link href="style.css" rel="stylesheet" type="text/css" />
+		<script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+	
+		<style>
+            .general {display: none;}
+	           .main {display: none;}
+            .deposit {display: none;}
+			 .depositUI {display: none;} 
+			 .withdrawUI {display: none;}
+			  .balanceUI {display: none;}
+			  .transferUI {display: none;}
+            
+
+		</style>
+		
+
+	
+	</head>
+
+    <body>
+            <div class="general">
+				
+					
+                <div class="main">            
+				<h3 class="sans">Welcome Back, <span class="username1"></span></h3>
+				<h4 class="sans">Balance: <span class="curbalance"></span></h4>
+                    <button id="deposit">Deposit</button>
+                    <button id="withdraw">Withdraw</button>
+                    <button id="balance">Balance</button>
+                    <button id="transfer">Transfer</button>
+                    <button id="exitbank">Exit</button>
+                </div>
+
+            </div>
+            <div class='depositUI'>
+                <form id="deposit1">
+						<h3 class="sans">Welcome Back, <span class="username1"></span></h3>
+						<h4 class="sans">Balance: <span class="curbalance"></span></h4>
+                        <input id="amount" type="text" placeholder="Amount to deposit"><br>
+                        <button id="deposit1" type="submit">Deposit</button>
+                        <button id="canceldeposit" type="button">Cancel</button> 	
+                </form>
+
+            </div>
+			
+		 <div class='withdrawUI'>
+                <form id="withdraw1">
+						<h3 class="sans">Welcome Back, <span class="username1"></span></h3>
+						<h4 class="sans">Balance: <span class="curbalance"></span></h4>
+                        <input id="amountw" type="text" placeholder="Amount to withdraw"><br>
+                        <button id="withdraw1" type="submit">Withdraw</button>
+                        <button id="cancelwithdraw" type="button">Cancel</button> 	
+                </form>
+
+          </div>
+
+		  <div class='balanceUI'>
+						<h3 class="sans">Welcome Back, <span class="username1"></span></h3>
+						<span class="curbalance" id="balanceX"></span>
+                        <button id="cancelbalance" type="button">Cancel</button> 	
+          </div>
+		  
+		  <div class='transferUI'>
+                <form id="transfer1">
+						<h3 class="sans">Welcome Back, <span class="username1"></span></h3>
+						<h4 class="sans">Balance: <span class="curbalance"></span></h4>
+                        <input id="to" type="text" placeholder="To Player ID"><br>
+						<input id="amountt" type="text" placeholder="Amount to transfer"><br>
+                        <button id="transfer1" type="submit">Transfer</button>
+                        <button id="canceltransfer" type="button">Cancel</button> 	
+				</form>
+
+          </div>
+
+          <!-- 
+
+            CASH & BANK HUD
+
+           -->
+
+          <div class="container">
+              <div class="cashtransaction"></div>
+              <div class="cash"></div>
+              <div class="bank"></div>
+              <div class="transaction"></div>
+          </div>
+			
+
+	  
+    </body>
+    <script type="text/javascript">
+    function formatNumber (num) {
+        return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+    }   
+    function addGaps(nStr) {
+        nStr += '';
+        var x = nStr.split('.');
+        var x1 = x[0];
+        var x2 = x.length > 1 ? '.' + x[1] : '';
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, '$1' + '<span style="margin-left: 3px; margin-right: 3px;"/>' + '$2');
+        }
+        return x1 + x2;
+    }
+    function addCommas(nStr) {
+        nStr += '';
+        var x = nStr.split('.');
+        var x1 = x[0];
+        var x2 = x.length > 1 ? '.' + x[1] : '';
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, '$1' + ',<span style="margin-left: 0px; margin-right: 1px;"/>' + '$2');
+        }
+        return x1 + x2;
+    }
+    </script>
+	
+	<script type="text/javascript">
+	
+	
+	$(function() {
+		/* open the UI for user */
+		window.addEventListener('message', function(event) {
+		   
+    
+
+			if (event.data.type == "openGeneral"){
+                $('.main').css('display', 'block')
+				$('.general').css('display', 'block')
+                $('.deposit').css('display', 'none')
+				
+			} else if(event.data.type == "balanceHUD") {
+					$('.username1').html(event.data.player);
+					$('.curbalance').html('<span style="color:green">' + '$' + '</span>' + formatNumber(event.data.balance))
+					
+			
+			} else if (event.data.type == "closeAll"){
+                $('.main').css('display', 'none')
+				$('.general').css('display', 'none')
+                $('.deposit').css('display', 'none')
+			} 
+			
+		});
+	});
+	
+
+	</script>
+	
+	<script type="text/javascript">	
+        $('#exitbank').click(function(){
+            $('.general').css('display', 'none')
+            $('.main').css('display', 'none')
+                       
+            
+            $.post('http://st-banking/NUIFocusOff', JSON.stringify({}));
+            
+        })
+        
+         $('#deposit').click(function(){
+            $('.general').css('display', 'none')
+            $('.depositUI').css('display', 'block')
+			$('#deposit1').css('display', 'block')
+		
+        })
+		
+		$('#cancelbalance').click(function(){
+            $('.general').css('display', 'block')
+            $('.balanceUI').css('display', 'none')
+		
+        })
+		
+		$('#balance').click(function(){
+            $('.general').css('display', 'none')
+            $('.balanceUI').css('display', 'block')
+
+        })
+		
+		 $('#withdraw').click(function(){
+            $('.general').css('display', 'none')
+            $('.withdrawUI').css('display', 'block')
+			$('#withdraw1').css('display', 'block')
+			
+		
+        })
+         $('#canceldeposit').click(function(){
+    
+            $('.general').css('display', 'block')
+            $('.depositUI').css('display', 'none')
+        })
+         $('#cancelwithdraw').click(function(){
+    
+            $('.general').css('display', 'block')
+            $('.withdrawUI').css('display', 'none')
+        })
+        
+    $("#deposit1").submit(function(e) {
+        e.preventDefault(); // Prevent form from submitting
+        
+        $.post('http://st-banking/deposit', JSON.stringify({
+            amount: $("#amount").val()
+			
+        }));
+		
+		$('.general').css('display', 'block')
+		$('.depositUI').css('display', 'none')
+		$('#deposit1').css('display', 'none')
+		
+		// $.post('http://st-banking/NUIFocusOff', JSON.stringify({}));
+	});
+	
+	$("#transfer1").submit(function(h) {
+        h.preventDefault(); // Prevent form from submitting
+        
+        $.post('http://st-banking/transfer', JSON.stringify({
+			to: $("#to").val(),
+            amountt: $("#amountt").val()
+			
+        }));
+		
+		$('.general').css('display', 'block')
+		$('.depositUI').css('display', 'none')
+		$('#deposit1').css('display', 'none')
+		$('.transferUI').css('display', 'none')
+		$('#transfer1').css('display', 'none')
+		$('.withdrawUI').css('display', 'none')
+		$('.withdraw11').css('display', 'none')
+		// $.post('http://st-banking/NUIFocusOff', JSON.stringify({}));
+	});
+		
+		
+	$("#withdraw1").submit(function(g) {
+		g.preventDefault(); // Prevent form from submitting
+        
+        $.post('http://st-banking/withdrawl', JSON.stringify({
+            amountw: $("#amountw").val()
+			
+        }));
+		$('.general').css('display', 'block')
+		$('.depositUI').css('display', 'none')
+		$('#deposit1').css('display', 'none')
+		$('.withdrawUI').css('display', 'none')
+		$('.withdraw11').css('display', 'none')
+		
+		// $.post('http://st-banking/NUIFocusOff', JSON.stringify({}));
+	});
+	
+	$('#balance').click(function(){
+        $('.general').css('display', 'none')
+        $('.balanceUI').css('display', 'block')
+        $.post('http://st-banking/balance', JSON.stringify({}));
+     })
+	 
+	 $('#transfer').click(function(){
+        $('.general').css('display', 'none')
+		$('.transferUI').css('display', 'block')
+        $('#transfer1').css('display', 'block')
+
+     })
+	 
+	 $('#canceltransfer').click(function(){
+        $('.general').css('display', 'block')
+        $('.transferUI').css('display', 'none')
+		
+     })
+
+
+	document.onkeyup = function(data){
+        if (data.which == 27){
+            $('.main').css('display', 'none')
+            $('.general').css('display', 'none')
+            $('.deposit').css('display', 'none')
+			$('.withdraw').css('display', 'none')
+			$('.transferUI').css('display', 'none')
+			$('.depositUI').css('display', 'none')
+			$('#deposit1').css('display', 'none')
+			$('.withdrawUI').css('display', 'none')
+			$('.withdraw11').css('display', 'none')
+            $.post('http://st-banking/NUIFocusOff', JSON.stringify({}));
+        }
+    }
+
+	
+    </script>
+
+    <!-- 
+
+        CASH & BANK HUD
+
+     -->
+    
+    <script type="text/javascript">	
+        $(document).ready(function(){
+            window.addEventListener('message', function(event){
+                var item = event.data;
+                // Update HUD Balance
+                if(item.updateBank == true) {
+                $('.bank').hide();
+                if(item.show != false){
+                    $('.bank').show();
+                }
+                $('.bank').html('<p id="bank"><img id="icon" src="img/bank-icon.png" alt=""/>' +addGaps(event.data.bank)+'</p>');
+                $('.currentBank').html('$'+addCommas(event.data.bank));
+                $('.username').html(event.data.player);
+                if(item.show != false){
+                    setTimeout(function(){
+                    $('.bank').fadeOut(600)
+                    }, 4000)
+                }
+                }
+                if(item.viewBank == true) {
+                $('.babanklance').show();
+                $('.cash').show();
+                setTimeout(function(){
+                    $('.bank').fadeOut(600)
+                    $('.cash').fadeOut(600)
+                }, 8000)
+                }
+                if(item.viewCash == true) {
+                $('.cash').show();
+                setTimeout(function(){
+                    $('.cash').fadeOut(600)
+                }, 8000)
+                }
+                if(item.updateCash == true) {
+                $('.cash').hide();
+                if(item.show != false){
+                    $('.cash').show();
+                }
+                $('.cash').html('<p id="cash"><span class="green"> $ </span>' +addGaps(event.data.cash)+'</p>');
+                if(item.show != false){
+                    setTimeout(function(){
+                    $('.cash').fadeOut(600)
+                    }, 4000)
+                }
+                }
+                // Trigger Add bank Popup
+                if(item.addBank == true) {
+                $('.transaction').show();
+                var element = $('<p id="add-bank"><span class="pre">+</span><span class="green"> $ </span>' +addGaps(event.data.amount)+'</p>');
+                $(".transaction").append(element);
+
+                setTimeout(function(){
+                    $(element).fadeOut(600, function() { $(this).remove(); })
+                }, 2000)
+                }
+                //Trigger Remove bank Popup
+                if(item.removeBank == true) {
+                $('.transaction').show();
+                var element = $('<p id="add-bank"><span class="pre">-</span><span class="red"> $ </span>' +addGaps(event.data.amount)+'</p>');
+                $(".transaction").append(element);
+                setTimeout(function(){
+                    $(element).fadeOut(600, function() { $(this).remove(); })
+                }, 2000)
+                }
+                    // Trigger Add bank Popup
+                if(item.addCash == true) {
+                $('.cashtransaction').show();
+                var element = $('<p id="add-bank"><span class="pre">+</span><span class="green"> $ </span>' +addGaps(event.data.amount)+'</p>');
+                $(".cashtransaction").append(element);
+
+                setTimeout(function(){
+                    $(element).fadeOut(600, function() { $(this).remove(); })
+                }, 2000)
+                }
+                //Trigger Remove bank Popup
+                if(item.removeCash == true) {
+                $('.cashtransaction').show();
+                var element = $('<p id="add-bank"><span class="pre">-</span><span class="red"> $ </span>' +addGaps(event.data.amount)+'</p>');
+                $(".cashtransaction").append(element);
+                setTimeout(function(){
+                    $(element).fadeOut(600, function() { $(this).remove(); })
+                }, 2000)
+                }
+            })
+        });
+    </script>
+</html>

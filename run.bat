@@ -1,0 +1,1 @@
+C:\Users\admin\Desktop\server\run.cmd +exec server.cfg  +set sv_enforceGameBuild 2060 +set onesync on

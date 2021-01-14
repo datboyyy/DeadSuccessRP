@@ -1,0 +1,10 @@
+{
+    "Lua.diagnostics.globals": [
+        "canFire",
+        "pos",
+        "rot",
+        "frm_skins",
+        "currentped",
+        "currentThermiteGate"
+    ]
+}

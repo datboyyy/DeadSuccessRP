@@ -1,0 +1,48 @@
+body {
+    background-color: transparent !important;
+}
+
+* {
+	font-family: 'Lato', sans-serif;
+	margin: 0;
+	padding: 0;
+	text-shadow: 0px 0px 0px black;
+}
+
+.template, .notification {
+    display: none;
+}
+
+.notif-container {
+    width: 20%;
+    top: 36%;
+    position: absolute;
+    left: 1%;
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+}
+
+.notification {
+    padding: 8px;
+    width: fit-content;
+    border-radius: 3px;
+    margin: 6px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.success {
+    background: #0bb400;
+    color: #fff;
+}
+
+.inform {
+    background-color: #0089ff;
+    color: #ffffff;
+}
+
+.error {
+    background: #ff0000;
+    color: #fff;
+}

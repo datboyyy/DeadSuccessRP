@@ -1,0 +1,62 @@
+.background {
+    background-color: #131e29;
+}
+
+.image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60vh;
+    height: 60vh;
+    margin-top: -30vh; /* Half the height */
+    margin-left: -30vh; /* Half the width */
+    background: url(logo.png);
+    background-size: 60vh 60vh;
+    animation: image 3s;
+}
+
+.loadbar {
+    width: 100%;
+    background-color: #eee;
+    height: 2vh;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    overflow: hidden;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    display: block;
+    animation: progress 3s;
+}
+
+.progress {
+    width: 10%;
+    background-color: #FC0349;
+    height: 2vh;
+    position: absolute;
+    left: 10%;
+}
+
+@keyframes image {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+
+    to { 
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes progress {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to { 
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+  <style>
+      .container {visibility: hidden;}
+  </style>
+</head>
+<body id="body">
+  <div class="container">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+    <div class="side">
+      <ul class="menu">
+        <li class="menu__list"><a href="#">Police Vehicles</a>
+          <ul class="menu__drop">
+            <ul>
+              <li><a id="poltaurus">Police Taurus</a></li>
+              <li><a id="pol8">Police Motorcycle</a></li>
+              <li><a id="pol9">Ford Raptor</a></li>
+              <li><a id="polchar">Police Charger</a></li>
+              <li><a id="2015polstang">Police Mustang</a></li>
+              <li><a id="polraptor">Police Raptor BCSO</a></li>
+              <li><a id="polschafter3">Police UC Schafter</a></li>
+              <li><a id="poltah">Police Tahoe</a></li>
+              <li><a id="polvic">Police Crown Vic</a></li>
+              <li><a id="pbus">Prison Bus</a></li>
+            </ul>
+          </ul>
+        </li>
+        <li class="menu__list"><a href="#">EMS Vehicles</a>
+            <ul class="menu__drop">
+              <ul>
+                <li><a id="emsa">EMS Ambulance</a></li>
+              </ul>
+            </ul>
+        </li>
+    </div>
+  </div>
+</div>
+</div>
+
+<script type="text/javascript">
+  $(function () {
+    /* open the UI for user */
+    window.addEventListener('message', function (event) {
+      if (event.data.type == "openGeneral") {
+        $('.container').css('visibility', 'visible')
+      } else if (event.data.type == "closeAll") {
+        $('.container').css('visibility', 'hidden')
+      }
+    });
+  });
+
+  document.onkeyup = function (data) {
+    if (data.which == 27) {
+      $('.container').css('visibility', 'hidden')
+      $.post('http://pdcarlist/NUIFocusOff', JSON.stringify({}));
+    }
+  }
+
+  $('#poltaurus').click(function () {
+    $.post('http://pdcarlist/poltaurus', JSON.stringify({}));
+  })
+  $('#pol8').click(function () {
+    $.post('http://pdcarlist/pol8', JSON.stringify({}));
+  })
+  $('#pol9').click(function () {
+    $.post('http://pdcarlist/pol9', JSON.stringify({}));
+  })
+  $('#polchar').click(function () {
+    $.post('http://pdcarlist/polchar', JSON.stringify({}));
+  })
+  $('#2015polstang').click(function () {
+    $.post('http://pdcarlist/2015polstang', JSON.stringify({}));
+  })
+  $('#polraptor').click(function () {
+    $.post('http://pdcarlist/polraptor', JSON.stringify({}));
+  })
+  $('#polschafter3').click(function () {
+    $.post('http://pdcarlist/polschafter3', JSON.stringify({}));
+  })
+  $('#poltah').click(function () {
+    $.post('http://pdcarlist/poltah', JSON.stringify({}));
+  })
+  $('#polvic').click(function () {
+    $.post('http://pdcarlist/polvic', JSON.stringify({}));
+  })
+  $('#polvic2').click(function () {
+    $.post('http://pdcarlist/polvic2', JSON.stringify({}));
+  })
+  $('#pbus').click(function () {
+    $.post('http://pdcarlist/pbus', JSON.stringify({}));
+  })
+  $('#emsa').click(function () {
+    $.post('http://pdcarlist/emsa', JSON.stringify({}));
+  })
+
+</script>
+</body>
+</html>

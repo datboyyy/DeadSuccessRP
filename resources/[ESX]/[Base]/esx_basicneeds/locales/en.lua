@@ -1,0 +1,21 @@
+Locales['en'] = {
+  ['used_bread'] = 'you ate Bread',
+  ['used_potatochips'] = 'you drank ate Potato Chips',
+  ['used_hamburger'] = 'you ate a Hamburger',
+  ['used_cupcake'] = 'you drank ate Cupcake',
+  ['used_water'] = 'you drank  Water',
+  ['used_cocacola'] = 'you drank  Coca-Cola',
+  ['used_coffee'] = 'you drank  Coffee',
+  ['used_drpepper'] = 'you drank  Dr Pepper',
+  ['used_icetea'] = 'you drank  Icetea',
+  ['used_energy'] = 'you drank  Energy Drink',
+  ['used_beer'] = 'you drank  Beer',
+  ['used_vodka'] = 'you drank  Vodka',
+  ['used_jager'] = 'you drank  Jager',
+  ['used_tequila'] = 'you drank  Tequila',
+  ['used_wine'] = 'you drank  Wine',
+  ['used_sandwich'] = 'you ate  Sand Wich',
+  ['used_fries'] = 'you ate Fries',
+  ['used_fowlburger'] = 'you ate FowlBurger',
+
+}
