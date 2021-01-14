@@ -151,7 +151,7 @@ end
 local isLoggedIn = false
 
 
-RegisterKeyMapping('phone', '[Phone] Open Phone', 'keyboard', 'P')
+RegisterKeyMapping('phone', '[Phone] Open Phone', 'keyboard', 'F1')
 RegisterCommand("phone", function()
     OpenPhone()
     newPhoneProp()
