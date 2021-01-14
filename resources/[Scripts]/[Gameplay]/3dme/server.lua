@@ -1,31 +1,22 @@
 RegisterServerEvent('3dme:shareDisplay')
-AddEventHandler('3dme:shareDisplay', function(text)
-    local source = source
-    local realname = GetCharacterName(source)
-    local args = realname..' '..text
-    TriggerClientEvent('Do3DText', -1, args, source)
+AddEventHandler('3dme:shareDisplay', function(text, log)
+	TriggerClientEvent('3dme:shareDisplay', -1, text, source)
+end)
 
-
-    local name = GetPlayerName(source)
-    local hex = GetPlayerIdentifier(source)
+RegisterCommand('me', function(source, args)
+    local text = GetCharacterName(source).. "" ..table.concat(args, " ") .. ""
+    TriggerClientEvent('3dme:shareDisplay', -1, text, source)
     local threedme = {
         {
             ["color"] = 16711680,
             ["title"] = "Dead Success RP",
-            ["description"] = "Player: **" .. name .. "**\n Steam Hex: **" .. hex .. "\n**3dme message: **" .. args .. "**\n",
+            ["description"] = "Player: **" .. GetPlayerName(source) .. "**\n Steam Hex: **" .. GetPlayerIdentifiers(source)[1] .. "\n**3dme message: **" .. text .. "**\n",
             ["footer"] = {
                 ["text"] = 'DSRP',
             },
         }
     }
     PerformHttpRequest('https://discord.com/api/webhooks/789314113326415912/pDC9hbCFGf905Qu4aLhqK1L6bGDAYVf48yvEr-UXbJAPVKNQ9a4KXFyNI5RkG2DeXNNG', function(err, text, headers) end, 'POST', json.encode({username = "3dme", embeds = threedme}), {['Content-Type'] = 'application/json'})
-
-end)
-
-
-RegisterServerEvent('3dme:shareDisplayforlater')
-AddEventHandler('3dme:shareDisplayforlater', function(text)
-	TriggerClientEvent('Do3DText', -1, text, source)
 end)
 
 
