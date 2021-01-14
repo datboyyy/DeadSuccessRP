@@ -150,17 +150,8 @@ end
 
 local isLoggedIn = false
 
-Citizen.CreateThread(function()
-    while true do
-        if IsControlJustPressed(0, Config.OpenPhone) then
-            if not PhoneData.isOpen then
-                OpenPhone()
-            end
-        end
-        Citizen.Wait(3)
-    end
-end)
 
+RegisterKeyMapping('phone', '[Phone] Open Phone', 'keyboard', 'P')
 RegisterCommand("phone", function()
     OpenPhone()
     newPhoneProp()
