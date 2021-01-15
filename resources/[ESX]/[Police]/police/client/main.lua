@@ -1151,6 +1151,38 @@ AddEventHandler('ped:forcedEnteringVeh', function(sender)
     end
 end)
 
+RegisterNetEvent('police:forcedEnteringVeh')
+AddEventHandler('police:forcedEnteringVeh', function(sender)
+
+	local vehicleHandle = NetworkGetEntityFromNetworkId(sender)
+    if vehicleHandle ~= nil then
+      if IsEntityAVehicle(vehicleHandle) then
+          if IsVehicleSeatFree(vehicleHandle,1) then
+            TriggerEvent('esx_policejob:drag')
+			Citizen.Wait(100)
+            SetPedIntoVehicle(PlayerPedId(),vehicleHandle,1)
+          else
+            if IsVehicleSeatFree(vehicleHandle,2) then
+                TriggerEvent('esx_policejob:drag')
+                Citizen.Wait(100)
+                SetPedIntoVehicle(PlayerPedId(),vehicleHandle,2)
+              end
+            end
+        end
+    end
+end)
+
+local tryingAnim = false
+local enteringveh = false
+RegisterNetEvent('respawn:sleepanims')
+AddEventHandler('respawn:sleepanims', function()
+    if not enteringveh then
+        enteringveh = true
+        ClearPedTasksImmediately(PlayerPedId())
+        Citizen.Wait(1000)
+        enteringveh = false   
+    end
+end)
 
 RegisterNetEvent('esx_policejob:OutVehicle')
 AddEventHandler('esx_policejob:OutVehicle', function()
@@ -1966,4 +1998,49 @@ function GetClosestPlayers(targetVector,dist)
 		end
 	end
 	return closestplayers, closestdistance, closestcoords
+end
+
+function GetClosestPedIgnoreCar()
+	local players = GetPlayers()
+	local closestDistance = -1
+	local closestPlayer = -1
+	local closestPlayerId = -1
+	local ply = PlayerPedId()
+	local plyCoords = GetEntityCoords(ply, 0)
+	for index,value in ipairs(players) do
+		local target = GetPlayerPed(value)
+		if(target ~= ply) then
+			local targetCoords = GetEntityCoords(GetPlayerPed(value), 0)
+			local distance = #(vector3(targetCoords["x"], targetCoords["y"], targetCoords["z"]) - vector3(plyCoords["x"], plyCoords["y"], plyCoords["z"]))
+			if(closestDistance == -1 or closestDistance > distance) then
+				closestPlayer = target
+				closestPlayerId = value
+				closestDistance = distance
+			end
+		end
+	end
+	
+	return closestPlayer, closestDistance, closestPlayerId
+end
+
+
+function getVehicleInDirection(coordFrom, coordTo)
+	local offset = 0
+	local rayHandle
+	local vehicle
+
+	for i = 0, 100 do
+		rayHandle = CastRayPointToPoint(coordFrom.x, coordFrom.y, coordFrom.z, coordTo.x, coordTo.y, coordTo.z + offset, 10, PlayerPedId(), 0)	
+		a, b, c, d, vehicle = GetRaycastResult(rayHandle)
+		
+		offset = offset - 1
+
+		if vehicle ~= 0 then break end
+	end
+	
+	local distance = Vdist2(coordFrom, GetEntityCoords(vehicle))
+	
+	if distance > 25 then vehicle = nil end
+
+    return vehicle ~= nil and vehicle or 0
 end

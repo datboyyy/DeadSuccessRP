@@ -28,7 +28,7 @@ AddEventHandler('esx_doorlock:SaveOnConfig', function(name, coords, model, job, 
 		local file2 = io.open(path.."/client/polyzonetest.lua", "a")
 		-- Its formatted like that to simply edit (if you have to edit)
 		file:write("\n	Config.Doorlist[#Config.Doorlist + 1] = {")
-		file:write("\n		name = "..name..",")
+		file:write("\n		name = '"..name.."',")
 		file:write("\n		textCoords = "..coords..",")
 		file:write("\n		authorizedJobs = '"..job.."',")
 		file:write("\n		locked = true,")

@@ -1,21 +1,6 @@
 Config = {}
 Config.Doorlist = {}
-	Config.Doorlist[#Config.Doorlist + 1] = {
-		textCoords = vector3(464.5701, -992.6641, 25.06443),
-		authorizedJobs = 'police',
-		locked = true,
-		distance = 1.5,
-		objName = 631614199,
-		objCoords = vector3(464.5701, -992.6641, 25.06443)
-}
-	Config.Doorlist[#Config.Doorlist + 1] = {
-		textCoords = vector3(450.1041, -985.7384, 30.8393),
-		authorizedJobs = 'police',
-		locked = true,
-		distance = 1,
-		objName = 1557126584,
-		objCoords = vector3(450.1041, -985.7384, 30.8393)
-}
+
 	Config.Doorlist[#Config.Doorlist + 1] = {
 		textCoords = vector3(-1044.083, 301.602, 62.36767),
 		authorizedJobs = 'mafia',
@@ -31,118 +16,6 @@ Config.Doorlist = {}
 		distance = 1,
 		objName = 1901183774,
 		objCoords = vector3(-1044.811, 303.5574, 62.36767)
-}
-	Config.Doorlist[#Config.Doorlist + 1] = {
-		textCoords = vector3(443.4078, -989.4454, 30.8393),
-		authorizedJobs = 'police',
-		locked = true,
-		distance = 1,
-		objName = 185711165,
-		objCoords = vector3(443.4078, -989.4454, 30.8393)
-}
-	Config.Doorlist[#Config.Doorlist + 1] = {
-		textCoords = vector3(446.0079, -989.4454, 30.8393),
-		authorizedJobs = 'police',
-		locked = true,
-		distance = 1,
-		objName = 185711165,
-		objCoords = vector3(446.0079, -989.4454, 30.8393)
-}
-	Config.Doorlist[#Config.Doorlist + 1] = {
-		textCoords = vector3(465.6406, -984.681, 25.69801),
-		authorizedJobs = 'police',
-		locked = true,
-		distance = 1,
-		objName = 185711165,
-		objCoords = vector3(465.6406, -984.681, 25.69801)
-}
-	Config.Doorlist[#Config.Doorlist + 1] = {
-		textCoords = vector3(461.8065, -994.4086, 25.06443),
-		authorizedJobs = 'police',
-		locked = true,
-		distance = 1,
-		objName = 631614199,
-		objCoords = vector3(461.8065, -994.4086, 25.06443)
-}
-	Config.Doorlist[#Config.Doorlist + 1] = {
-		textCoords = vector3(461.8065, -997.6584, 25.06443),
-		authorizedJobs = 'police',
-		locked = true,
-		distance = 1,
-		objName = 631614199,
-		objCoords = vector3(461.8065, -997.6584, 25.06443)
-}
-	Config.Doorlist[#Config.Doorlist + 1] = {
-		textCoords = vector3(461.8065, -1001.302, 25.06443),
-		authorizedJobs = 'police',
-		locked = true,
-		distance = 1,
-		objName = 631614199,
-		objCoords = vector3(461.8065, -1001.302, 25.06443)
-}
-	Config.Doorlist[#Config.Doorlist + 1] = {
-		textCoords = vector3(463.4782, -1003.538, 25.00599),
-		authorizedJobs = 'police',
-		locked = true,
-		distance = 1,
-		objName = -1033001619,
-		objCoords = vector3(463.4782, -1003.538, 25.00599)
-}
-	Config.Doorlist[#Config.Doorlist + 1] = {
-		textCoords = vector3(475.2285, -1007.747, 24.41075),
-		authorizedJobs = 'police',
-		locked = true,
-		distance = 1,
-		objName = 631614199,
-		objCoords = vector3(475.2285, -1007.747, 24.41075)
-}
-	Config.Doorlist[#Config.Doorlist + 1] = {
-		textCoords = vector3(478.8704, -1007.755, 24.41075),
-		authorizedJobs = 'police',
-		locked = true,
-		distance = 1,
-		objName = 631614199,
-		objCoords = vector3(478.8704, -1007.755, 24.41075)
-}
-	Config.Doorlist[#Config.Doorlist + 1] = {
-		textCoords = vector3(471.066, -999.5231, 25.0626),
-		authorizedJobs = 'police',
-		locked = true,
-		distance = 1,
-		objName = 631614199,
-		objCoords = vector3(471.066, -999.5231, 25.0626)
-}
-	Config.Doorlist[#Config.Doorlist + 1] = {
-		textCoords = vector3(467.4333, -999.5154, 25.0626),
-		authorizedJobs = 'police',
-		locked = true,
-		distance = 1,
-		objName = 631614199,
-		objCoords = vector3(467.4333, -999.5154, 25.0626)
-}
-	Config.Doorlist[#Config.Doorlist + 1] = {
-		textCoords = vector3(488.8948, -1011.67, 27.14582),
-		authorizedJobs = 'police',
-		locked = true,
-		distance = 10,
-		objName = -1603817716,
-		objCoords = vector3(489.56, -1020.26, 27.14582)
-}
-	Config.Doorlist[#Config.Doorlist + 1] = {
-		textCoords = vector3(410.7034, -1031.017, 28.40068),
-		authorizedJobs = 'police',
-		locked = true,
-		distance = 10,
-		objName = -1483471451,
-		objCoords = vector3(410.7034, -1031.017, 28.40068)
-}
-	Config.Doorlist[#Config.Doorlist + 1] = {
-		textCoords = vector3(446.5728, -980.0106, 30.8393),
-		authorizedJobs = 'police',
-		locked = true,
-		distance = 1,
-		objName = -1320876379,
-		objCoords = vector3(446.5728, -980.0106, 30.8393)
 }
 	Config.Doorlist[#Config.Doorlist + 1] = {
 		textCoords = vector3(19.5267, -1599.981, 29.52338),
@@ -403,4 +276,276 @@ Config.Doorlist = {}
 		distance = 10,
 		objName = -983965772,
 		objCoords = vector3(945.8375, -984.0525, 43.83697)
+}
+
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'pdfrontsidedoor',
+		textCoords = vector3(440.5201, -977.6011, 30.82319),
+		authorizedJobs = 'police',
+		locked = true,
+		distance = 2,
+		objName = -1406685646,
+		objCoords = vector3(440.5201, -977.6011, 30.82319)
+}
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'pdfrontsidedoor',
+		textCoords = vector3(440.5201, -986.2335, 30.82319),
+		authorizedJobs = 'police',
+		locked = true,
+		distance = 2,
+		objName = -96679321,
+		objCoords = vector3(440.5201, -986.2335, 30.82319)
+}
+
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'pdgarage',
+		textCoords = vector3(440.7392, -998.7462, 30.8153),
+		authorizedJobs = 'police',
+		locked = true,
+		distance = 1,
+		objName = -1547307588,
+		objCoords = vector3(440.7392, -998.7462, 30.8153)
+}
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'pdgarage',
+		textCoords = vector3(443.0618, -998.7462, 30.8153),
+		authorizedJobs = 'police',
+		locked = true,
+		distance = 1,
+		objName = -1547307588,
+		objCoords = vector3(443.0618, -998.7462, 30.8153)
+}
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'pdbacksidedoor',
+		textCoords = vector3(455.8862, -972.2543, 30.81531),
+		authorizedJobs = 'police',
+		locked = true,
+		distance = 1,
+		objName = -1547307588,
+		objCoords = vector3(455.8862, -972.2543, 30.81531)
+}
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'pdbacksidedoor',
+		textCoords = vector3(458.2087, -972.2543, 30.81531),
+		authorizedJobs = 'police',
+		locked = true,
+		distance = 1,
+		objName = -1547307588,
+		objCoords = vector3(458.2087, -972.2543, 30.81531)
+}
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'pdhelidoor',
+		textCoords = vector3(464.3086, -984.5284, 43.77124),
+		authorizedJobs = 'police',
+		locked = true,
+		distance = 2,
+		objName = -692649124,
+		objCoords = vector3(464.3086, -984.5284, 43.77124)
+}
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'pdhelidoor',
+		textCoords = vector3(475.8323, -990.4839, 26.40548),
+		authorizedJobs = 'police',
+		locked = true,
+		distance = 1.3,
+		objName = -692649124,
+		objCoords = vector3(475.8323, -990.4839, 26.40548)
+}
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'pdinterogattion',
+		textCoords = vector3(482.6699, -992.2991, 26.40548),
+		authorizedJobs = 'police',
+		locked = true,
+		distance = 1,
+		objName = -1406685646,
+		objCoords = vector3(482.6699, -992.2991, 26.40548)
+}
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'pdinterogattion',
+		textCoords = vector3(482.6703, -995.7285, 26.40548),
+		authorizedJobs = 'police',
+		locked = true,
+		distance = 1,
+		objName = -1406685646,
+		objCoords = vector3(482.6703, -995.7285, 26.40548)
+}
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'pdinterogattion',
+		textCoords = vector3(482.6701, -987.5792, 26.40548),
+		authorizedJobs = 'police',
+		locked = true,
+		distance = 1,
+		objName = -1406685646,
+		objCoords = vector3(482.6701, -987.5792, 26.40548)
+}
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'pdinterogattion',
+		textCoords = vector3(482.6694, -983.9868, 26.40548),
+		authorizedJobs = 'police',
+		locked = true,
+		distance = 1,
+		objName = -1406685646,
+		objCoords = vector3(482.6694, -983.9868, 26.40548)
+}
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'pdcells',
+		textCoords = vector3(481.0084, -1004.118, 26.48005),
+		authorizedJobs = 'police',
+		locked = true,
+		distance = 1.2,
+		objName = -53345114,
+		objCoords = vector3(481.0084, -1004.118, 26.48005)
+}
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'pdcells',
+		textCoords = vector3(484.1764, -1007.734, 26.48005),
+		authorizedJobs = 'police',
+		locked = true,
+		distance = 1.2,
+		objName = -53345114,
+		objCoords = vector3(484.1764, -1007.734, 26.48005)
+}
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'pdcells',
+		textCoords = vector3(486.9131, -1012.189, 26.48005),
+		authorizedJobs = 'police',
+		locked = true,
+		distance = 1.2,
+		objName = -53345114,
+		objCoords = vector3(486.9131, -1012.189, 26.48005)
+}
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'pdcells',
+		textCoords = vector3(483.9127, -1012.189, 26.48005),
+		authorizedJobs = 'police',
+		locked = true,
+		distance = 1.2,
+		objName = -53345114,
+		objCoords = vector3(483.9127, -1012.189, 26.48005)
+}
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'pdcells',
+		textCoords = vector3(480.9128, -1012.189, 26.48005),
+		authorizedJobs = 'police',
+		locked = true,
+		distance = 1.2,
+		objName = -53345114,
+		objCoords = vector3(480.9128, -1012.189, 26.48005)
+}
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'pdcells',
+		textCoords = vector3(477.9126, -1012.189, 26.48005),
+		authorizedJobs = 'police',
+		locked = true,
+		distance = 1.2,
+		objName = -53345114,
+		objCoords = vector3(477.9126, -1012.189, 26.48005)
+}
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'pdcells',
+		textCoords = vector3(476.6157, -1008.875, 26.48005),
+		authorizedJobs = 'police',
+		locked = true,
+		distance = 1.2,
+		objName = -53345114,
+		objCoords = vector3(476.6157, -1008.875, 26.48005)
+}
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'pdgaragetocells',
+		textCoords = vector3(471.3679, -1007.793, 26.40548),
+		authorizedJobs = 'police',
+		locked = true,
+		distance = 1.2,
+		objName = 149284793,
+		objCoords = vector3(471.3679, -1007.793, 26.40548)
+}
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'pdgaragetocells',
+		textCoords = vector3(471.3758, -1010.198, 26.40548),
+		authorizedJobs = 'police',
+		locked = true,
+		distance = 1.2,
+		objName = 149284793,
+		objCoords = vector3(471.3758, -1010.198, 26.40548)
+}
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'pdbackentrance',
+		textCoords = vector3(469.7743, -1014.406, 26.48382),
+		authorizedJobs = 'police',
+		locked = true,
+		distance = 1.2,
+		objName = -692649124,
+		objCoords = vector3(469.7743, -1014.406, 26.48382)
+}
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'pdbackentrance',
+		textCoords = vector3(467.3686, -1014.406, 26.48382),
+		authorizedJobs = 'police',
+		locked = true,
+		distance = 1.2,
+		objName = -692649124,
+		objCoords = vector3(467.3686, -1014.406, 26.48382)
+}
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'pdbackgate',
+		textCoords = vector3(488.8948, -1011.723, 27.14812),
+		authorizedJobs = 'police',
+		locked = true,
+		distance = 10,
+		objName = -1603817716,
+		objCoords = vector3(489.8948, -1020.723, 27.14812)
+}
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'pddownstairsgarage',
+		textCoords = vector3(464.1566, -997.5093, 26.3707),
+		authorizedJobs = 'police',
+		locked = true,
+		distance = 1.2,
+		objName = 1830360419,
+		objCoords = vector3(464.1566, -997.5093, 26.3707)
+}
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'pddownstairsgarage',
+		textCoords = vector3(464.1591, -974.6656, 26.3707),
+		authorizedJobs = 'police',
+		locked = true,
+		distance = 1.2,
+		objName = 1830360419,
+		objCoords = vector3(464.1591, -974.6656, 26.3707)
+}
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'pdgaragegate',
+		textCoords = vector3(452.3005, -999.6447, 28.67399),
+		authorizedJobs = 'police',
+		locked = true,
+		distance = 8,
+		objName = 2130672747,
+		objCoords = vector3(452.3005, -999.6447, 28.67399)
+}
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'pdgaragegate',
+		textCoords = vector3(431.4119, -1000.733, 27.62807),
+		authorizedJobs = 'police',
+		locked = true,
+		distance = 8,
+		objName = 2130672747,
+		objCoords = vector3(431.4119, -1000.733, 27.62807)
+}
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'pdarmory',
+		textCoords = vector3(479.7507, -999.629, 30.78917),
+		authorizedJobs = 'police',
+		locked = true,
+		distance = 1.2,
+		objName = -692649124,
+		objCoords = vector3(479.7507, -999.629, 30.78917)
+}
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'pdarmory',
+		textCoords = vector3(487.4378, -1000.189, 30.78697),
+		authorizedJobs = 'police',
+		locked = true,
+		distance = 1.2,
+		objName = -692649124,
+		objCoords = vector3(487.4378, -1000.189, 30.78697)
 }

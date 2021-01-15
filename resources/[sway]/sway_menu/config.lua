@@ -57,24 +57,17 @@ rootMenuConfig = {
         functionName = "govcarlist",
         enableMenu = function()
             local pdgarage = PolyZone:Create({
-                    --Name: PD Garage | 2020-12-11T08:14:17Z
-                    vector2(459.05844116211, -1026.9284667969),
-                    vector2(411.14721679688, -1033.1063232422),
-                    vector2(411.07965087891, -1018.5704956055),
-                    vector2(427.30352783203, -1017.8433837891),
-                    vector2(427.80291748047, -1011.6103515625),
-                    vector2(429.04846191406, -1006.1866455078),
-                    vector2(438.98165893555, -1006.1931152344),
-                    vector2(444.93954467773, -1006.2022705078),
-                    vector2(454.86288452148, -1006.2206420898),
-                    vector2(459.02944946289, -1006.9439697266)
-            }, {
-                name = "PD Garage",
-                minZ = 27.338989257813,
-                maxZ = 34.40362739563,
-                debugGrid = false,
-                gridDivisions = 30
-            })
+                vector2(423.1575012207, -1000.2854003906),
+                vector2(423.16708374023, -973.03930664063),
+                vector2(463.70239257813, -973.03649902344),
+                vector2(463.79641723633, -1000.0756835938)
+        }, {
+            name = "PD Garage",
+            minZ = 24.338989257813,
+            maxZ = 27.40362739563,
+            debugGrid = true,
+            gridDivisions = 30
+        })
             local ped = PlayerPedId()
             local coord = GetEntityCoords(ped)
             PlayerData = ESX.GetPlayerData()
