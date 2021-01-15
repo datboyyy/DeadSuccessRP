@@ -660,7 +660,7 @@ newSubMenus = {
     ['police:putinvehicle'] = {
         title = "Seat Vehicle",
         icon = "#general-put-in-veh",
-        functionName = "tp:putinvehicle"
+        functionName = "police:forceEnter"
     },
     ['police:unseatnearest'] = {
         title = "Unseat Nearest",
