@@ -31,14 +31,11 @@ function PlayMicClick(channel, value)
 				print(value)
 				if value == true then
 				soundFile = 'mic_click_on'
-				loadAnimDict( "random@arrests" )
 				TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 3.0, soundFile, mumbleConfig.micClickVolume)
-				local ped = PlayerPedId()
-				TaskPlayAnim(ped, "random@arrests", "generic_radio_enter", 8.0, 2.0, -1, 50, 2.0, 0, 0, 0 )
+
 				else
 					local ped = PlayerPedId()
 					TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 3.0, 'mic_click_off', mumbleConfig.micClickVolume)
-					ClearPedTasks(ped)
 				end
 			end
 		end
@@ -834,12 +831,14 @@ Citizen.CreateThread(function()
 								SendNUIMessage({ radioId = playerServerId, radioTalking = true }) -- Set client talking in radio list
 							end
 							mumbleConfig.controls.radio.pressed = true
+							loadAnimDict( "random@arrests" )
+							local ped = PlayerPedId()
+							TaskPlayAnim(ped, "random@arrests", "generic_radio_enter", 8.0, 2.0, -1, 50, 2.0, 0, 0, 0 )
 
 							Citizen.CreateThread(function()
 								while IsControlPressed(0, mumbleConfig.controls.radio.key) and IsInputDisabled(0) do
 									Citizen.Wait(0)
 								end
-
 								SetVoiceData("radioActive", false)
 								SetPlayerTargets(callTargets, speakerTargets, vehicleTargets) -- Stop sending voice to everyone in the radio
 								PlayMicClick(playerData.radio, false)
@@ -848,6 +847,7 @@ Citizen.CreateThread(function()
 								end
 								playerData.radioActive = false
 								mumbleConfig.controls.radio.pressed = false
+								ClearPedTasks(PlayerPedId())
 							end)
 						end
 					end
