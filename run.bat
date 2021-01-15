@@ -1,1 +1,1 @@
-C:\Users\admin\Desktop\DeadSuccessServer\DeadSuccess\run.cmd +exec server.cfg  +set sv_enforceGameBuild 2060 +set svgui_disable true +set onesync on
+C:\Users\admin\Desktop\DeadSuccessServer\DeadSuccess\run.cmd +exec server.cfg  +set sv_enforceGameBuild 2060 +set onesync on +set svgui_disable true
