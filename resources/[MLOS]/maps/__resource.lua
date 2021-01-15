@@ -4,14 +4,16 @@ client_script "@errorlog/client/cl_errorlog.lua"
 
 files {
 	"meta/interiorproxies.meta",
-	'gabz_timecycle_mods_1.xml',
-	'bs_timecycmod.xml',
+	'xml/gabz_timecycle_mods_1.xml',
+	'xml/gabz_mrpd_timecycle.xml',
+	'xml/bs_timecycmod.xml',
 	'shellpropv2s.ytyp',
-	'iv_int_1_timecycle_mods_1.xml',
+	'xml/iv_int_1_timecycle_mods_1.xml',
 	'audio/ivbsoverride_game.dat151.rel'
 }
 
 data_file 'TIMECYCLEMOD_FILE' 'gabz_timecycle_mods_1.xml'
+data_file 'TIMECYCLEMOD_FILE' 'gabz_mrpd_timecycle.xml'
 data_file "INTERIOR_PROXY_ORDER_FILE" "meta/interiorproxies.meta"
 data_file('DLC_ITYP_REQUEST')('stream/prison_props.ytyp')
 data_file 'TIMECYCLEMOD_FILE' 'iv_int_1_timecycle_mods_1.xml'
