@@ -89,7 +89,7 @@ $("#deletechar").click(function () {
                     $('#c-job-' + charid).html(char.job);
                     $('#c-jobrank-' + charid).html(jobGrade);
                     $('#c-height-' + charid).html(char.height + ' cm');
-                    $('#c-phone-' + charid).html(char.phone_number);
+                    $('#c-phone-' + charid).html(char.phone);
                     $('#c-bank-' + charid).html('$' + char.bank.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
                     $('#c-cash-' + charid).html('$' + char.money.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','));
                     // $('#c-group-' + charid).html(char.group);

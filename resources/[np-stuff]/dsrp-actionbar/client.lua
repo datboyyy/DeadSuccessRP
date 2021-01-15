@@ -402,31 +402,6 @@ Citizen.CreateThread( function()
 
 
 		prevupdate = prevupdate - 1
-		if not isDead then
-		if IsControlJustReleased(0,157) or IsDisabledControlJustReleased(0,157) then
-			TriggerEvent("inventory-bind",1)
-		end
-
-		if IsControlJustReleased(0,158) or IsDisabledControlJustReleased(0,158) then
-			TriggerEvent("inventory-bind",2)
-		end
-
-		if IsControlJustReleased(0,160) or IsDisabledControlJustReleased(0,160) then
-			TriggerEvent("inventory-bind",3)
-		end
-
-		if IsControlJustReleased(0,164) or IsDisabledControlJustReleased(0,164) then
-			TriggerEvent("inventory-bind",4)
-		end
-
-		if IsControlJustPressed(0,Controlkey["actionBar"][1]) or IsDisabledControlJustPressed(0,Controlkey["actionBar"][1]) then
-			TriggerEvent("inventory-bar",true)
-		end
-
-		if IsControlJustReleased(0,Controlkey["actionBar"][1]) or IsDisabledControlJustReleased(0,Controlkey["actionBar"][1]) then
-			TriggerEvent("inventory-bar",false)
-		end
-		end
 
 		if `WEAPON_UNARMED` ~= GetSelectedPedWeapon(PlayerPedId()) then
 			DisplayAmmoThisFrame(true)
@@ -441,8 +416,50 @@ Citizen.CreateThread( function()
 		end
 
 	end
-
 end)
+
+exports['dsrp-binds']:registerKeyMapping('Inventory', 'Inventory Bind 1', 'invbind1', 'keyboard', '1')
+exports['dsrp-binds']:registerKeyMapping('Inventory', 'Inventory Bind 1', 'invbind2', 'keyboard', '2')
+exports['dsrp-binds']:registerKeyMapping('Inventory', 'Inventory Bind 3', 'invbind3', 'keyboard', '3')
+exports['dsrp-binds']:registerKeyMapping('Inventory', 'Inventory Bind 1', 'invbind4', 'keyboard', '4')
+exports['dsrp-binds']:registerKeyMapping('Inventory', 'Inventory Action Bar', '+invactionbar', 'keyboard', 'TAB')
+exports['dsrp-binds']:registerKeyMapping('Inventory', 'Inventory Action Bar', '-invactionbarfalse', 'keyboard', 'TAB')
+
+RegisterCommand('invbind1', function()
+	if not isDead then
+	TriggerEvent("inventory-bind",1)
+	end
+end, false)
+
+RegisterCommand('invbind2', function()
+	if not isDead then
+	TriggerEvent("inventory-bind",2)
+	end
+end, false)
+
+RegisterCommand('invbind3', function()
+	if not isDead then
+	TriggerEvent("inventory-bind",3)
+	end
+end, false)
+
+RegisterCommand('invbind4', function()
+	if not isDead then
+	TriggerEvent("inventory-bind",4)
+	end
+end, false)
+
+RegisterCommand('+invactionbartrue', function()
+	if not isDead then
+	TriggerEvent("inventory-bar",true)
+	end
+end, false)
+
+RegisterCommand('-invactionbarfalse', function()
+	if not isDead then
+	TriggerEvent("inventory-bar",false)
+	end
+end, false)
 
 function helpDisplay(text, state)
   SetTextComponentFormat("STRING")
