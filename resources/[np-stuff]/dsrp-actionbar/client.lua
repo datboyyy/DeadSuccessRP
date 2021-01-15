@@ -419,11 +419,10 @@ Citizen.CreateThread( function()
 end)
 
 exports['dsrp-binds']:registerKeyMapping('Inventory', 'Inventory Bind 1', 'invbind1', 'keyboard', '1')
-exports['dsrp-binds']:registerKeyMapping('Inventory', 'Inventory Bind 1', 'invbind2', 'keyboard', '2')
+exports['dsrp-binds']:registerKeyMapping('Inventory', 'Inventory Bind 2', 'invbind2', 'keyboard', '2')
 exports['dsrp-binds']:registerKeyMapping('Inventory', 'Inventory Bind 3', 'invbind3', 'keyboard', '3')
-exports['dsrp-binds']:registerKeyMapping('Inventory', 'Inventory Bind 1', 'invbind4', 'keyboard', '4')
-exports['dsrp-binds']:registerKeyMapping('Inventory', 'Inventory Action Bar', '+invactionbar', 'keyboard', 'TAB')
-exports['dsrp-binds']:registerKeyMapping('Inventory', 'Inventory Action Bar', '-invactionbarfalse', 'keyboard', 'TAB')
+exports['dsrp-binds']:registerKeyMapping('Inventory', 'Inventory Bind 4', 'invbind4', 'keyboard', '4')
+exports['dsrp-binds']:registerKeyMapping('Inventory', 'Inventory Action Bar', '+invactionbartrue', '-invactionbarfalse', 'keyboard', 'TAB')
 
 RegisterCommand('invbind1', function()
 	if not isDead then
