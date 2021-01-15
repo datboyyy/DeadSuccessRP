@@ -567,8 +567,8 @@ $(document).ready(function () {
                         $(".call-notifications").css({ "display": "block" });
                         $(".call-notifications").animate({ right: 5 + "vh" });
                     }
-                    $(".call-notifications-title").html("Ingesprek (" + timeString + ")");
-                    $(".call-notifications-content").html("Aan het bellen met " + event.data.Name);
+                    $(".call-notifications-title").html("Phone (" + timeString + ")");
+                    $(".call-notifications-content").html("Active call with " + event.data.Name);
                     $(".call-notifications").removeClass('call-notifications-shake');
                 } else {
                     $(".call-notifications").animate({
@@ -579,7 +579,7 @@ $(document).ready(function () {
                 }
 
                 $(".phone-call-ongoing-time").html(timeString);
-                $(".phone-currentcall-title").html("In gesprek (" + timeString + ")");
+                $(".phone-currentcall-title").html("Current Call (" + timeString + ")");
                 break;
             case "CancelOngoingCall":
                 $(".call-notifications").animate({ right: -35 + "vh" }, function () {
