@@ -55,7 +55,37 @@ AddEventHandler('gpstools:tpwaypoint', function()
 
 	if DoesBlipExist(blip) then
 		local coord = GetBlipInfoIdCoord(blip)
-		SetEntityCoords(playerPed, coord.x, coord.y, coord.z)
-		TriggerEvent('notification', 'Teleported to Marker', 1)
+		local groundFound, coordZ = false, 0
+		local groundCheckHeights = { 0.0, 50.0, 100.0, 150.0, 200.0, 250.0, 300.0, 350.0, 400.0,450.0, 500.0, 550.0, 600.0, 650.0, 700.0, 750.0, 800.0 }
+
+		for i, height in ipairs(groundCheckHeights) do
+		
+			ESX.Game.Teleport(playerPed, {
+				x = coord.x,
+				y = coord.y,
+				z = height
+			})
+
+			local foundGround, z = GetGroundZFor_3dCoord(coord.x, coord.y, height)
+			if foundGround then
+				coordZ = z + 3
+				groundFound = true
+				break
+			end
+		end
+	
+		if not groundFound then
+			coordZ = 100
+			TriggerEvent('esx:addWeapon', 'GADGET_PARACHUTE', 0)
+			ESX.ShowHelpNotification(_U('gpstools_tp_ground'))
+		end
+
+		ESX.Game.Teleport(playerPed, {
+			x = coord.x,
+			y = coord.y,
+			z = coordZ
+		})
+	else
+		ESX.ShowHelpNotification(_U('gpstools_tp_no_waypoint'))
 	end
 end)
