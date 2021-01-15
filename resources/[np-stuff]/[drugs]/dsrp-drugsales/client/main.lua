@@ -224,7 +224,6 @@ Citizen.CreateThread(function()
 	end
 end)
 
-RegisterKeyMapping('drug:sell', '[Drug] Sell To NPC', 'keyboard', 'H')
 
 RegisterCommand('drug:sell', function()
 	SellDopeCMD()

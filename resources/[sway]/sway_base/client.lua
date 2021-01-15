@@ -922,9 +922,6 @@ Citizen.CreateThread(function()
     end
 end)
 
-
-RegisterKeyMapping('crouch', '[Crouch] Toggle Crouch', 'keyboard', 'LCONTROL')
-
 RegisterCommand('crouch', function()
 cmdcrouch()
 end, false)

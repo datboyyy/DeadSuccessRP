@@ -34,8 +34,6 @@ TriggerEvent('esx:getSharAVACedObject', function(obj)
 end)
 
 
-RegisterKeyMapping('key:togglevehlock', '[Vehicle] Toggle Vehicle Lock', 'keyboard', 'L')
-
 RegisterCommand('key:togglevehlock', function()
   TriggerEvent('keys:togglelocks')
 end, false)

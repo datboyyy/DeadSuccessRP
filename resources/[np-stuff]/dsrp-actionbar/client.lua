@@ -15,12 +15,6 @@ Citizen.CreateThread(function()
 end)
 
 
-Citizen.CreateThread(function()
-    while ESX == nil or ESX.PlayerData == nil or ESX.PlayerData.job == nil do
-        Citizen.Wait(1)
-    end
-end)
-
 
 RegisterNetEvent('esx:setJob')
 AddEventHandler('esx:setJob', function(job)
@@ -414,15 +408,9 @@ Citizen.CreateThread( function()
 				Citizen.Wait(3000)
 			end
 		end
-
 	end
 end)
 
-exports['dsrp-binds']:registerKeyMapping('Inventory', 'Inventory Bind 1', 'invbind1', 'keyboard', '1')
-exports['dsrp-binds']:registerKeyMapping('Inventory', 'Inventory Bind 2', 'invbind2', 'keyboard', '2')
-exports['dsrp-binds']:registerKeyMapping('Inventory', 'Inventory Bind 3', 'invbind3', 'keyboard', '3')
-exports['dsrp-binds']:registerKeyMapping('Inventory', 'Inventory Bind 4', 'invbind4', 'keyboard', '4')
-exports['dsrp-binds']:registerKeyMapping('Inventory', 'Inventory Action Bar', '+invactionbartrue', '-invactionbarfalse', 'TAB', 'keyboard')
 
 RegisterCommand('invbind1', function()
 	if not isDead then
@@ -451,10 +439,12 @@ end, false)
 RegisterCommand('+invactionbartrue', function()
 	if not isDead then
 	TriggerEvent("inventory-bar",true)
+	print('true')
 	end
 end, false)
 
-RegisterCommand('-invactionbarfalse', function()
+RegisterKeyMapping('+invactionbartrue', '[Inventory] Toggle Action Bar', 'keyboard', 'TAB')
+RegisterCommand('-invactionbartrue', function()
 	if not isDead then
 	TriggerEvent("inventory-bar",false)
 	end

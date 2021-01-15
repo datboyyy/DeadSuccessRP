@@ -52,8 +52,6 @@ exports['mythic_notify']:SendAlert('inform', ("Door is %s"):format(not doors[1].
 DoorSystemSetDoorState(1, doors[1].locked, false, true)
 end, false)]]--
 
-RegisterKeyMapping('toggledoorstate', '[Doorlock] Toggle Door', 'keyboard', 'E')
-
 
 RegisterCommand('toggledoorstate', function(src, args, raw)
     local closestDoorDistance, closestDoorId = 9999.9, -1
