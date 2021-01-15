@@ -21,9 +21,14 @@ end, function(source, args, user)
 	TriggerClientEvent('chatMessage', source, 'SYSTEM', {255, 0, 0}, 'Insufficient Permissions.')
 end, {help = 'Toggle the big gps'})
 
-TriggerEvent('es:addGroupCommand', 'tpm', 'mod', function(source, args, user)
-	TriggerClientEvent('gpstools:tpwaypoint', source)
+ESX = nil
+TriggerEvent('esx:getSharAVACedObject', function(obj) ESX = obj end)
 
-end, function(source, args, user)
-	TriggerClientEvent('chatMessage', source, 'SYSTEM', {255, 0, 0}, 'Insufficient Permissions.')
-end, {help = 'TP to the way-point selected on GPS'})
+RegisterCommand('tpm', function()
+	if xPlayer.group == 'superadmin' then
+		print(xPlayer.group)
+		TriggerClientEvent('gpstools:tpwaypoint', source)
+	else
+		TriggerClientEvent('notification', source, 'No Perms', 1)
+	end
+end)
