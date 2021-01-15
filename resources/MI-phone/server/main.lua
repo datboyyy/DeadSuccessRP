@@ -260,10 +260,10 @@ ESX.RegisterServerCallback('MI-phone:server:GetPhoneData', function(source, cb)
                             PhoneData.Applications = AppAlerts[Player.identifier]
                         end
                        
-                        print(MentionedTweets[Player.identifier])
+                        --print(MentionedTweets[Player.identifier])
                         if MentionedTweets[Player.identifier] ~= nil then 
                             PhoneData.MentionedTweets = MentionedTweets[Player.identifier]
-                            print('sa')
+                            --print('sa')
                         end
 
                         if Hashtags ~= nil and next(Hashtags) ~= nil then
@@ -327,7 +327,7 @@ end)
 
 ESX.RegisterServerCallback('MI-phone:server:GetCallState', function(source, cb, ContactData)
     local Target = GetPlayerFromPhone(ContactData.number)
-    print('[es[e', json.encode(ContactData))
+    --print('[es[e', json.encode(ContactData))
     if Target ~= nil then
         if Calls[Target.identifier] ~= nil then
             if Calls[Target.identifier].inCall then
@@ -385,7 +385,7 @@ RegisterServerEvent('MI-phone:server:sendNewMail')
 AddEventHandler('MI-phone:server:sendNewMail', function(mailData)
     local src = source
     local Player = ESX.GetPlayerFromId(src)
-    print(json.encode(mailData))
+    --print(json.encode(mailData))
 
     if mailData.button == nil then
         ExecuteSql(false, "INSERT INTO `player_mails` (`identifier`, `sender`, `subject`, `message`, `mailid`, `read`) VALUES ('"..Player.identifier.."', '"..mailData.sender.."', '"..mailData.subject.."', '"..mailData.message.."', '"..GenerateMailId().."', '0')")
@@ -742,19 +742,19 @@ AddEventHandler('MI-phone:server:UpdateMessages', function(ChatMessages, ChatNum
     local SenderData = ESX.GetPlayerFromId(src)
     local SenderCharacter = GetCharacter(src)
 
-    print("Updating Phone Messages for ", ChatMessages, ChatNumber, New, " from " ..SenderCharacter.phone)
-    print(json.encode(ChatMessages))
+    --print("Updating Phone Messages for ", ChatMessages, ChatNumber, New, " from " ..SenderCharacter.phone)
+    --print(json.encode(ChatMessages))
 
     ExecuteSql(false, "SELECT * FROM `users` WHERE `phone`='"..ChatNumber.."'", function(Player)
         if Player[1] ~= nil then
             local TargetData = ESX.GetPlayerFromIdentifier(Player[1].identifier)
 
             if TargetData ~= nil then
-                print("Checking for ", SenderData.identifier, ChatNumber)
+                --print("Checking for ", SenderData.identifier, ChatNumber)
                 ExecuteSql(false, "SELECT * FROM `phone_messages2` WHERE `identifier` = '"..SenderData.identifier.."' AND `number` = '"..ChatNumber.."'", function(Chat)
                     if Chat[1] ~= nil then
                         -- Update for target
-                        print('Updating query')
+                        --print('Updating query')
                         ExecuteSql(false, "UPDATE `phone_messages2` SET `messages` = '"..json.encode(ChatMessages).."' WHERE `identifier` = '"..TargetData.identifier.."' AND `number` = '"..SenderCharacter.phone.."'")
                                 
                         -- Update for sender
@@ -763,7 +763,7 @@ AddEventHandler('MI-phone:server:UpdateMessages', function(ChatMessages, ChatNum
                         -- Send notification & Update messages for target
                         TriggerClientEvent('MI-phone:client:UpdateMessages', TargetData.source, ChatMessages, SenderCharacter.phone, false)
                     else
-                        print('Inserting query')
+                        --print('Inserting query')
                         -- Insert for target
                         ExecuteSql(false, "INSERT INTO `phone_messages2` (`identifier`, `number`, `messages`) VALUES ('"..TargetData.identifier.."', '"..SenderCharacter.phone.."', '"..json.encode(ChatMessages).."')")
                                             
@@ -777,14 +777,14 @@ AddEventHandler('MI-phone:server:UpdateMessages', function(ChatMessages, ChatNum
             else
                 ExecuteSql(false, "SELECT * FROM `phone_messages2` WHERE `identifier` = '"..SenderData.identifier.."' AND `number` = '"..ChatNumber.."'", function(Chat)
                     if Chat[1] ~= nil then
-                        print("Updating query2")
+                        --print("Updating query2")
                         -- Update for target
                         ExecuteSql(false, "UPDATE `phone_messages2` SET `messages` = '"..json.encode(ChatMessages).."' WHERE `identifier` = '"..Player[1].identifier.."' AND `number` = '"..SenderCharacter.phone.."'")
                                 
                         -- Update for sender
                         ExecuteSql(false, "UPDATE `phone_messages2` SET `messages` = '"..json.encode(ChatMessages).."' WHERE `identifier` = '"..SenderData.identifier.."' AND `number` = '"..Player[1].phone.."'")
                     else
-                        print('Inserting query2')
+                        --print('Inserting query2')
                         -- Insert for target
                         ExecuteSql(false, "INSERT INTO `phone_messages2` (`identifier`, `number`, `messages`) VALUES ('"..Player[1].identifier.."', '"..SenderCharacter.phone.."', '"..json.encode(ChatMessages).."')")
                         
@@ -897,7 +897,7 @@ ESX.RegisterServerCallback('MI-phone:server:FetchResult', function(source, cb, s
                 end
 
                 while doingSomething do Wait(1) end
-                print(json.encode(result[1]))
+                --print(json.encode(result[1]))
                 table.insert(searchData, {
                     identifier = v.identifier,
                     firstname = character.firstname,
@@ -944,7 +944,7 @@ ESX.RegisterServerCallback('MI-phone:server:GetVehicleSearchResults', function(s
     ExecuteSql(false, 'SELECT * FROM `owned_vehicles` WHERE `plate` LIKE "%'..search..'%" OR `owner` = "'..search..'"', function(result)
         if result[1] ~= nil then
             for k, v in pairs(result) do
-                print(result[k].owner)
+                --print(result[k].owner)
                 ExecuteSql(true, 'SELECT * FROM `users` WHERE `identifier` = "'..result[k].owner..'"', function(player)
                     if player[1] ~= nil then 
                         local vehicleInfo = { ['name'] = json.decode(result[k].vehicle).model }
@@ -1016,7 +1016,7 @@ ESX.RegisterServerCallback('MI-phone:server:ScanPlate', function(source, cb, pla
         ExecuteSql(false, 'SELECT * FROM `owned_vehicles` WHERE `plate` = "'..plate..'"', function(result)
             if result[1] ~= nil then
                 local namecarown = GetCharacterName(result[1].owner)
-                print(namecarown)
+                --print(namecarown)
                 vehicleData = {
                     plate = plate,
                     status = true,
@@ -1024,7 +1024,7 @@ ESX.RegisterServerCallback('MI-phone:server:ScanPlate', function(source, cb, pla
                     identifier = result[1].owner,
                     vehiclename = result[1].vehiclename
                 }
-                print(json.encode(vehicleData))
+                --print(json.encode(vehicleData))
                 cb(vehicleData)
             else
                 TriggerClientEvent('notification', src, 'No Player Owned Vehicle Nearby', 2)
@@ -1225,7 +1225,7 @@ end)
 RegisterServerEvent('lucid_phone:server:updateForEveryone')
 AddEventHandler('lucid_phone:server:updateForEveryone', function(newTweet)
     local src = source
-    print('has work')
+    --print('has work')
     TriggerClientEvent('lucid_phone:updateForEveryone', -1, newTweet)
 end)
 

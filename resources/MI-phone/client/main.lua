@@ -697,7 +697,7 @@ AddEventHandler('MI-phone:client:UpdateMessages', function(ChatMessages, SenderN
 
     local NumberKey = GetKeyByNumber(SenderNumber)
 
-    print("Received message from ", SenderNumber, New, json.encode(ChatMessages))
+    --print("Received message from ", SenderNumber, New, json.encode(ChatMessages))
 
     if New then
         
@@ -854,7 +854,7 @@ end)
 
 RegisterNetEvent("MI-Phone:client:BankNotify")
 AddEventHandler("MI-Phone:client:BankNotify", function(text)
-    print('wow')
+    --print('wow')
     SendNUIMessage({
         action = "Notification",
         NotifyData = {
@@ -1090,7 +1090,7 @@ RegisterNUICallback('PostNewTweet', function(data, cb)
     local TwitterMessage = data.Message
     local MentionTag = TwitterMessage:split("@")
     local Hashtag = TwitterMessage:split("#")
-print(json.encode(TweetMessage))
+--print(json.encode(TweetMessage))
     for i = 2, #Hashtag, 1 do
         local Handle = Hashtag[i]:split(" ")[1]
         if Handle ~= nil or Handle ~= "" then
@@ -1338,8 +1338,6 @@ end)
 
 RegisterNUICallback('CallContact', function(data, cb)
     ESX.TriggerServerCallback('MI-phone:server:GetCallState', function(CanCall, IsOnline)
-        print("PENIS FUCKER FUCK FUCK")
-        print(CanCall, IsOnline)
         local status = {
             CanCall = CanCall,
             IsOnline = IsOnline,
@@ -1365,7 +1363,7 @@ CallContact = function(CallData, AnonymousCall)
     PhoneData.CallData.AnsweredCall = false
     PhoneData.CallData.CallId = GenerateCallId(PhoneData.PlayerData.charinfo.phone, CallData.number)
     
-    print(AnonymousCall)
+    --print(AnonymousCall)
     
     TriggerServerEvent('MI-phone:server:CallContact', PhoneData.CallData.TargetData, PhoneData.CallData.CallId, AnonymousCall)
     TriggerServerEvent('MI-phone:server:SetCallState', true)
@@ -1515,7 +1513,7 @@ AddEventHandler('MI-phone:client:GetCalled', function(CallerNumber, CallId, Anon
         anonymous = AnonymousCall
     }
     
-    print(AnonymousCall)
+    --print(AnonymousCall)
     
     if AnonymousCall then
         CallData.name = "Unknown Caller"
@@ -1857,27 +1855,27 @@ end)
 
 RegisterNUICallback('GetCryptoData', function(data, cb)
     ESX.TriggerServerCallback('qb-crypto:server:GetCryptoData', function(CryptoData)
-        print('GetCryptoData', json.encode(CryptoData))
+        --print('GetCryptoData', json.encode(CryptoData))
         cb(CryptoData)
     end)
 end)
 
 RegisterNUICallback('BuyCrypto', function(data, cb)
-    print('BuyCrypto', json.encode(data))
+    --print('BuyCrypto', json.encode(data))
     ESX.TriggerServerCallback('qb-crypto:server:BuyCrypto', function(CryptoData)
         cb(CryptoData)
     end, data)
 end)
 
 RegisterNUICallback('SellCrypto', function(data, cb)
-    print('SellCrypto', json.encode(data))
+    --print('SellCrypto', json.encode(data))
     ESX.TriggerServerCallback('qb-crypto:server:SellCrypto', function(CryptoData)
         cb(CryptoData)
     end, data)
 end)
 
 RegisterNUICallback('TransferCrypto', function(data, cb)
-    print('TransferCrypto', json.encode(data))
+    --print('TransferCrypto', json.encode(data))
     ESX.TriggerServerCallback('qb-crypto:server:TransferCrypto', function(CryptoData)
         cb(CryptoData)
     end, data)
@@ -2007,7 +2005,7 @@ end)
 
 RegisterNUICallback('IsInRace', function(data, cb)
     local InRace = exports['cyber-qb-lapraces']:IsInRace()
-    print(InRace)
+    --print(InRace)
     cb(InRace)
 end)
 
@@ -2038,7 +2036,7 @@ RegisterNUICallback('RaceDistanceCheck', function(data, cb)
         local coords = GetEntityCoords(ped)
         local checkpointcoords = RaceData.Checkpoints[1].coords
         local dist = GetDistanceBetweenCoords(coords, checkpointcoords.x, checkpointcoords.y, checkpointcoords.z, true)
-        print(dist)
+        --print(dist)
         if dist <= 115.0 then
             if data.Joined then
                 TriggerEvent('qb-lapraces:client:WaitingDistanceCheck')
@@ -2069,7 +2067,7 @@ end)
 RegisterNUICallback('GetPlayerHouses', function(data, cb)
     ESX.TriggerServerCallback('cash-telephone:server:GetPlayerHouses', function(Houses)
         cb(Houses)
-        print('encodeded retunr', json.encode(Houses))
+        --print('encodeded retunr', json.encode(Houses))
     end)
 end)
 
@@ -2104,7 +2102,7 @@ end)
 
 RegisterNUICallback('GetCurrentLawyers', function(data, cb)
     ESX.TriggerServerCallback('MI-phone:server:GetCurrentLawyers', function(lawyers)
-        print('cb lawe', json.encode(lawyers))
+        --print('cb lawe', json.encode(lawyers))
         cb(lawyers)
     end)
 end)
