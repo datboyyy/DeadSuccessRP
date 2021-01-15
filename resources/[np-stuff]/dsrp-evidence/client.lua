@@ -465,7 +465,6 @@ end
 
 
 
--- TriggerEvent("PoolingEvidence") add this to prevent mass server brokenings :) it does thing
 
 Citizen.CreateThread(function()
 
@@ -789,7 +788,6 @@ Citizen.CreateThread(
               Wait(3000)
              -- TriggerServerEvent("evidence:removal",Zone,closestID)
             --  PickUpItem(Zone,scannedEvidence[closestID]["meta"]["identifier"],scannedEvidence[closestID]["meta"]["evidenceType"],scannedEvidence[closestID]["meta"]["other"],"casing")
-            print("you are not cop dumb")
             else
               TriggerServerEvent("evidence:removal",closestID)
               PickUpItem(scannedEvidence[closestID]["meta"]["identifier"],scannedEvidence[closestID]["meta"]["evidenceType"],scannedEvidence[closestID]["meta"]["other"],"evidence")
