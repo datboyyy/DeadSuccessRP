@@ -1112,6 +1112,9 @@ AddEventHandler('esx_policejob:putInVehicle', function()
         end
     end
 end)]]--
+RegisterCommand('testforce', function()
+    TriggerEvent('police:forceEnter')
+end, false)
 
 RegisterNetEvent('police:forceEnter')
 AddEventHandler('police:forceEnter', function(id)
