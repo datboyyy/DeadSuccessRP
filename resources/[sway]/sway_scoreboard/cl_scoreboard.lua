@@ -182,27 +182,16 @@ function ST.Scoreboard.Menu.Close(self)
     end
 end
 
-Citizen.CreateThread(function()
-    local function IsAnyMenuOpen()
-        for k,v in pairs(ST._Scoreboard.Menus) do
-            if WarMenu.IsMenuOpened(k) then return true end
-        end
+RegisterKeyMapping('+scoreboardopen', '[Misc] Scoreboard Toggle', 'keyboard', 'U')
 
-        return false
-    end
+RegisterCommand('+scoreboardopen', function()
+    ST.Scoreboard.Menu:Open()
+end, false)
 
-    while true do
-        Citizen.Wait(0)
-        if IsControlPressed(0, 303) then
-            if not IsAnyMenuOpen() then
-                ST.Scoreboard.Menu:Open()
-            end
-        else
-            if IsAnyMenuOpen() then ST.Scoreboard.Menu:Close() end
-            Citizen.Wait(100)
-        end
-    end
-end)
+RegisterCommand('-scoreboardopen', function()
+    ST.Scoreboard.Menu:Close()
+end, false)
+
 
 RegisterNetEvent("sway_scoreboard:RemovePlayer")
 AddEventHandler("sway_scoreboard:RemovePlayer", function(data)

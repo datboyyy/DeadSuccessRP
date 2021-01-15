@@ -40,6 +40,7 @@ exports['dsrp-binds']:registerKeyMapping('[Inventory]', 'Bind 3', 'invbind3', 'k
 exports['dsrp-binds']:registerKeyMapping('[Inventory]', 'Bind 4', 'invbind4', 'keyboard', '4')
 exports['dsrp-binds']:registerKeyMapping('[Misc]', 'Sell Drugs to NPC', 'drug:sell', 'keyboard', 'H')
 exports['dsrp-binds']:registerKeyMapping('[Misc]', 'Toggle Crouch', 'crouch', 'keyboard', 'LCONTROL')
+exports['dsrp-binds']:registerKeyMapping('[Misc]', 'Vehicle Menu', '+vehmenu', 'keyboard', 'INSERT')
 exports['dsrp-binds']:registerKeyMapping('[Phone]', 'Open Phone', 'phone', 'keyboard', 'F1')
 exports['dsrp-binds']:registerKeyMapping('[Vehicle]', 'Vehicle lock', 'key:togglevehlock', 'keyboard', 'L')
 exports['dsrp-binds']:registerKeyMapping('[Doorlock]', 'Toggle Door', 'toggledoorstate', 'keyboard', 'E')

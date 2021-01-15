@@ -3,19 +3,12 @@ local player = false
 local veh = 0
 local vehicle_fuel = 0
 
--- Main thread
-Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(5)
-
-        if veh ~= 0 then
-            if IsControlPressed(0, 121) then
-                EnableGUI(true)
-            end
-
-        end
+RegisterCommand('+vehmenu', function()
+    if veh > 1 then
+    EnableGUI(true)
     end
-end)
+end, false)
+
 
 
 RegisterNetEvent('veh:options')

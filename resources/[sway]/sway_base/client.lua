@@ -1138,7 +1138,6 @@ end)
 RegisterNetEvent('playerTackled')
 AddEventHandler('playerTackled', function()
     SetPedToRagdoll(PlayerPedId(), math.random(8500), math.random(8500), 0, 0, 0, 0)
-    
     TimerEnabled = true
     Citizen.Wait(1500)
     TimerEnabled = false
