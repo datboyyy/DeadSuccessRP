@@ -904,42 +904,6 @@ CurrentActionData = {}
 end
 end)]]
 --
-AddEventHandler('esx_policejob:hasExitedMarker', function(station, part, partNum)
-    if not isInShopMenu then
-        ESX.UI.Menu.CloseAll()
-    end
-    
-    CurrentAction = nil
-end)
-
-AddEventHandler('esx_policejob:hasEnteredEntityZone', function(entity)
-    local playerPed = PlayerPedId()
-    
-    if PlayerData.job and PlayerData.job.name == 'police' and IsPedOnFoot(playerPed) then
-        CurrentAction = 'remove_entity'
-        CurrentActionMsg = _U('remove_prop')
-        CurrentActionData = {entity = entity}
-    end
-    
-    if GetEntityModel(entity) == GetHashKey('p_ld_stinger_s') then
-        local playerPed = PlayerPedId()
-        local coords = GetEntityCoords(playerPed)
-        
-        if IsPedInAnyVehicle(playerPed, false) then
-            local vehicle = GetVehiclePedIsIn(playerPed)
-            
-            for i = 0, 7, 1 do
-                SetVehicleTyreBurst(vehicle, i, true, 250)
-            end
-        end
-    end
-end)
-
-AddEventHandler('esx_policejob:hasExitedEntityZone', function(entity)
-    if CurrentAction == 'remove_entity' then
-        CurrentAction = nil
-    end
-end)
 
 RegisterNetEvent('tp_policejob:handcuff')
 AddEventHandler('tp_policejob:handcuff', function()
@@ -1119,7 +1083,7 @@ Citizen.CreateThread(function()
     end
 end)
 
-RegisterNetEvent('esx_policejob:putInVehicle')
+--[[RegisterNetEvent('esx_policejob:putInVehicle')
 AddEventHandler('esx_policejob:putInVehicle', function()
     local playerPed = PlayerPedId()
     local coords = GetEntityCoords(playerPed)
@@ -1147,7 +1111,43 @@ AddEventHandler('esx_policejob:putInVehicle', function()
             end
         end
     end
+end)]]--
+
+RegisterNetEvent('police:forceEnter')
+AddEventHandler('police:forceEnter', function(id)
+
+    ped, distance, t = GetClosestPedIgnoreCar()
+    if(distance ~= -1 and distance < 3) then
+
+        local isInVeh = IsPedInAnyVehicle(ped, true)
+        if not isInVeh then
+            playerped = PlayerPedId()
+            coordA = GetEntityCoords(playerped, 1)
+            coordB = GetOffsetFromEntityInWorldCoords(playerped, 0.0, 100.0, 0.0)
+            v = getVehicleInDirection(coordA, coordB)
+            if GetVehicleEngineHealth(v) < 100.0 then
+                TriggerEvent("notification", "That vehicle is too damaged!",2)
+                return
+            end
+            local netid = NetworkGetNetworkIdFromEntity(v)    
+            TriggerEvent('forcedEnteringVeh', GetPlayerServerId(t))
+            TriggerServerEvent("police:forceEnterAsk", GetPlayerServerId(t), netid)
+            TriggerEvent('esx_policejob:drag')
+
+    else
+        TriggerEvent("DoLongHudText", "No player near you (maybe get closer)!",2)
+        end
+    end
 end)
+
+RegisterNetEvent('ped:forcedEnteringVeh')
+AddEventHandler('ped:forcedEnteringVeh', function(sender)
+	local vehicleHandle = NetworkGetEntityFromNetworkId(sender)
+    if vehicleHandle ~= nil then
+      	PutInTrunk(vehicleHandle)
+    end
+end)
+
 
 RegisterNetEvent('esx_policejob:OutVehicle')
 AddEventHandler('esx_policejob:OutVehicle', function()

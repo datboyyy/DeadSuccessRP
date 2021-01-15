@@ -114,3 +114,11 @@ AddEventHandler('peds:decor:set', function (pNetId, pType, pProperty, pValue)
     end
   end
 end)
+
+
+Citizen.CreateThread(function()
+  while true do
+      DistantCopCarSirens(false)
+      Citizen.Wait(400)
+  end
+end)

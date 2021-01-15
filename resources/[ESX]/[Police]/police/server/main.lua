@@ -597,3 +597,9 @@ AddEventHandler('onMySQLReady', function()
 end)
 
 
+
+RegisterServerEvent('police:forceEnterAsk')
+AddEventHandler('police:forceEnterAsk', function(target,netid)
+        TriggerClientEvent('police:forcedEnteringVeh', target, netid)
+        TriggerClientEvent('notification', source, 'Seating Player',1)
+end)
