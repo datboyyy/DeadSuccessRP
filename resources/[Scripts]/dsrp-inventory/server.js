@@ -206,6 +206,22 @@ function GenerateInformation(player,itemid,itemdata) {
         if (itemid == "evidence") {
             information = await GenerateInformation(player,itemid,itemdata)
         }
+        
+        if (itemid == "evidenceblood") {
+            information = await GenerateInformation(player,itemid,itemdata)
+        }
+        if (itemid == "evidencecasing") {
+            information = await GenerateInformation(player,itemid,itemdata)
+        }
+        if (itemid == "evidenceprojectile") {
+            information = await GenerateInformation(player,itemid,itemdata)
+        }
+        if (itemid == "evidenceglass") {
+            information = await GenerateInformation(player,itemid,itemdata)
+        }
+        if (itemid == "evidencevehiclefragment") {
+            information = await GenerateInformation(player,itemid,itemdata)
+        }
           let values = `('${playerinvname}','${itemid}','${information}','${slot}','${creationDate}')`
              if (amount > 1) {
                  for (let i = 2; i <= amount; i++) {
