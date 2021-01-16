@@ -269,7 +269,7 @@ function isPed(checkType)
     end
 
     if checkType == "fullname" then
-      pass = Firstname .. " " .. Lastname
+      pass = fullname
     end
 
     if checkType == "myjob" then
@@ -525,6 +525,11 @@ end)
 RegisterNetEvent("updatesteam")
 AddEventHandler("updatesteam", function(steampassed)
     steam = steampassed
+end)
+
+RegisterNetEvent("updatefullname")
+AddEventHandler("updatefullname", function(fullname)
+    fullname = fullname
 end)
 
 RegisterNetEvent("phoneEnabled")

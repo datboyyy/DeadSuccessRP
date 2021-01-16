@@ -48,6 +48,13 @@ RegisterNUICallback('drop', function(data, cb)
   closeGui()
   local coords = GetEntityCoords(PlayerPedId())
   TriggerServerEvent("server:newNote",data.noteText,coords["x"],coords["y"],coords["z"])
+  print(data.noteText)
+  information = {
+    ["identifier"] = 'ply-'..exports["isPed"]:isPed("cid"),
+    ["eType"] = exports["isPed"]:isPed("fullname"),
+    ["other"] = data.noteText,
+}
+  TriggerEvent("player:receiveItem", 'notepadpage', 1, true, information)
 end)
 
 

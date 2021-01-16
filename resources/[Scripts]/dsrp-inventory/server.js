@@ -162,6 +162,11 @@ function GenerateInformation(player, itemid, itemdata) {
                     timeout = 1;
                     clearTimeout(timeout)
                     return resolve(returnInfo);
+                case "notepadpage":
+                    returnInfo = JSON.stringify({ Identifier: itemdata.identifier, Writer: itemdata.eType, Message: itemdata.other })
+                    timeout = 1;
+                    clearTimeout(timeout)
+                    return resolve(returnInfo);
                 case "evidencecasing":
                     returnInfo = JSON.stringify({ Identifier: itemdata.identifier, type: itemdata.eType, other: itemdata.other })
                     timeout = 1;
@@ -235,6 +240,9 @@ onNet("server-inventory-give", async (player, itemid, slot, amount, generateInfo
     }
 
     if (itemid == "evidenceblood") {
+        information = await GenerateInformation(player, itemid, itemdata)
+    }
+    if (itemid == "notepadpage") {
         information = await GenerateInformation(player, itemid, itemdata)
     }
     if (itemid == "evidencecasing") {

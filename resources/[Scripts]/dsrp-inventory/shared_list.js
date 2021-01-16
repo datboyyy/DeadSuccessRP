@@ -730,7 +730,7 @@ itemList["trophy"] = { fullyDegrades: false, decayrate: 0.0, displayname: "Troph
 
 itemList["umbrella"] = { fullyDegrades: false, decayrate: 0.0, displayname: "Umbrella", price: 500, weight: 3, nonStack: false, model: "", image: "np_umbrella.png", deg: false }
 itemList["umetal"] = { fullyDegrades: false, decayrate: 0.0, displayname: "Unknown Metal", price: 1, weight: 0, nonStack: false, model: "", image: "np_unknown-metal.png", information: "Dont lick your fingers", deg: false }
-
+itemList["notepadpage"] = { fullyDegrades: true, decayrate: 0.01, displayname: "Page From Notepad", price: 10, weight: 1, nonStack: true, model: "", image: "notepad.png", deg: true }
 itemList["notepad"] = { fullyDegrades: false, decayrate: 0.0, displayname: "Notepad", price: 10, weight: 1, nonStack: false, model: "", image: "notepad.png", deg: false }
 itemList["usbdevice"] = { fullyDegrades: false, decayrate: 0.0, displayname: "Unknown USB Device", price: 300, weight: 5, nonStack: false, model: "", image: "np_unknown-usb-device.png", deg: false }
 itemList["valuablegoods"] = { fullyDegrades: false, decayrate: 0.0, displayname: "Valuable Goods", craft: [{ itemid: "rolexwatch", amount: 3 }], price: 4000, weight: 4, nonStack: false, model: "", image: "np_valuable-goods.png", deg: false }

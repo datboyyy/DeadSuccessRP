@@ -91,6 +91,7 @@ AddEventHandler('kashactersC:SpawnCharacter', function(spawn, isnew)
     end
     TriggerServerEvent('kashactersS:requestSteam')
     TriggerServerEvent('kashactersS:requestCID')
+    TriggerServerEvent('kashactersS:requestPlyName')
     TriggerServerEvent('kashactersS:requestfunds')
     ExecuteCommand('hud')
 end)

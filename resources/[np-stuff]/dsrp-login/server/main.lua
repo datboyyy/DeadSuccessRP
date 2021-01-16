@@ -37,6 +37,14 @@ AddEventHandler('kashactersS:requestCID', function()
     TriggerClientEvent('updatecid', src, cid)
 end)
 
+RegisterServerEvent("kashactersS:requestPlyName")
+AddEventHandler('kashactersS:requestPlyName', function()
+    local src = source
+    local ident = GetPlayerIdentifier(source)
+    local name = GetCharacterName(ident)
+    TriggerClientEvent('updatefullname', src, name)
+end)
+
 RegisterServerEvent("kashactersS:requestSteam")
 AddEventHandler('kashactersS:requestSteam', function()
     local src = source
@@ -167,3 +175,13 @@ AddEventHandler("dsrp-login:disconnectPlayer", function()
     local src = source
     DropPlayer(src, 'Disconnected Cya')
 end)
+
+function GetCharacterName(source)
+	local result = MySQL.Sync.fetchAll('SELECT firstname, lastname FROM users WHERE identifier = @identifier', {
+		['@identifier'] = GetPlayerIdentifiers(source)[1]
+	})
+
+	if result[1] and result[1].firstname and result[1].lastname then
+		return ('%s %s'):format(result[1].firstname, result[1].lastname)
+	end
+end
