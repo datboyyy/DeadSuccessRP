@@ -23,6 +23,7 @@ BlacklistedModels = {
 
     --Vehicles to supress from spawning on the street
     [`blimp`] = true,
+    [`POLICEB`] = true,
     [`blimp2`] = true,
     [`JET`] = true,
     [`LAZER`] = true,

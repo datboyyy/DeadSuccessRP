@@ -805,6 +805,7 @@ Citizen.CreateThread(
                                 evItem = 'evidencevehiclefragment'
                             end
                             TriggerServerEvent("evidence:removal", closestID)
+                            print(evItem)
                             PickUpItem(scannedEvidence[closestID]["meta"]["identifier"], scannedEvidence[closestID]["meta"]["evidenceType"], scannedEvidence[closestID]["meta"]["other"], evItem)
                             Wait(3000)
                         end

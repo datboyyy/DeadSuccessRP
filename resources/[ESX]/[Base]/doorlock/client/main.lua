@@ -138,7 +138,6 @@ function StartMainDoorlockLoop()
         while true do
             if Doorlock then
                 local IsFound, Object = GetEntityPlayerIsFreeAimingAt(PlayerId())
-                
                 if IsFound then
                     Doorlock = false -- Prevent Multiple Creation
                     local _, __, yaw = table.unpack(GetEntityRotation(Object))
