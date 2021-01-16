@@ -789,8 +789,22 @@ Citizen.CreateThread(
              -- TriggerServerEvent("evidence:removal",Zone,closestID)
             --  PickUpItem(Zone,scannedEvidence[closestID]["meta"]["identifier"],scannedEvidence[closestID]["meta"]["evidenceType"],scannedEvidence[closestID]["meta"]["other"],"casing")
             else
+              local evItem = 'evidence'
+              local evType = scannedEvidence[closestID]['meta']['evidenceType']
+
+              if evType == 'blood' then 
+                evItem = 'evidenceblood'
+              elseif evType == 'casing' then
+                evItem = 'evidencecasing'
+              elseif evType == 'projectile' then
+                evItem = 'evidenceprojectile'
+              elseif evType == 'glass' then
+                evItem = 'evidenceglass'
+              elseif evType == 'vehiclefragment' then
+                evItem = 'evidencevehiclefragment'
+              end
               TriggerServerEvent("evidence:removal",closestID)
-              PickUpItem(scannedEvidence[closestID]["meta"]["identifier"],scannedEvidence[closestID]["meta"]["evidenceType"],scannedEvidence[closestID]["meta"]["other"],"evidence")
+              PickUpItem(scannedEvidence[closestID]["meta"]["identifier"],scannedEvidence[closestID]["meta"]["evidenceType"],scannedEvidence[closestID]["meta"]["other"],evItem)
               Wait(3000)
             end
           end
