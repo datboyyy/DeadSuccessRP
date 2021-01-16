@@ -31,7 +31,6 @@ end)
 RegisterServerEvent("kashactersS:requestCID")
 AddEventHandler('kashactersS:requestCID', function()
     local src = source
-
     local xPlayer = ESX.GetPlayerFromId(src)
     local cid = xPlayer.getID()
     TriggerClientEvent('updatecid', src, cid)
