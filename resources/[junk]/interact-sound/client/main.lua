@@ -66,11 +66,10 @@ end)
 -- Starts playing a sound on a client if the client is within the specificed maxDistance from the playOnEntity.
 -- @TODO Change sound volume based on the distance the player is away from the playOnEntity.
 ------
-RegisterNetEvent('InteractSound_CL:PlayWithinDistance')
-AddEventHandler('InteractSound_CL:PlayWithinDistance', function(playerNetId, maxDistance, soundFile, soundVolume)
+RegisterNetEvent('InteractSound_CL:PlayWithinDistanceOS')
+AddEventHandler('InteractSound_CL:PlayWithinDistanceOS', function(playerCoords, maxDistance, soundFile, soundVolume)
     local lCoords = GetEntityCoords(GetPlayerPed(-1))
-    local eCoords = GetEntityCoords(GetPlayerPed(GetPlayerFromServerId(playerNetId)))
-    local distIs  = Vdist(lCoords.x, lCoords.y, lCoords.z, eCoords.x, eCoords.y, eCoords.z)
+    local distIs  = Vdist(lCoords.x, lCoords.y, lCoords.z, playerCoords.x, playerCoords.y, playerCoords.z)
     if(distIs <= maxDistance) then
         SendNUIMessage({
             transactionType     = 'playSound',

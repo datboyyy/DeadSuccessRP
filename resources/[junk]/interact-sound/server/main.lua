@@ -93,8 +93,13 @@ end)
 ------
 RegisterServerEvent('InteractSound_SV:PlayWithinDistance')
 AddEventHandler('InteractSound_SV:PlayWithinDistance', function(maxDistance, soundFile, soundVolume)
-    TriggerClientEvent('InteractSound_CL:PlayWithinDistance', -1, source, maxDistance, soundFile, soundVolume)
     if maxDistance >= 10 then
-    print('source', source)
+        print('ban nigga', source)
+    else
+  if GetConvar("onesync_enableInfinity", "false") == "true" then
+    TriggerClientEvent('InteractSound_CL:PlayWithinDistanceOS', -1, GetEntityCoords(GetPlayerPed(source)), maxDistance, soundFile, soundVolume)
+  else
+    TriggerClientEvent('InteractSound_CL:PlayWithinDistance', -1, source, maxDistance, soundFile, soundVolume)
     end
+  end
 end)

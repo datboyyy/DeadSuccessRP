@@ -513,3 +513,12 @@ Config.Doorlist = {}
 		objName = -692649124,
 		objCoords = vector3(487.4378, -1000.189, 30.78697)
 }
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'pdcaptaindoor',
+		textCoords = vector3(458.6543, -990.6498, 30.82319),
+		authorizedJobs = 'police',
+		locked = true,
+		distance = 2,
+		objName = -96679321,
+		objCoords = vector3(458.6543, -990.6498, 30.82319)
+}
