@@ -523,7 +523,10 @@ Citizen.CreateThread(function()
                                         ["meta"] = {
                                             ["evidenceType"] = "vehiclefragment",
                                             ["identifier"] = currentInformation,
-                                            ["other"] = "Vehicle Color (r:" .. r .. ", g:" .. g .. ", b:" .. b .. ")"
+                                            ["other"] = "Vehicle Fragment (r:" .. r .. ", g:" .. g .. ", b:" .. b .. ")",
+                                            ["r"] =  r,
+                                            ["g"] =  g,
+                                            ["b"] =  b,
                                         },
                                     }
                                 end
@@ -538,7 +541,7 @@ Citizen.CreateThread(function()
                                         ["meta"] = {
                                             ["evidenceType"] = "projectile",
                                             ["identifier"] = currentInformation,
-                                            ["other"] = GetSelectedPedWeapon(ped),
+                                            ["other"] = 'Projectile',
                                             ["casingClass"] = GetWeapontypeGroup(GetSelectedPedWeapon(ped))
                                         },
                                     }
@@ -556,7 +559,7 @@ Citizen.CreateThread(function()
                             ["meta"] = {
                                 ["evidenceType"] = "casing",
                                 ["identifier"] = currentInformation,
-                                ["other"] = GetSelectedPedWeapon(ped),
+                                ["other"] = 'Casing',
                                 ["casingClass"] = GetWeapontypeGroup(GetSelectedPedWeapon(ped))
                             },
                         }
@@ -769,7 +772,7 @@ Citizen.CreateThread(
                             DrawMarker(23, v.x, v.y, v.z + 0.2, 0, 0, 0, 0, 0, 0, 0.1, 0.1, 0.1, 13, 10, 0, 191, 0, 0, 0, 0)
                         elseif v["meta"]["evidenceType"] == "vehiclefragment" then
                             DrawText3Ds(v.x, v.y, v.z + 0.5, v["meta"]["other"])
-                            DrawMarker(36, v.x, v.y, v.z + 0.2, 0, 0, 0, 0, 0, 0, 0.1, 0.1, 0.1, v["meta"]["identifier"]["r"], v["meta"]["identifier"]["g"], v["meta"]["identifier"]["b"], 255, 0, 0, 0, 0)
+                            DrawMarker(36, v.x, v.y, v.z + 0.2, 0, 0, 0, 0, 0, 0, 0.2, 0.2, 0.2, v["meta"]["r"], v["meta"]["g"], v["meta"]["b"], 255, 0, 0, 0, 0)
                         else
                             DrawText3Ds(v.x, v.y, v.z + 0.5, v["meta"]["other"] .. " | " .. v["meta"]["identifier"])
                             DrawMarker(21, v.x, v.y, v.z, 0, 0, 0, 0, 0, 0, 0.1, 0.1, 0.1, 222, 255, 51, 91, 0, 0, 0, 0)
