@@ -36,3 +36,28 @@ AddEventHandler('explosionEvent', function(sender,ev)
         TriggerClientEvent('vault:door:explosion',-1)
     end
 end)
+
+
+ResetTime = 12
+local resettime = nil
+
+RegisterServerEvent('irobbedstore')
+AddEventHandler('irobbedstore', function()
+    local _source = source
+    local xPlayer = ESX.GetPlayerFromId(_source)
+        TriggerClientEvent('closestore', -1)
+        closed = true
+        TriggerEvent('testtimer')
+end)
+
+AddEventHandler('testtimer', function()
+    if resettime == nil then
+        totaltime = ResetTime * 60
+        resettime = os.time() + totaltime
+        while os.time() < resettime do
+            Citizen.Wait(2350)
+        end
+        TriggerClientEvent('openstore', -1)
+        resettime = nil
+    end
+end)

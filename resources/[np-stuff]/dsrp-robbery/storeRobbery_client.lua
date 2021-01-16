@@ -12,7 +12,7 @@ Citizen.CreateThread(function()
 	ESX.PlayerData = ESX.GetPlayerData()
 end)
 
-
+local closed = false
 local JobCount = {}
 local CopsOnline = 0
 RegisterNetEvent('esx_jobnumbers:setjobs')
@@ -264,33 +264,46 @@ AddEventHandler("police:notifySecurityCam", function(currentRobbery)
 end)
 
 
+RegisterNetEvent('closestore')
+AddEventHandler('closestore', function()
+	closed = true
+end)
+RegisterNetEvent('openstore')
+AddEventHandler('openstore', function()
+	closed = false
+end)
 -- store robbery checks
 
 RegisterNetEvent("store:dosafe")
 AddEventHandler("store:dosafe", function()
-	if CopsOnline >= Config.PoliceRequired then
 		local storeid = isStoreRobbery()
+		if closed == true then
+		TriggerEvent('notification', 'Cannot Rob try again later', 1)
+	 else
+		if CopsOnline >= Config.PoliceRequired and closed == false then
 		TriggerEvent('esx-dispatch:storerobbery')
 		TriggerServerEvent("police:camrobbery",storeid)
 		TriggerEvent("client:newStress",true,200)	
+		TriggerServerEvent('irobbedstore')
 		TriggerEvent("safecracking:loop1",8,"robbery:safe")
-	 else
-		print("Not enough cops online")
-	 end
+	    end
+	end
 end)
 local fuck = 0
 local you = 0
 RegisterNetEvent("store:register")
 AddEventHandler("store:register", function(storeid,regid)
-	 if CopsOnline >= Config.PoliceRequired then
-	TriggerEvent('esx-dispatch:storerobbery')
+	 if CopsOnline >= Config.PoliceRequired and closed == false then
+		TriggerServerEvent('irobbedstore')
+		TriggerEvent('esx-dispatch:storerobbery')
 		TriggerServerEvent("police:camrobbery",storeid)
 		TriggerEvent("client:newStress",true,200)	
 		TriggerEvent("safecracking:loop1",3,"robbery:register")
 		fuck = storeid
 		you = regid
 		isLockpicking = true
-
+	 else 
+		TriggerEvent('notification', 'Cannot Rob try later', 1)
 	 end
 end)
 
@@ -390,7 +403,6 @@ camNumber = tonumber(args[1])
 		end
 	else
 		TriggerEvent('notification', 'Invalid Permissions Attempted to Access Camera ' .. camNumber .. ' | Job Required: Police, Government Alerted', 2)
-		print('Invalid Permissions Attempted to Access ' .. camNumber .. 'Job Required: Police')
 	end
 end)
 
