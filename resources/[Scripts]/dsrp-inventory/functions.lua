@@ -1814,14 +1814,14 @@ end
 --PD ARMORY
 
 local pdarmory = PolyZone:Create({
-    vector2(452.86776733398, -978.59069824219),
-    vector2(450.38912963867, -978.94525146484),
-    vector2(450.45547485352, -981.24407958984),
-    vector2(453.18099975586, -981.57269287109)
+    vector2(478.19046020508, -995.33306884766),
+    vector2(478.23654174805, -998.16082763672),
+    vector2(479.70883178711, -998.7412109375),
+    vector2(479.62335205078, -995.25561523438)
   }, {
     name="pd armor",
-    minZ = 28.689527511597,
-    maxZ = 32.689527511597,
+    minZ = 29.689527511597,
+    maxZ = 31.689527511597,
     debugGrid = false
   })
 
@@ -1833,7 +1833,7 @@ Citizen.CreateThread(function()
 	local coord = GetEntityCoords(plyPed)
     nearpdarmory = pdarmory:isPointInside(coord)
     if nearpdarmory then
-        DrawText3D(452.33312988281,-980.17303466797,30.689546585083, "[E] - Open Police Armory")
+        DrawText3D(479.25,-996.68,30.69, "[E] - Open Police Armory")
         if IsControlJustReleased(0, 86) and ESX.PlayerData.job.name == 'police' then
             Citizen.Wait(1)
             TriggerEvent("server-inventory-open", "10", "Shop");	

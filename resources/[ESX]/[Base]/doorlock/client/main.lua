@@ -70,7 +70,7 @@ RegisterCommand('toggledoorstate', function(src, args, raw)
 			DoorSystemSetDoorState(closestDoorId, doors[closestDoorId].locked, false, true)
 			TriggerServerEvent('trp-doors:fetchState', closestDoorId, doors[closestDoorId].locked)
             openDoorAnim()
-			TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 4.0, 'keydoors', 0.8)
+            TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 4.0, 'keydoors', 0.8)
 			if DoorSystemGetDoorState(closestDoorId) == 1 then
 			exports['mythic_notify']:SendAlert('inform', 'Door is locked.')
 			else

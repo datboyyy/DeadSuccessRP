@@ -57,14 +57,14 @@ end)
 -- PolyZone Checks (distance checking)
 -----------------------------------------------------------------------------
 local dutyspot = PolyZone:Create({
-    vector2(439.79, -976.78),
-    vector2(441.6, -976.8),
-    vector2(441.67, -974.99),
-    vector2(439.65, -974.92),
+    vector2(441.98956298828, -981.06964111328),
+    vector2(440.49389648438, -980.95550537109),
+    vector2(440.30163574219, -982.44293212891),
+    vector2(441.9225769043, -982.55249023438)
 }, {
     name = "duty_spot",
     minZ = 29.7,
-    maxZ = 32.97,
+    maxZ = 31.97,
     debugGrid = false,
     gridDivisions = 30
 })
@@ -87,24 +87,23 @@ local emsdutyspot = PolyZone:Create({
 
 dutyspot:onPointInOut(PolyZone.getPlayerPosition, function(isPointInside, point)
     if isPointInside then
-        exports['mack_hotkey']:SendHotKey('[E] Duty Control', 'E', 1)
+        TriggerEvent('cd_drawtextui:ShowUI', 'show', '[E] - Duty')
         isPointInside = true
     else
         isPointInside = false
-        exports['mack_hotkey']:ExitHotKey(1)
+        TriggerEvent('cd_drawtextui:HideUI')
     end
 end)
 
 emsdutyspot:onPointInOut(PolyZone.getPlayerPosition, function(isPointInside, point)
     if isPointInside then
-        exports['mack_hotkey']:SendHotKey('[E] Duty Control', 'E', 1)
+        TriggerEvent('cd_drawtextui:ShowUI', 'show', '[E] - Duty')
         isPointInside = true
     else
         isPointInside = false
-        exports['mack_hotkey']:ExitHotKey(1)
+        TriggerEvent('cd_drawtextui:HideUI')
     end
 end)
-
 
 -----------------------------------------------------------------------------
 -- Job Handler (SetJob)

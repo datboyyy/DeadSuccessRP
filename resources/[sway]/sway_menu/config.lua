@@ -65,7 +65,7 @@ rootMenuConfig = {
             name = "PD Garage",
             minZ = 24.338989257813,
             maxZ = 27.40362739563,
-            debugGrid = true,
+            debugGrid = false,
             gridDivisions = 30
         })
             local ped = PlayerPedId()

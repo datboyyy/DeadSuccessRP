@@ -283,7 +283,7 @@ Config.Doorlist = {}
 		textCoords = vector3(440.5201, -977.6011, 30.82319),
 		authorizedJobs = 'police',
 		locked = true,
-		distance = 2,
+		distance = 1,
 		objName = -1406685646,
 		objCoords = vector3(440.5201, -977.6011, 30.82319)
 }
@@ -469,24 +469,6 @@ Config.Doorlist = {}
 		objCoords = vector3(471.3758, -1010.198, 26.40548)
 }
 	Config.Doorlist[#Config.Doorlist + 1] = {
-		name = 'pdbackentrance',
-		textCoords = vector3(469.7743, -1014.406, 26.48382),
-		authorizedJobs = 'police',
-		locked = true,
-		distance = 1.2,
-		objName = -692649124,
-		objCoords = vector3(469.7743, -1014.406, 26.48382)
-}
-	Config.Doorlist[#Config.Doorlist + 1] = {
-		name = 'pdbackentrance',
-		textCoords = vector3(467.3686, -1014.406, 26.48382),
-		authorizedJobs = 'police',
-		locked = true,
-		distance = 1.2,
-		objName = -692649124,
-		objCoords = vector3(467.3686, -1014.406, 26.48382)
-}
-	Config.Doorlist[#Config.Doorlist + 1] = {
 		name = 'pdbackgate',
 		textCoords = vector3(488.8948, -1011.723, 27.14812),
 		authorizedJobs = 'police',
@@ -512,24 +494,6 @@ Config.Doorlist = {}
 		distance = 1.2,
 		objName = 1830360419,
 		objCoords = vector3(464.1591, -974.6656, 26.3707)
-}
-	Config.Doorlist[#Config.Doorlist + 1] = {
-		name = 'pdgaragegate',
-		textCoords = vector3(452.3005, -999.6447, 28.67399),
-		authorizedJobs = 'police',
-		locked = true,
-		distance = 8,
-		objName = 2130672747,
-		objCoords = vector3(452.3005, -999.6447, 28.67399)
-}
-	Config.Doorlist[#Config.Doorlist + 1] = {
-		name = 'pdgaragegate',
-		textCoords = vector3(431.4119, -1000.733, 27.62807),
-		authorizedJobs = 'police',
-		locked = true,
-		distance = 8,
-		objName = 2130672747,
-		objCoords = vector3(431.4119, -1000.733, 27.62807)
 }
 	Config.Doorlist[#Config.Doorlist + 1] = {
 		name = 'pdarmory',

@@ -1112,34 +1112,107 @@ AddEventHandler('esx_policejob:putInVehicle', function()
         end
     end
 end)]]--
-RegisterCommand('testforce', function()
-    TriggerEvent('police:forceEnter')
-end, false)
+
+function getVehicleInDirection(coordFrom, coordTo)
+	local offset = 0
+	local rayHandle
+	local vehicle
+
+	for i = 0, 100 do
+		rayHandle = CastRayPointToPoint(coordFrom.x, coordFrom.y, coordFrom.z, coordTo.x, coordTo.y, coordTo.z + offset, 10, PlayerPedId(), 0)	
+		a, b, c, d, vehicle = GetRaycastResult(rayHandle)
+		
+		offset = offset - 1
+
+		if vehicle ~= 0 then break end
+	end
+	
+	local distance = Vdist2(coordFrom, GetEntityCoords(vehicle))
+	
+	if distance > 25 then vehicle = nil end
+
+    return vehicle ~= nil and vehicle or 0
+end
+
+
 
 RegisterNetEvent('police:forceEnter')
 AddEventHandler('police:forceEnter', function(id)
 
-    ped, distance, t = GetClosestPedIgnoreCar()
-    if(distance ~= -1 and distance < 3) then
+	ped, distance, t = GetClosestPedIgnoreCar()
+	if(distance ~= -1 and distance < 3) then
 
-        local isInVeh = IsPedInAnyVehicle(ped, true)
-        if not isInVeh then
-            playerped = PlayerPedId()
-            coordA = GetEntityCoords(playerped, 1)
-            coordB = GetOffsetFromEntityInWorldCoords(playerped, 0.0, 100.0, 0.0)
-            v = getVehicleInDirection(coordA, coordB)
-            if GetVehicleEngineHealth(v) < 100.0 then
-                TriggerEvent("notification", "That vehicle is too damaged!",2)
-                return
-            end
-            local netid = NetworkGetNetworkIdFromEntity(v)    
-            TriggerEvent('forcedEnteringVeh', GetPlayerServerId(t))
-            TriggerServerEvent("police:forceEnterAsk", GetPlayerServerId(t), netid)
-            TriggerEvent('esx_policejob:drag')
+		local isInVeh = IsPedInAnyVehicle(ped, true)
+		if not isInVeh then
+			playerped = PlayerPedId()
+	        coordA = GetEntityCoords(playerped, 1)
+	        coordB = GetOffsetFromEntityInWorldCoords(playerped, 0.0, 100.0, 0.0)
+	        v = getVehicleInDirection(coordA, coordB)
+	        if GetVehicleEngineHealth(v) < 100.0 then
+	        	TriggerEvent("notification", "That vehicle is too damaged!",2)
+	        	return
+	        end
+			local netid = NetworkGetNetworkIdFromEntity(v)	
+			TriggerServerEvent("police:forceEnterAsk", GetPlayerServerId(t), netid)
+            TriggerEvent('tp:releaseescort')
+		else
+			TriggerEvent("unseatPlayer")
+		end
+	else
+		TriggerEvent("notification", "No player near you (maybe get closer)!",2)
+	end
 
-    else
-        TriggerEvent("DoLongHudText", "No player near you (maybe get closer)!",2)
+end)
+function GetClosestPedIgnoreCar()
+	local players = GetPlayers()
+	local closestDistance = -1
+	local closestPlayer = -1
+	local closestPlayerId = -1
+	local ply = PlayerPedId()
+	local plyCoords = GetEntityCoords(ply, 0)
+	for index,value in ipairs(players) do
+		local target = GetPlayerPed(value)
+		if(target ~= ply) then
+			local targetCoords = GetEntityCoords(GetPlayerPed(value), 0)
+			local distance = #(vector3(targetCoords["x"], targetCoords["y"], targetCoords["z"]) - vector3(plyCoords["x"], plyCoords["y"], plyCoords["z"]))
+			if(closestDistance == -1 or closestDistance > distance) then
+				closestPlayer = target
+				closestPlayerId = value
+				closestDistance = distance
+			end
+		end
+	end
+	
+	return closestPlayer, closestDistance, closestPlayerId
+end
+
+RegisterNetEvent('police:forcedEnteringVeh')
+AddEventHandler('police:forcedEnteringVeh', function(sender)
+    local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
+	local vehicleHandle = NetworkGetEntityFromNetworkId(sender)
+    if vehicleHandle ~= nil then
+        Citizen.Trace("22")
+      if IsEntityAVehicle(vehicleHandle) then
+      	TriggerEvent("respawn:sleepanims")
+      	Citizen.Wait(1000)
+        for i=1,GetVehicleMaxNumberOfPassengers(vehicleHandle) do
+            Citizen.Trace("33")
+          if IsVehicleSeatFree(vehicleHandle,i) then
+            Citizen.Wait(100)
+            TriggerEvent("notification", "Seating Nearest Player", 2)
+            SetPedIntoVehicle(PlayerPedId(),vehicleHandle,i)
+            
+            Citizen.Trace("whatsasdsass")
+            return true
+          end
         end
+	    if IsVehicleSeatFree(vehicleHandle,0) then
+            Citizen.Wait(100)
+            TriggerEvent("notification", "Seating Nearest Player", 2)
+	        SetPedIntoVehicle(PlayerPedId(),vehicleHandle,0)
+	        
+	    end
+      end
     end
 end)
 
@@ -1151,38 +1224,6 @@ AddEventHandler('ped:forcedEnteringVeh', function(sender)
     end
 end)
 
-RegisterNetEvent('police:forcedEnteringVeh')
-AddEventHandler('police:forcedEnteringVeh', function(sender)
-
-	local vehicleHandle = NetworkGetEntityFromNetworkId(sender)
-    if vehicleHandle ~= nil then
-      if IsEntityAVehicle(vehicleHandle) then
-          if IsVehicleSeatFree(vehicleHandle,1) then
-            TriggerEvent('esx_policejob:drag')
-			Citizen.Wait(100)
-            SetPedIntoVehicle(PlayerPedId(),vehicleHandle,1)
-          else
-            if IsVehicleSeatFree(vehicleHandle,2) then
-                TriggerEvent('esx_policejob:drag')
-                Citizen.Wait(100)
-                SetPedIntoVehicle(PlayerPedId(),vehicleHandle,2)
-              end
-            end
-        end
-    end
-end)
-
-local tryingAnim = false
-local enteringveh = false
-RegisterNetEvent('respawn:sleepanims')
-AddEventHandler('respawn:sleepanims', function()
-    if not enteringveh then
-        enteringveh = true
-        ClearPedTasksImmediately(PlayerPedId())
-        Citizen.Wait(1000)
-        enteringveh = false   
-    end
-end)
 
 RegisterNetEvent('esx_policejob:OutVehicle')
 AddEventHandler('esx_policejob:OutVehicle', function()
@@ -1194,7 +1235,19 @@ AddEventHandler('esx_policejob:OutVehicle', function()
     
     local vehicle = GetVehiclePedIsIn(playerPed, false)
     TaskLeaveVehicle(playerPed, vehicle, 16)
+    Wait(500)
+    CuffAnimation(playerPed)
 end)
+
+function CuffAnimation(cuffer)
+	loadAnimDict("mp_arrest_paired")
+	local cuffer = GetPlayerPed(GetPlayerFromServerId(tonumber(cuffer)))
+	local dir = GetEntityHeading(cuffer)
+	--TriggerEvent('police:cuffAttach',cuffer)
+	Citizen.Wait(100)
+	SetEntityHeading(PlayerPedId(),dir)
+	TaskPlayAnim(PlayerPedId(), "mp_arrest_paired", "crook_p2_back_right", 8.0, -8, -1, 32, 0, 0, 0, 0)
+end
 
 -- Handcuff
 Citizen.CreateThread(function()
@@ -1745,10 +1798,33 @@ AddEventHandler("tp:openmdt", function()
     TriggerServerEvent("mdt:hotKeyOpen")
 end)
 
+
+RegisterNetEvent('esx_policejob:Releasedrag')
+AddEventHandler('esx_policejob:Releasedrag', function(copId)
+    if not isHandcuffed then
+        return
+    end
+    
+    dragStatus.isDragged = false
+    dragStatus.CopId = copId
+end)
+
+RegisterNetEvent("tp:releaseescort")
+AddEventHandler("tp:releaseescort", function()
+    local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
+    if closestPlayer ~= -1 and closestDistance <= 3.0 then
+        TriggerServerEvent('esx_policejob:releaseescort', GetPlayerServerId(closestPlayer))
+    else
+        ESX.ShowNotification(_U('no_players_nearby'))
+    --TriggerServerEvent("tp:addChatSystem", "No players nearby")
+    end
+end)
+
 RegisterNetEvent("tp:escort")
 AddEventHandler("tp:escort", function()
     local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
     if closestPlayer ~= -1 and closestDistance <= 3.0 then
+        TriggerEvent("notification", "Escorting Nearest Player", 2)
         TriggerServerEvent('esx_policejob:drag', GetPlayerServerId(closestPlayer))
     else
         ESX.ShowNotification(_U('no_players_nearby'))
@@ -1807,6 +1883,7 @@ RegisterNetEvent("tp:takeoutvehicle")
 AddEventHandler("tp:takeoutvehicle", function()
     local closestPlayer, closestDistance = ESX.Game.GetClosestPlayer()
     if closestPlayer ~= -1 and closestDistance <= 3.0 then
+        TriggerEvent("notification", "Unseating Nearest Player", 2)
         TriggerServerEvent('esx_policejob:OutVehicle', GetPlayerServerId(closestPlayer))
     else
         --ESX.ShowNotification(_U('no_players_nearby'))
@@ -1833,6 +1910,7 @@ AddEventHandler("tp:handcuff", function()
         TriggerEvent('police:cuffTransition')
         TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 3.0, 'handcuff', 0.4)
         TriggerServerEvent('tp_policejob:handcuff', GetPlayerServerId(closestPlayer))
+        TriggerEvent("notification", "Handcuffing Nearest Player", 2)
     else
         --ESX.ShowNotification(_U('no_players_nearby'))
         TriggerServerEvent("tp:addChatSystem", "No players nearby")
@@ -1846,6 +1924,7 @@ AddEventHandler("tp:softcuff", function()
         TriggerEvent('police:cuffTransition')
         TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 3.0, 'handcuff', 0.4)
         TriggerServerEvent('tp_policejob:handcuffsoft', GetPlayerServerId(closestPlayer))
+        TriggerEvent("notification", "Soft Cuffing Nearest Player", 2)
     else
         --ESX.ShowNotification(_U('no_players_nearby'))
         TriggerServerEvent("tp:addChatSystem", "No players nearby")
@@ -1877,7 +1956,7 @@ Citizen.CreateThread(function()
                 -- up arrow = Seat in nearest car
                 else
                     if IsControlJustReleased(2, 172) then
-                        TriggerEvent('tp:putinvehicle')
+                        TriggerEvent('police:forceEnter')
                         Citizen.Wait(1000)
                     else
                         -- down arrow = UnSeat in nearest car
@@ -1998,49 +2077,4 @@ function GetClosestPlayers(targetVector,dist)
 		end
 	end
 	return closestplayers, closestdistance, closestcoords
-end
-
-function GetClosestPedIgnoreCar()
-	local players = GetPlayers()
-	local closestDistance = -1
-	local closestPlayer = -1
-	local closestPlayerId = -1
-	local ply = PlayerPedId()
-	local plyCoords = GetEntityCoords(ply, 0)
-	for index,value in ipairs(players) do
-		local target = GetPlayerPed(value)
-		if(target ~= ply) then
-			local targetCoords = GetEntityCoords(GetPlayerPed(value), 0)
-			local distance = #(vector3(targetCoords["x"], targetCoords["y"], targetCoords["z"]) - vector3(plyCoords["x"], plyCoords["y"], plyCoords["z"]))
-			if(closestDistance == -1 or closestDistance > distance) then
-				closestPlayer = target
-				closestPlayerId = value
-				closestDistance = distance
-			end
-		end
-	end
-	
-	return closestPlayer, closestDistance, closestPlayerId
-end
-
-
-function getVehicleInDirection(coordFrom, coordTo)
-	local offset = 0
-	local rayHandle
-	local vehicle
-
-	for i = 0, 100 do
-		rayHandle = CastRayPointToPoint(coordFrom.x, coordFrom.y, coordFrom.z, coordTo.x, coordTo.y, coordTo.z + offset, 10, PlayerPedId(), 0)	
-		a, b, c, d, vehicle = GetRaycastResult(rayHandle)
-		
-		offset = offset - 1
-
-		if vehicle ~= 0 then break end
-	end
-	
-	local distance = Vdist2(coordFrom, GetEntityCoords(vehicle))
-	
-	if distance > 25 then vehicle = nil end
-
-    return vehicle ~= nil and vehicle or 0
 end

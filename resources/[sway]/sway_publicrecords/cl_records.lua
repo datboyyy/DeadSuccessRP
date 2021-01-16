@@ -2,7 +2,7 @@ local isVisible = false
 local tabletObject = nil
 
 local hspLocss = {
-    [1] = {["x"] = 440.98, ["y"] = -981.13, ["z"] = 30.69, ["h"] = 131.66, ["name"] = "Press [E] To Open Public Records", ["fnc"] = "DrawText3DTest"},
+    [1] = {["x"] = 441.85, ["y"] = -979.57, ["z"] = 30.69, ["h"] = 242.50, ["name"] = "Press [E] To Open Public Records", ["fnc"] = "DrawText3DTest"},
 }
 
 

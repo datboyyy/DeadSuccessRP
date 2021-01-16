@@ -90,6 +90,13 @@ AddEventHandler('esx_policejob:drag', function(target)
 
 end)
 
+RegisterServerEvent('esx_policejob:releaseescort')
+AddEventHandler('esx_policejob:releaseescort', function(target)
+	local xPlayer = ESX.GetPlayerFromId(source)
+		TriggerClientEvent('esx_policejob:Releasedrag', target, source)
+
+end)
+
 RegisterServerEvent('esx_policejob:putInVehicle')
 AddEventHandler('esx_policejob:putInVehicle', function(target)
 	local xPlayer = ESX.GetPlayerFromId(source)

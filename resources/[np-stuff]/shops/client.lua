@@ -78,7 +78,8 @@ local twentyfourseven_shops = {
 	{ ['x'] = -1821.9542236328, ['y'] = 792.40191650391, ['z'] = 138.13920593262 },
 	{ ['x'] = -1223.6690673828, ['y'] = -906.67517089844, ['z'] = 12.326356887817 },
 	{ ['x'] = -708.19256591797, ['y'] = -914.65264892578, ['z'] = 19.215591430664 },
-	{ ['x'] = 436.144, ['y'] = -985.824, ['z'] = 30.6896 },
+	{ ['x'] = 439.39, ['y'] = -978.99, ['z'] = 30.6896 },
+	{ ['x'] = 469.51, ['y'] = -996.71, ['z'] = 26.27 },
 	{ ['x'] = -48.16, ['y'] = -1756.92, ['z'] = 29.44 },
 	{ ['x'] = 24.5889, ['y'] = -1342.32, ['z'] = 29.497 },
 	{ ['x'] = 1162.87, ['y'] = -319.218, ['z'] = 69.2051 },
@@ -215,7 +216,7 @@ Citizen.CreateThread(function()
 			if(Vdist(v.x, v.y, v.z, pos.x, pos.y, pos.z) < 8.0)then
 				found = true
 				DrawMarker(27, v.x, v.y, v.z - 0.9, 0, 0, 0, 0, 0, 0, 1.0001, 1.0001, 1.5001, 0, 25, 165, 165, 0,0, 0,0)
-				if(Vdist(v.x, v.y, v.z, pos.x, pos.y, pos.z) < 3.0)then
+				if(Vdist(v.x, v.y, v.z, pos.x, pos.y, pos.z) < 1.0)then
 					DisplayHelpText("Press ~INPUT_CONTEXT~ to open the ~g~shop.")
 					if IsControlJustPressed(1, 38) then	
 						TriggerEvent("server-inventory-open", "2", "Shop");	
