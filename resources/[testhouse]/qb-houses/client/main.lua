@@ -54,10 +54,10 @@ Citizen.CreateThread(function()
     end
 end)
 
-RegisterNetEvent('cash-playerhousing:client:sellHouse')
-AddEventHandler('cash-playerhousing:client:sellHouse', function()
+RegisterNetEvent('qb-houses:client:sellHouse')
+AddEventHandler('qb-houses:client:sellHouse', function()
     if closesthouse ~= nil and hasKey then
-        TriggerServerEvent('cash-playerhousing:server:viewHouse', closesthouse)
+        TriggerServerEvent('qb-houses:server:viewHouse', closesthouse)
     end
 end)
 
@@ -76,8 +76,8 @@ Citizen.CreateThread(function()
     end
 end)
 
-RegisterNetEvent('cash-playerhousing:client:EnterHouse')
-AddEventHandler('cash-playerhousing:client:EnterHouse', function()
+RegisterNetEvent('qb-houses:client:EnterHouse')
+AddEventHandler('qb-houses:client:EnterHouse', function()
     local ped = GetPlayerPed(-1)
     local pos = GetEntityCoords(ped)
 
@@ -95,36 +95,36 @@ AddEventHandler('cash-playerhousing:client:EnterHouse', function()
     end
 end)
 
-RegisterNetEvent('cash-playerhousing:client:RequestRing')
-AddEventHandler('cash-playerhousing:client:RequestRing', function()
+RegisterNetEvent('qb-houses:client:RequestRing')
+AddEventHandler('qb-houses:client:RequestRing', function()
     local ped = GetPlayerPed(-1)
     local pos = GetEntityCoords(ped)
 
     if closesthouse ~= nil then
-		TriggerServerEvent('cash-playerhousing:server:RingDoor', closesthouse)
+		TriggerServerEvent('qb-houses:server:RingDoor', closesthouse)
     end
 end)
 
-RegisterNetEvent('cash-playerhousing:client:RequestRing2')
-AddEventHandler('cash-playerhousing:client:RequestRing2', function()
+RegisterNetEvent('qb-houses:client:RequestRing2')
+AddEventHandler('qb-houses:client:RequestRing2', function()
     local ped = GetPlayerPed(-1)
     local pos = GetEntityCoords(ped)
 
     if IsControlJustPressed(0, Keys["G"]) then
-		TriggerServerEvent('cash-playerhousing:server:RingDoor2', closesthouse)
+		TriggerServerEvent('qb-houses:server:RingDoor2', closesthouse)
     end
 end)
 
 Citizen.CreateThread(function()
     Wait(1000)
     
-    TriggerServerEvent('cash-playerhousing:client:setHouses')
+    TriggerServerEvent('qb-houses:client:setHouses')
     isLoggedIn = true
     SetClosestHouse()
-    TriggerEvent('cash-playerhousing:client:setupHouseBlips')
+    TriggerEvent('qb-houses:client:setupHouseBlips')
     Citizen.Wait(100)
     TriggerEvent('cash-garagesystem:client:setHouseGarage', closesthouse, hasKey)
-    TriggerServerEvent("cash-playerhousing:server:setHouses")
+    TriggerServerEvent("qb-houses:server:setHouses")
 end)
 
 function doorText(x, y, z, text)
@@ -144,13 +144,13 @@ end
 
 RegisterNetEvent('esx:playerLoaded')
 AddEventHandler('esx:playerLoaded', function()
-    TriggerServerEvent('cash-playerhousing:client:setHouses')
+    TriggerServerEvent('qb-houses:client:setHouses')
     isLoggedIn = true
     SetClosestHouse()
-    TriggerEvent('cash-playerhousing:client:setupHouseBlips')
+    TriggerEvent('qb-houses:client:setupHouseBlips')
     Citizen.Wait(100)
     TriggerEvent('cash-garagesystem:client:setHouseGarage', closesthouse, hasKey)
-    TriggerServerEvent("cash-playerhousing:server:setHouses")
+    TriggerServerEvent("qb-houses:server:setHouses")
 end)
 
 --[[RegisterNetEvent('CashoutCore:Client:OnPlayerUnload')
@@ -165,18 +165,18 @@ AddEventHandler('CashoutCore:Client:OnPlayerUnload', function()
     end
 end)]]--
 
-RegisterNetEvent('cash-playerhousing:client:setHouseConfig')
-AddEventHandler('cash-playerhousing:client:setHouseConfig', function(houseConfig)
+RegisterNetEvent('qb-houses:client:setHouseConfig')
+AddEventHandler('qb-houses:client:setHouseConfig', function(houseConfig)
     Config.Houses = houseConfig
 end)
 
-RegisterNetEvent('cash-playerhousing:client:lockHouse')
-AddEventHandler('cash-playerhousing:client:lockHouse', function(bool, house)
+RegisterNetEvent('qb-houses:client:lockHouse')
+AddEventHandler('qb-houses:client:lockHouse', function(bool, house)
     Config.Houses[house].locked = bool
 end)
 
-RegisterNetEvent('cash-playerhousing:client:createHouses')
-AddEventHandler('cash-playerhousing:client:createHouses', function(price, tier)
+RegisterNetEvent('qb-houses:client:createHouses')
+AddEventHandler('qb-houses:client:createHouses', function(price, tier)
     local pos = GetEntityCoords(GetPlayerPed(-1))
     local heading = GetEntityHeading(GetPlayerPed(-1))
     local s1, s2 = Citizen.InvokeNative(0x2EB41072B4C1E4C0, pos.x, pos.y, pos.z, Citizen.PointerValueInt(), Citizen.PointerValueInt())
@@ -186,11 +186,11 @@ AddEventHandler('cash-playerhousing:client:createHouses', function(price, tier)
         cam 	= { x = pos.x, y = pos.y, z = pos.z, h = heading, yaw = -10.00},
     }
     street = street:gsub("%-", " ")
-    TriggerServerEvent('cash-playerhousing:server:addNewHouse', street, coords, price, tier)
+    TriggerServerEvent('qb-houses:server:addNewHouse', street, coords, price, tier)
 end)
 
-RegisterNetEvent('cash-playerhousing:client:addGarage')
-AddEventHandler('cash-playerhousing:client:addGarage', function()
+RegisterNetEvent('qb-houses:client:addGarage')
+AddEventHandler('qb-houses:client:addGarage', function()
     if closesthouse ~= nil then 
         local pos = GetEntityCoords(GetPlayerPed(-1))
         local heading = GetEntityHeading(GetPlayerPed(-1))
@@ -200,24 +200,24 @@ AddEventHandler('cash-playerhousing:client:addGarage', function()
             z = pos.z,
             h = heading,
         }
-        TriggerServerEvent('cash-playerhousing:server:addGarage', closesthouse, coords)
+        TriggerServerEvent('qb-houses:server:addGarage', closesthouse, coords)
     else
         ESX.ShowNotification("No house around..")
     end
 end)
 
-RegisterNetEvent('cash-playerhousing:client:toggleDoorlock')
-AddEventHandler('cash-playerhousing:client:toggleDoorlock', function()
+RegisterNetEvent('qb-houses:client:toggleDoorlock')
+AddEventHandler('qb-houses:client:toggleDoorlock', function()
     local ped = GetPlayerPed(-1)
     local pos = GetEntityCoords(ped)
     
     if(GetDistanceBetweenCoords(pos, Config.Houses[closesthouse].coords.enter.x, Config.Houses[closesthouse].coords.enter.y, Config.Houses[closesthouse].coords.enter.z, true) < 1.5)then
         if hasKey then
             if Config.Houses[closesthouse].locked then
-                TriggerServerEvent('cash-playerhousing:server:lockHouse', false, closesthouse)
+                TriggerServerEvent('qb-houses:server:lockHouse', false, closesthouse)
                 ESX.ShowNotification("House is unlocked")
             else
-                TriggerServerEvent('cash-playerhousing:server:lockHouse', true, closesthouse)
+                TriggerServerEvent('qb-houses:server:lockHouse', true, closesthouse)
                 ESX.ShowNotification("House is locked!")
             end
         else
@@ -259,7 +259,7 @@ Citizen.CreateThread(function()
                             if(GetDistanceBetweenCoords(pos, Config.Houses[closesthouse].coords.enter.x, Config.Houses[closesthouse].coords.enter.y, Config.Houses[closesthouse].coords.enter.z, true) < 1.5)then
                                 DrawText3Ds(Config.Houses[closesthouse].coords.enter.x, Config.Houses[closesthouse].coords.enter.y, Config.Houses[closesthouse].coords.enter.z, 'Press ~b~ E ~w~ - to enter the house')
 								if IsControlJustPressed(0, Keys["E"]) then
-                                TriggerEvent("cash-playerhousing:client:EnterHouse")
+                                TriggerEvent("qb-houses:client:EnterHouse")
 								end
                             end
                         end
@@ -269,7 +269,7 @@ Citizen.CreateThread(function()
                         if(GetDistanceBetweenCoords(pos, Config.Houses[closesthouse].coords.enter.x + POIOffsets.exit.x, Config.Houses[closesthouse].coords.enter.y + POIOffsets.exit.y, Config.Houses[closesthouse].coords.enter.z - Config.MinZOffset + POIOffsets.exit.z, true) < 1.5)then
                             DrawText3Ds(Config.Houses[closesthouse].coords.enter.x + POIOffsets.exit.x, Config.Houses[closesthouse].coords.enter.y + POIOffsets.exit.y, Config.Houses[closesthouse].coords.enter.z - Config.MinZOffset + POIOffsets.exit.z + 0.35, 'Press ~g~ G ~w~ - to open a house')
                             if IsControlJustPressed(0, Keys["G"]) then
-                                TriggerServerEvent("cash-playerhousing:server:OpenDoor", CurrentDoorBell, closesthouse)
+                                TriggerServerEvent("qb-houses:server:OpenDoor", CurrentDoorBell, closesthouse)
                                 CurrentDoorBell = 0
                             end
                         end
@@ -300,7 +300,7 @@ Citizen.CreateThread(function()
                                 if not viewCam and Config.Houses[closesthouse].locked then
                                     DrawText3Ds(Config.Houses[closesthouse].coords.enter.x, Config.Houses[closesthouse].coords.enter.y, Config.Houses[closesthouse].coords.enter.z, 'Press ~g~ E ~w~ - to see the offer')
                                     if IsControlJustPressed(0, Keys["E"]) then
-                                        TriggerServerEvent('cash-playerhousing:server:viewHouse', closesthouse)
+                                        TriggerServerEvent('qb-houses:server:viewHouse', closesthouse)
                                     end
                                 end
                             end
@@ -388,7 +388,7 @@ Citizen.CreateThread(function()
                                         SetEntityHeading(GetPlayerPed(-1), Config.Houses[CurrentHouse].coords.enter.h)
                                         inOwned = false
                                         inside = false
-                                        TriggerServerEvent('cash-playerhousing:server:LogoutLocation')
+                                        TriggerServerEvent('qb-houses:server:LogoutLocation')
                                     end)
                                 end
                             elseif(GetDistanceBetweenCoords(pos, logoutLocation.x, logoutLocation.y, logoutLocation.z, true) < 3)then
@@ -423,8 +423,8 @@ function openHouseAnim()
     ClearPedTasks(GetPlayerPed(-1))
 end
 
-RegisterNetEvent('cash-playerhousing:client:RingDoor')
-AddEventHandler('cash-playerhousing:client:RingDoor', function(player, house)
+RegisterNetEvent('qb-houses:client:RingDoor')
+AddEventHandler('qb-houses:client:RingDoor', function(player, house)
     if closesthouse == house and inside then
         CurrentDoorBell = player
         -- TriggerServerEvent("InteractSound_SV:PlayOnSource", "doorbell", 0.1)
@@ -432,8 +432,8 @@ AddEventHandler('cash-playerhousing:client:RingDoor', function(player, house)
     end
 end)
 
-RegisterNetEvent('cash-playerhousing:client:RingDoor2')
-AddEventHandler('cash-playerhousing:client:RingDoor2', function(player, house)
+RegisterNetEvent('qb-houses:client:RingDoor2')
+AddEventHandler('qb-houses:client:RingDoor2', function(player, house)
     if closesthouse == house and inside then
         CurrentDoorBell = player
         -- TriggerServerEvent("InteractSound_SV:PlayOnSource", "doorbell", 0.1)
@@ -495,16 +495,16 @@ function GetClosestPlayer()
 end
 RegisterCommand('testcommand', function()
     local license = exports["isPed"]:isPed("steam")
-    TriggerEvent('cash-playerhousing:client:giveHouseKey')
+    TriggerEvent('qb-houses:client:giveHouseKey')
 end,false)
 
 RegisterCommand('removeHouseKey', function()
 local license = exports["isPed"]:isPed("steam")
-TriggerEvent('cash-playerhousing:client:removeHouseKey')
+TriggerEvent('qb-houses:client:removeHouseKey')
 end,false)
 
-RegisterNetEvent('cash-playerhousing:client:giveHouseKey')
-AddEventHandler('cash-playerhousing:client:giveHouseKey', function(data)
+RegisterNetEvent('qb-houses:client:giveHouseKey')
+AddEventHandler('qb-houses:client:giveHouseKey', function(data)
     local player, distance = GetClosestPlayer()
     if player ~= -1 and distance < 2.5 and closesthouse ~= nil then
         local playerId = GetPlayerServerId(player)
@@ -512,7 +512,7 @@ AddEventHandler('cash-playerhousing:client:giveHouseKey', function(data)
         
         if housedist < 10 then
             print(playerId, closesthouse)
-            TriggerServerEvent('cash-playerhousing:server:giveHouseKey', playerId, closesthouse)
+            TriggerServerEvent('qb-houses:server:giveHouseKey', playerId, closesthouse)
         else
             ESX.ShowNotification("You are not close enough to the house..")
         end
@@ -523,14 +523,14 @@ AddEventHandler('cash-playerhousing:client:giveHouseKey', function(data)
     end
 end)
 
-RegisterNetEvent('cash-playerhousing:client:removeHouseKey')
-AddEventHandler('cash-playerhousing:client:removeHouseKey', function(data, source)
+RegisterNetEvent('qb-houses:client:removeHouseKey')
+AddEventHandler('qb-houses:client:removeHouseKey', function(data, source)
     local license = exports["isPed"]:isPed("steam")
     print('Hex', license)
     if closesthouse ~= nil then 
         local housedist = GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), Config.Houses[closesthouse].coords.enter.x, Config.Houses[closesthouse].coords.enter.y, Config.Houses[closesthouse].coords.enter.z)
         if housedist < 5 then
-            ESX.TriggerServerCallback('cash-playerhousing:server:getHouseOwner', function(result)
+            ESX.TriggerServerCallback('qb-houses:server:getHouseOwner', function(result)
                 if license == result then
                     inHoldersMenu = true
                     HouseKeysMenu()
@@ -547,15 +547,15 @@ AddEventHandler('cash-playerhousing:client:removeHouseKey', function(data, sourc
     end
 end)
 
-RegisterNetEvent('cash-playerhousing:client:refreshHouse')
-AddEventHandler('cash-playerhousing:client:refreshHouse', function(data)
+RegisterNetEvent('qb-houses:client:refreshHouse')
+AddEventHandler('qb-houses:client:refreshHouse', function(data)
     Citizen.Wait(100)
     SetClosestHouse()
     --TriggerEvent('cash-garagesystem:client:setHouseGarage', closesthouse, hasKey)
 end)
 
-RegisterNetEvent('cash-playerhousing:client:SpawnInApartment')
-AddEventHandler('cash-playerhousing:client:SpawnInApartment', function(house)
+RegisterNetEvent('qb-houses:client:SpawnInApartment')
+AddEventHandler('qb-houses:client:SpawnInApartment', function(house)
     local pos = GetEntityCoords(GetPlayerPed(-1))
     if rangDoorbell ~= nil then
         if(GetDistanceBetweenCoords(pos, Config.Houses[house].coords.enter.x, Config.Houses[house].coords.enter.y, Config.Houses[house].coords.enter.z, true) > 5)then
@@ -577,7 +577,7 @@ function HouseKeysMenu()
     ped = GetPlayerPed(-1);
     MenuTitle = "Sleutels"
     ClearMenu()
-    ESX.TriggerServerCallback('cash-playerhousing:server:getHouseKeyHolders', function(holders)
+    ESX.TriggerServerCallback('qb-houses:server:getHouseKeyHolders', function(holders)
         ped = GetPlayerPed(-1);
         MenuTitle = "Sleutelhouders:"
         ClearMenu()
@@ -611,7 +611,7 @@ end
 
 function removeHouseKey(citizenData)
     print(closesthouse, json.encode(citizenData))
-    TriggerServerEvent('cash-playerhousing:server:removeHouseKey', closesthouse, citizenData)
+    TriggerServerEvent('qb-houses:server:removeHouseKey', closesthouse, citizenData)
     closeMenuFull()
 end
 
@@ -678,7 +678,7 @@ function enterOwnedHouse(house)
     print(data[2])
     print(POIOffsets.exit.x)
     entering = true
-    --TriggerServerEvent('cash-playerhousing:server:SetInsideMeta', house, true)
+    --TriggerServerEvent('qb-houses:server:SetInsideMeta', house, true)
     Citizen.Wait(500)
     SetRainFxIntensity(0.0)
     TriggerEvent('qb-weathersync:client:DisableSync')
@@ -687,8 +687,8 @@ function enterOwnedHouse(house)
     entering = false
     setHouseLocations()
 end
-RegisterNetEvent('cash-playerhousing:client:enterOwnedHouse')
-AddEventHandler('cash-playerhousing:client:enterOwnedHouse', function(house)
+RegisterNetEvent('qb-houses:client:enterOwnedHouse')
+AddEventHandler('qb-houses:client:enterOwnedHouse', function(house)
     ESX.GetPlayerData(function(PlayerData)
 		--if PlayerData.metadata["injail"] == 0 then
 			enterOwnedHouse(house)
@@ -697,13 +697,13 @@ AddEventHandler('cash-playerhousing:client:enterOwnedHouse', function(house)
 end)
 
 RegisterNUICallback('HasEnoughMoney', function(data, cb)
-    ESX.TriggerServerCallback('cash-playerhousing:server:HasEnoughMoney', function(hasEnough)
+    ESX.TriggerServerCallback('qb-houses:server:HasEnoughMoney', function(hasEnough)
         
     end, data.objectData)
 end)
 
-RegisterNetEvent('cash-playerhousing:client:LastLocationHouse')
-AddEventHandler('cash-playerhousing:client:LastLocationHouse', function(houseId)
+RegisterNetEvent('qb-houses:client:LastLocationHouse')
+AddEventHandler('qb-houses:client:LastLocationHouse', function(houseId)
     ESX.GetPlayerData(function(PlayerData)
 		--if PlayerData.metadata["injail"] == 0 then
 			enterOwnedHouse(houseId)
@@ -727,7 +727,7 @@ function leaveOwnedHouse(house)
             SetEntityCoords(GetPlayerPed(-1), Config.Houses[CurrentHouse].coords.enter.x, Config.Houses[CurrentHouse].coords.enter.y, Config.Houses[CurrentHouse].coords.enter.z + 0.2)
             SetEntityHeading(GetPlayerPed(-1), Config.Houses[CurrentHouse].coords.enter.h)
             TriggerEvent('cash-weeddrug:client:leaveHouse')
-            --TriggerServerEvent('cash-playerhousing:server:SetInsideMeta', house, false)
+            --TriggerServerEvent('qb-houses:server:SetInsideMeta', house, false)
             CurrentHouse = nil
         end)
     end
@@ -765,7 +765,7 @@ function enterNonOwnedHouse(house)
     entering = true
     Citizen.Wait(500)
     SetRainFxIntensity(0.0)
-    --TriggerServerEvent('cash-playerhousing:server:SetInsideMeta', house, true)
+    --TriggerServerEvent('qb-houses:server:SetInsideMeta', house, true)
     TriggerEvent('qb-weathersync:client:DisableSync')
     TriggerEvent('cash-weeddrug:client:getHousePlants', house)
     Citizen.Wait(100)
@@ -795,18 +795,18 @@ function leaveNonOwnedHouse(house)
             SetEntityHeading(GetPlayerPed(-1), Config.Houses[CurrentHouse].coords.enter.h)
             inOwned = false
             TriggerEvent('cash-weeddrug:client:leaveHouse')
-            --TriggerServerEvent('cash-playerhousing:server:SetInsideMeta', house, false)
+            --TriggerServerEvent('qb-houses:server:SetInsideMeta', house, false)
             CurrentHouse = nil
         end)
     end
 end
 
-RegisterNetEvent('cash-playerhousing:client:setupHouseBlips')
-AddEventHandler('cash-playerhousing:client:setupHouseBlips', function()
+RegisterNetEvent('qb-houses:client:setupHouseBlips')
+AddEventHandler('qb-houses:client:setupHouseBlips', function()
     Citizen.CreateThread(function()
         Citizen.Wait(2000)
         if isLoggedIn then
-            ESX.TriggerServerCallback('cash-playerhousing:server:getOwnedHouses', function(ownedHouses)
+            ESX.TriggerServerCallback('qb-houses:server:getOwnedHouses', function(ownedHouses)
                 if ownedHouses ~= nil then
                     for k, v in pairs(ownedHouses) do
                         local house = Config.Houses[ownedHouses[k]]
@@ -830,8 +830,8 @@ AddEventHandler('cash-playerhousing:client:setupHouseBlips', function()
     end)
 end)
 
-RegisterNetEvent('cash-playerhousing:client:SetClosestHouse')
-AddEventHandler('cash-playerhousing:client:SetClosestHouse', function()
+RegisterNetEvent('qb-houses:client:SetClosestHouse')
+AddEventHandler('qb-houses:client:SetClosestHouse', function()
     SetClosestHouse()
 end)
 
@@ -967,7 +967,7 @@ end
 RegisterNUICallback('buy', function()
     openContract(false)
     disableViewCam()
-    TriggerServerEvent('cash-playerhousing:server:buyHouse', closesthouse)
+    TriggerServerEvent('qb-houses:server:buyHouse', closesthouse)
 end)
 
 RegisterNUICallback('exit', function()
@@ -980,8 +980,8 @@ RegisterCommand('closenui', function()
     disableViewCam()
 end)
 
-RegisterNetEvent('cash-playerhousing:client:viewHouse')
-AddEventHandler('cash-playerhousing:client:viewHouse', function(houseprice, brokerfee, bankfee, taxes, firstname, lastname)
+RegisterNetEvent('qb-houses:client:viewHouse')
+AddEventHandler('qb-houses:client:viewHouse', function(houseprice, brokerfee, bankfee, taxes, firstname, lastname)
     setViewCam(Config.Houses[closesthouse].coords.cam, Config.Houses[closesthouse].coords.cam.h, Config.Houses[closesthouse].coords.yaw)
     Citizen.Wait(500)
     openContract(true)
@@ -1017,11 +1017,11 @@ function SetClosestHouse()
         closesthouse = current
     
         if closesthouse ~= nil then 
-            ESX.TriggerServerCallback('cash-playerhousing:server:hasKey', function(result)
+            ESX.TriggerServerCallback('qb-houses:server:hasKey', function(result)
                 hasKey = result
             end, closesthouse)
         
-            ESX.TriggerServerCallback('cash-playerhousing:server:isOwned', function(result)
+            ESX.TriggerServerCallback('qb-houses:server:isOwned', function(result)
                 isOwned = result
             end, closesthouse)
         end
@@ -1031,7 +1031,7 @@ end
 
 function setHouseLocations()
     if closesthouse ~= nil then
-        ESX.TriggerServerCallback('cash-playerhousing:server:getHouseLocations', function(result)
+        ESX.TriggerServerCallback('qb-houses:server:getHouseLocations', function(result)
             if result ~= nil then
                 if result.id ~= nil then
                     houseid = result.id
@@ -1053,8 +1053,8 @@ function setHouseLocations()
     end
 end
 
-RegisterNetEvent('cash-playerhousing:client:setLocation')
-AddEventHandler('cash-playerhousing:client:setLocation', function(data)
+RegisterNetEvent('qb-houses:client:setLocation')
+AddEventHandler('qb-houses:client:setLocation', function(data)
     local ped = GetPlayerPed(-1)
     local pos = GetEntityCoords(ped)
     local coords = {x = pos.x, y = pos.y, z = pos.z}
@@ -1062,11 +1062,11 @@ AddEventHandler('cash-playerhousing:client:setLocation', function(data)
     --if inside then
         if hasKey then
             if data == 'setstash' then
-                TriggerServerEvent('cash-playerhousing:server:setLocation', coords, closesthouse, 1)
+                TriggerServerEvent('qb-houses:server:setLocation', coords, closesthouse, 1)
             elseif data == 'setoutift' then
-                TriggerServerEvent('cash-playerhousing:server:setLocation', coords, closesthouse, 2)
+                TriggerServerEvent('qb-houses:server:setLocation', coords, closesthouse, 2)
             elseif data == 'setlogout' then
-                TriggerServerEvent('cash-playerhousing:server:setLocation', coords, closesthouse, 3)
+                TriggerServerEvent('qb-houses:server:setLocation', coords, closesthouse, 3)
             end
         else
             ESX.ShowNotification('You are not the owner of the house..')
@@ -1077,15 +1077,15 @@ AddEventHandler('cash-playerhousing:client:setLocation', function(data)
 end)
 
 RegisterCommand('setstash', function()
-    TriggerEvent('cash-playerhousing:client:setLocation', 'setstash')
+    TriggerEvent('qb-houses:client:setLocation', 'setstash')
 end)
 
 RegisterCommand('setoutfit', function()
-    TriggerEvent('cash-playerhousing:client:setLocation', 'setoutift')
+    TriggerEvent('qb-houses:client:setLocation', 'setoutift')
 end)
 
-RegisterNetEvent('cash-playerhousing:client:refreshLocations')
-AddEventHandler('cash-playerhousing:client:refreshLocations', function(house, location, type)
+RegisterNetEvent('qb-houses:client:refreshLocations')
+AddEventHandler('qb-houses:client:refreshLocations', function(house, location, type)
     local ped = GetPlayerPed(-1)
     local pos = GetEntityCoords(ped)
 
@@ -1124,11 +1124,10 @@ function DoRamAnimation(bool)
     end
 end
 
-RegisterNetEvent('cash-playerhousing:client:HomeInvasion')
-AddEventHandler('cash-playerhousing:client:HomeInvasion', function()
+RegisterNetEvent('qb-houses:client:HomeInvasion')
+AddEventHandler('qb-houses:client:HomeInvasion', function()
     local ped = GetPlayerPed(-1)
     local pos = GetEntityCoords(ped)
-    local Skillbar = exports['cash-skillsystem']:GetSkillbarObject()
 
     if closesthouse ~= nil then
         ESX.TriggerServerCallback('police:server:IsPoliceForcePresent', function(IsPresent)
@@ -1142,32 +1141,18 @@ AddEventHandler('cash-playerhousing:client:HomeInvasion', function()
                     if Config.Houses[closesthouse].locked then
                         if not Config.Houses[closesthouse].IsRaming then
                             DoRamAnimation(true)
-                            Skillbar.Start({
-                                duration = math.random(5000, 10000),
-                                pos = math.random(10, 30),
-                                width = math.random(10, 20),
-                            }, function()
                                 if RamsDone + 1 >= Config.RamsNeeded then
-                                    TriggerServerEvent('cash-playerhousing:server:lockHouse', false, closesthouse)
+                                    TriggerServerEvent('qb-houses:server:lockHouse', false, closesthouse)
                                     ESX.ShowNotification('It worked, the door is now out.')
-                                    TriggerServerEvent('cash-playerhousing:server:SetHouseRammed', true, closesthouse)
+                                    TriggerServerEvent('qb-houses:server:SetHouseRammed', true, closesthouse)
                                     DoRamAnimation(false)
                                 else
-                                    DoRamAnimation(true)
-                                    Skillbar.Repeat({
-                                        duration = math.random(500, 1000),
-                                        pos = math.random(10, 30),
-                                        width = math.random(5, 12),
-                                    })
-                                    RamsDone = RamsDone + 1
-                                end
-                            end, function()
                                 RamsDone = 0
-                                TriggerServerEvent('cash-playerhousing:server:SetRamState', false, closesthouse)
+                                TriggerServerEvent('qb-houses:server:SetRamState', false, closesthouse)
                                 ESX.ShowNotification('It failed .. Please try again.')
                                 DoRamAnimation(false)
-                            end)
-                            TriggerServerEvent('cash-playerhousing:server:SetRamState', true, closesthouse)
+                            end
+                            TriggerServerEvent('qb-houses:server:SetRamState', true, closesthouse)
                         else
                             ESX.ShowNotification('Someone is already working on the door..')
                         end
@@ -1186,31 +1171,31 @@ AddEventHandler('cash-playerhousing:client:HomeInvasion', function()
     end
 end)
 
-RegisterNetEvent('cash-playerhousing:client:SetRamState')
-AddEventHandler('cash-playerhousing:client:SetRamState', function(bool, house)
+RegisterNetEvent('qb-houses:client:SetRamState')
+AddEventHandler('qb-houses:client:SetRamState', function(bool, house)
     Config.Houses[house].IsRaming = bool
 end)
 
-RegisterNetEvent('cash-playerhousing:client:SetHouseRammed')
-AddEventHandler('cash-playerhousing:client:SetHouseRammed', function(bool, house)
+RegisterNetEvent('qb-houses:client:SetHouseRammed')
+AddEventHandler('qb-houses:client:SetHouseRammed', function(bool, house)
     Config.Houses[house].IsRammed = bool
 end)
 
-RegisterNetEvent('cash-playerhousing:client:ResetHouse')
-AddEventHandler('cash-playerhousing:client:ResetHouse', function()
+RegisterNetEvent('qb-houses:client:ResetHouse')
+AddEventHandler('qb-houses:client:ResetHouse', function()
     local ped = GetPlayerPed(-1)
 
     if closesthouse ~= nil then
         if Config.Houses[closesthouse].IsRammed == nil then
             Config.Houses[closesthouse].IsRammed = false
-            TriggerServerEvent('cash-playerhousing:server:SetHouseRammed', false, closesthouse)
-            TriggerServerEvent('cash-playerhousing:server:SetRamState', false, closesthouse)
+            TriggerServerEvent('qb-houses:server:SetHouseRammed', false, closesthouse)
+            TriggerServerEvent('qb-houses:server:SetRamState', false, closesthouse)
         end
         if Config.Houses[closesthouse].IsRammed then
             openHouseAnim()
-            TriggerServerEvent('cash-playerhousing:server:SetHouseRammed', false, closesthouse)
-            TriggerServerEvent('cash-playerhousing:server:SetRamState', false, closesthouse)
-            TriggerServerEvent('cash-playerhousing:server:lockHouse', true, closesthouse)
+            TriggerServerEvent('qb-houses:server:SetHouseRammed', false, closesthouse)
+            TriggerServerEvent('qb-houses:server:SetRamState', false, closesthouse)
+            TriggerServerEvent('qb-houses:server:lockHouse', true, closesthouse)
             RamsDone = 0
             ESX.ShowNotification('You locked the house again..')
         else

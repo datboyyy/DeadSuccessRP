@@ -359,12 +359,12 @@ newSubMenus = {
     ['general:housekey'] = {
         title = "Give House Key",
         icon = "#housekey",
-        functionName = "cash-playerhousing:client:giveHouseKey"
+        functionName = "qb-houses:client:giveHouseKey"
     },
     ['general:removehousekey'] = {
         title = "Remove House Key",
         icon = "#housekey",
-        functionName = "cash-playerhousing:client:removeHouseKey"
+        functionName = "qb-houses:client:removeHouseKey"
     },
     --[[     ['general:checkoverself'] = {
     title = "Examine Self",

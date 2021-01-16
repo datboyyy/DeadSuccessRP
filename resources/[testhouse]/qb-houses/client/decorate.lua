@@ -69,19 +69,11 @@ Citizen.CreateThread(function()
                 end
 				if IsControlJustReleased(0, Keys["ENTER"]) then
 					SetNuiFocus(true, true)
-					cursorEnabled = not cursorEnabled
+					SetNuiFocus(true, true)
 					if not isEdit then
 						SendNUIMessage({
 							type = "buyOption",
 						})
-					else
-						SetNuiFocus(false, false)
-						cursorEnabled = not cursorEnabled
-						SaveDecorations()
-						SelectedObj = nil
-						SelObjId = 0
-						peanut = false
-						isEdit = false
 					end
 				end
 			else
@@ -104,15 +96,17 @@ Citizen.CreateThread(function()
 			if GetDistanceBetweenCoords(camPos.x, camPos.y, camPos.z, Config.Houses[closesthouse].coords.enter.x, Config.Houses[closesthouse].coords.enter.y, Config.Houses[closesthouse].coords.enter.z, false) > 50.0 then
 				DisableEditMode()
 				closeDecorateUI()
-				ESX.ShowNotification("You have gone out of range!")
+				print("You have gone out of range!")
 			end
 		end
 	end
 end)
+RegisterCommand('fixdecor', function()
+	closeDecorateUI()
+end, false)
 
-
-RegisterNetEvent("cash-playerhousing:client:decorate")
-AddEventHandler("cash-playerhousing:client:decorate", function()
+RegisterNetEvent("qb-houses:client:decorate")
+AddEventHandler("qb-houses:client:decorate", function()
 	Citizen.Wait(500)
 	if inside then 
 		if hasKey then 
@@ -121,10 +115,10 @@ AddEventHandler("cash-playerhousing:client:decorate", function()
 				openDecorateUI()
 			end
 		else
-			ESX.ShowNotification("You must have the keys to the house!")
+			print("You must have the keys to the house!", "error")
 		end
 	else
-		ESX.ShowNotification("You are not in a house!")
+		print("You are not in a house!", "error")
 	end
 end)
 
@@ -145,8 +139,8 @@ function closeDecorateUI()
 	})
 end
 
-RegisterNetEvent("cash-playerhousing:server:sethousedecorations")
-AddEventHandler("cash-playerhousing:server:sethousedecorations", function(house, decorations)
+RegisterNetEvent("qb-houses:server:sethousedecorations")
+AddEventHandler("qb-houses:server:sethousedecorations", function(house, decorations)
 	Config.Houses[house].decorations = decorations
 	if inside and closesthouse == house then 
 		LoadDecorations(house)
@@ -185,16 +179,7 @@ RegisterNUICallback("buySelectedObject", function(data, cb)
 	SelectedObj = nil
 	SelObjId = 0
 	peanut = false
-	TriggerEvent('cash-playerhousing:client:decorate:reopen')
-end)
-
-RegisterCommand('closedecorate', function()
-	closeDecorateUI()
-end, false)
-
-RegisterNetEvent("cash-playerhousing:client:decorate:reopen")
-AddEventHandler("cash-playerhousing:client:decorate:reopen", function()
-	openDecorateUI()
+	SetNuiFocus(true, true)
 end)
 
 RegisterNUICallback('setupMyObjects', function(data, cb)
@@ -339,7 +324,7 @@ function EnableEditMode()
 	SetEntityCollision(GetPlayerPed(-1), false, false)
 	CreateEditCamera()
 	DecoMode = true
-	TriggerEvent('cash-antihack:client:ToggleDecorate', true)
+	TriggerEvent('qb-anticheat:client:ToggleDecorate', true)
 end
 
 function DisableEditMode()
@@ -353,7 +338,7 @@ function DisableEditMode()
 	SelectedObj = nil
 	peanut = false
 	DecoMode = false
-	TriggerEvent('cash-antihack:client:ToggleDecorate', false)
+	TriggerEvent('qb-anticheat:client:ToggleDecorate', false)
 end
 
 function UnloadDecorations()
@@ -368,7 +353,7 @@ end
 
 function LoadDecorations(house)
 	if Config.Houses[house].decorations == nil or next(Config.Houses[house].decorations) == nil then
-		ESX.TriggerServerCallback('cash-playerhousing:server:getHouseDecorations', function(result)
+		ESX.TriggerServerCallback('qb-houses:server:getHouseDecorations', function(result)
 			Config.Houses[house].decorations = result
 			if Config.Houses[house].decorations ~= nil then
 				ObjectList = {}
@@ -433,7 +418,7 @@ function SaveDecorations()
 				DeleteObject(v.object)
 			end
 		end
-		TriggerServerEvent("cash-playerhousing:server:savedecorations", closesthouse, ObjectList)
+		TriggerServerEvent("qb-houses:server:savedecorations", closesthouse, ObjectList)
 	end
 end
 
@@ -520,7 +505,7 @@ function CheckMovementInput()
 		if curSpeed > getTableLength(speeds) then
 			curSpeed = 1
 		end
-		ESX.ShowNotification("Speed is ".. tostring(speeds[curSpeed]))
+		print("Speed is ".. tostring(speeds[curSpeed]))
 	end
 
 	local xVect = speeds[curSpeed] * math.sin( degToRad( rotation.z ) ) * -1.0

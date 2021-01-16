@@ -47,7 +47,7 @@ Citizen.CreateThread(function()
 			end
 		end
 		TriggerClientEvent("cash-garagesystem:client:houseGarageConfig", -1, HouseGarages)
-		TriggerClientEvent("cash-playerhousing:client:setHouseConfig", -1, Config.Houses)
+		TriggerClientEvent("qb-houses:client:setHouseConfig", -1, Config.Houses)
 	end)
 end)
 
@@ -55,14 +55,14 @@ local houseowneridentifier = {}
 local houseownercid = {}
 local housekeyholders = {}
 
-RegisterServerEvent('cash-playerhousing:server:setHouses')
-AddEventHandler('cash-playerhousing:server:setHouses', function()
+RegisterServerEvent('qb-houses:server:setHouses')
+AddEventHandler('qb-houses:server:setHouses', function()
 	local src = source
-	TriggerClientEvent("cash-playerhousing:client:setHouseConfig", src, Config.Houses)
+	TriggerClientEvent("qb-houses:client:setHouseConfig", src, Config.Houses)
 end)
 
-RegisterServerEvent('cash-playerhousing:server:addNewHouse')
-AddEventHandler('cash-playerhousing:server:addNewHouse', function(street, coords, price, tier)
+RegisterServerEvent('qb-houses:server:addNewHouse')
+AddEventHandler('qb-houses:server:addNewHouse', function(street, coords, price, tier)
 	local src = source
 	local street = street:gsub("%'", "")
 	local price = tonumber(price)
@@ -81,12 +81,12 @@ AddEventHandler('cash-playerhousing:server:addNewHouse', function(street, coords
 		garage = {},
 		decorations = {},
 	}
-	TriggerClientEvent("cash-playerhousing:client:setHouseConfig", -1, Config.Houses)
+	TriggerClientEvent("qb-houses:client:setHouseConfig", -1, Config.Houses)
 	TriggerClientEvent('notification', src, "You have added a house: "..label)
 end)
 
-RegisterServerEvent('cash-playerhousing:server:addGarage')
-AddEventHandler('cash-playerhousing:server:addGarage', function(house, coords)
+RegisterServerEvent('qb-houses:server:addGarage')
+AddEventHandler('qb-houses:server:addGarage', function(house, coords)
 	local src = source
 	exports['ghmattimysql']:execute("UPDATE `houselocations` SET `garage` = '"..json.encode(coords).."' WHERE `name` = '"..house.."'")
 	local garageInfo = {
@@ -97,8 +97,8 @@ AddEventHandler('cash-playerhousing:server:addGarage', function(house, coords)
 	TriggerClientEvent('notification', src, "You have added a garage at: "..garageInfo.label)
 end)
 
-RegisterServerEvent('cash-playerhousing:server:viewHouse')
-AddEventHandler('cash-playerhousing:server:viewHouse', function(house)
+RegisterServerEvent('qb-houses:server:viewHouse')
+AddEventHandler('qb-houses:server:viewHouse', function(house)
 	local src     		= source
 	local pData 		= ESX.GetPlayerFromId(src)
 
@@ -107,11 +107,11 @@ AddEventHandler('cash-playerhousing:server:viewHouse', function(house)
 	local bankfee 		= (houseprice / 100 * 10) 
 	local taxes 		= (houseprice / 100 * 6)
 
-	TriggerClientEvent('cash-playerhousing:client:viewHouse', src, houseprice, brokerfee, bankfee, taxes, GetCharacterName(source))
+	TriggerClientEvent('qb-houses:client:viewHouse', src, houseprice, brokerfee, bankfee, taxes, GetCharacterName(source))
 end)
 
-RegisterServerEvent('cash-playerhousing:server:buyHouse')
-AddEventHandler('cash-playerhousing:server:buyHouse', function(house)
+RegisterServerEvent('qb-houses:server:buyHouse')
+AddEventHandler('qb-houses:server:buyHouse', function(house)
 	local src     	= source
 	local steam = GetPlayerIdentifiers(src)[1]
 	local license = GetPlayerIdentifiers(src)[2]
@@ -128,29 +128,29 @@ AddEventHandler('cash-playerhousing:server:buyHouse', function(house)
 			[1] = steam
 		}
 		exports['ghmattimysql']:execute("UPDATE `houselocations` SET `owned` = 1 WHERE `name` = '"..house.."'")
-		TriggerClientEvent('cash-playerhousing:client:SetClosestHouse', src)
+		TriggerClientEvent('qb-houses:client:SetClosestHouse', src)
 		pData.removeMoney(HousePrice) -- 21% Extra house costs
 	else
 		TriggerClientEvent('notification', source, "You do not have enough money..")
 	end
 end)
 
-RegisterServerEvent('cash-playerhousing:server:lockHouse')
-AddEventHandler('cash-playerhousing:server:lockHouse', function(bool, house)
-	TriggerClientEvent('cash-playerhousing:client:lockHouse', -1, bool, house)
+RegisterServerEvent('qb-houses:server:lockHouse')
+AddEventHandler('qb-houses:server:lockHouse', function(bool, house)
+	TriggerClientEvent('qb-houses:client:lockHouse', -1, bool, house)
 end)
 
-RegisterServerEvent('cash-playerhousing:server:SetRamState')
-AddEventHandler('cash-playerhousing:server:SetRamState', function(bool, house)
+RegisterServerEvent('qb-houses:server:SetRamState')
+AddEventHandler('qb-houses:server:SetRamState', function(bool, house)
 	Config.Houses[house].IsRaming = bool
-	TriggerClientEvent('cash-playerhousing:server:SetRamState', -1, bool, house)
+	TriggerClientEvent('qb-houses:server:SetRamState', -1, bool, house)
 end)
 
 --------------------------------------------------------------
 
 --------------------------------------------------------------
 
-ESX.RegisterServerCallback('cash-playerhousing:server:hasKey', function(source, cb, house)
+ESX.RegisterServerCallback('qb-houses:server:hasKey', function(source, cb, house)
 	local src = source
 	local Player = ESX.GetPlayerFromId(src)
 	local license = GetPlayerIdentifiers(src)[2]
@@ -171,7 +171,7 @@ ESX.RegisterServerCallback('cash-playerhousing:server:hasKey', function(source, 
 	cb(retval)
 end)
 
-ESX.RegisterServerCallback('cash-playerhousing:server:isOwned', function(source, cb, house)
+ESX.RegisterServerCallback('qb-houses:server:isOwned', function(source, cb, house)
 	if houseowneridentifier[house] ~= nil and houseownercid[house] ~= nil then
 		cb(true)
 	else
@@ -179,11 +179,11 @@ ESX.RegisterServerCallback('cash-playerhousing:server:isOwned', function(source,
 	end
 end)
 
-ESX.RegisterServerCallback('cash-playerhousing:server:getHouseOwner', function(source, cb, house)
+ESX.RegisterServerCallback('qb-houses:server:getHouseOwner', function(source, cb, house)
 	cb(houseownercid[house])
 end)
 
-ESX.RegisterServerCallback('cash-playerhousing:server:getHouseKeyHolders', function(source, cb, house)
+ESX.RegisterServerCallback('qb-houses:server:getHouseKeyHolders', function(source, cb, house)
 	local retval = {}
 	local Player = ESX.GetPlayerFromId(source)
 	local license = GetPlayerIdentifiers(source)[1]
@@ -238,16 +238,16 @@ function getOfflinePlayerData(source)
 	end)
 end
 
-RegisterServerEvent('cash-playerhousing:server:giveKey')
-AddEventHandler('cash-playerhousing:server:giveKey', function(house, target)
+RegisterServerEvent('qb-houses:server:giveKey')
+AddEventHandler('qb-houses:server:giveKey', function(house, target)
 	local pData = ESX.GetPlayerFromId(target)
 	local citizenid = GetPlayerIdentifiers(target)[1]
 	table.insert(housekeyholders[house], citizenid)
 	exports['ghmattimysql']:execute("UPDATE `player_houses` SET `keyholders` = '"..json.encode(housekeyholders[house]).."' WHERE `house` = '"..house.."'")
 end)
 
-RegisterServerEvent('cash-playerhousing:server:removeHouseKey')
-AddEventHandler('cash-playerhousing:server:removeHouseKey', function(house, citizenData)
+RegisterServerEvent('qb-houses:server:removeHouseKey')
+AddEventHandler('qb-houses:server:removeHouseKey', function(house, citizenData)
 	local src = source
 	local newHolders = {}
 	if housekeyholders[house] ~= nil then 
@@ -296,35 +296,35 @@ Citizen.CreateThread(function()
 	end
 end)
 
-RegisterServerEvent('cash-playerhousing:server:OpenDoor')
-AddEventHandler('cash-playerhousing:server:OpenDoor', function(target, house)
+RegisterServerEvent('qb-houses:server:OpenDoor')
+AddEventHandler('qb-houses:server:OpenDoor', function(target, house)
     local src = source
     local OtherPlayer = ESX.GetPlayerFromId(target)
     if OtherPlayer ~= nil then
-        TriggerClientEvent('cash-playerhousing:client:SpawnInApartment', OtherPlayer.source, house)
+        TriggerClientEvent('qb-houses:client:SpawnInApartment', OtherPlayer.source, house)
     end
 end)
 
-RegisterServerEvent('cash-playerhousing:server:RingDoor')
-AddEventHandler('cash-playerhousing:server:RingDoor', function(house)
+RegisterServerEvent('qb-houses:server:RingDoor')
+AddEventHandler('qb-houses:server:RingDoor', function(house)
     local src = source
-    TriggerClientEvent('cash-playerhousing:client:RingDoor', -1, src, house)
+    TriggerClientEvent('qb-houses:client:RingDoor', -1, src, house)
 end)
 
-RegisterServerEvent('cash-playerhousing:server:RingDoor2')
-AddEventHandler('cash-playerhousing:server:RingDoor2', function(house)
+RegisterServerEvent('qb-houses:server:RingDoor2')
+AddEventHandler('qb-houses:server:RingDoor2', function(house)
     local src = source
-    TriggerClientEvent('cash-playerhousing:client:RingDoor2', -1, src, house)
+    TriggerClientEvent('qb-houses:client:RingDoor2', -1, src, house)
 end)
 
-RegisterServerEvent('cash-playerhousing:server:savedecorations')
-AddEventHandler('cash-playerhousing:server:savedecorations', function(house, decorations)
+RegisterServerEvent('qb-houses:server:savedecorations')
+AddEventHandler('qb-houses:server:savedecorations', function(house, decorations)
 	local src = source
 	exports['ghmattimysql']:execute("UPDATE `player_houses` SET `decorations` = '"..json.encode(decorations).."' WHERE `house` = '"..house.."'")
-	TriggerClientEvent("cash-playerhousing:server:sethousedecorations", -1, house, decorations)
+	TriggerClientEvent("qb-houses:server:sethousedecorations", -1, house, decorations)
 end)
 
-ESX.RegisterServerCallback('cash-playerhousing:server:getHouseDecorations', function(source, cb, house)
+ESX.RegisterServerCallback('qb-houses:server:getHouseDecorations', function(source, cb, house)
 	local retval = nil
 	exports['ghmattimysql']:execute("SELECT * FROM `player_houses` WHERE `house` = '"..house.."'", function(result)
 		if result[1] ~= nil then
@@ -336,7 +336,7 @@ ESX.RegisterServerCallback('cash-playerhousing:server:getHouseDecorations', func
 	end)
 end)
 
-ESX.RegisterServerCallback('cash-playerhousing:server:getHouseLocations', function(source, cb, house)
+ESX.RegisterServerCallback('qb-houses:server:getHouseLocations', function(source, cb, house)
 	local retval = nil
 	exports['ghmattimysql']:execute("SELECT * FROM `player_houses` WHERE `house` = '"..house.."'", function(result)
 		if result[1] ~= nil then
@@ -346,7 +346,7 @@ ESX.RegisterServerCallback('cash-playerhousing:server:getHouseLocations', functi
 	end)
 end)
 
-ESX.RegisterServerCallback('cash-playerhousing:server:getHouseKeys', function(source, cb)
+ESX.RegisterServerCallback('qb-houses:server:getHouseKeys', function(source, cb)
 	local src = source
 	local pData = GetPlayerIdentifiers(src)[1]
 	local cid = pData
@@ -363,7 +363,7 @@ function mysplit (inputstr, sep)
 	return t
 end
 
-ESX.RegisterServerCallback('cash-playerhousing:server:getOwnedHouses', function(source, cb)
+ESX.RegisterServerCallback('qb-houses:server:getOwnedHouses', function(source, cb)
 	local src = source
 	local pData = {identifier = GetPlayerIdentifiers(src)[1], license = GetPlayerIdentifiers(src)[1]}
 
@@ -384,7 +384,7 @@ ESX.RegisterServerCallback('cash-playerhousing:server:getOwnedHouses', function(
 	end
 end)
 
-ESX.RegisterServerCallback('cash-playerhousing:server:getSavedOutfits', function(source, cb)
+ESX.RegisterServerCallback('qb-houses:server:getSavedOutfits', function(source, cb)
 	local src = source
 	local pData = GetPlayerIdentifiers(src)[1]
 
@@ -400,7 +400,7 @@ ESX.RegisterServerCallback('cash-playerhousing:server:getSavedOutfits', function
 end)
 
 RegisterCommand("decorate", function(source, args)
-	TriggerClientEvent("cash-playerhousing:client:decorate", source)
+	TriggerClientEvent("qb-houses:client:decorate", source)
 end)
 
 function GetHouseStreetCount(street)
@@ -420,8 +420,8 @@ function GetHouseStreetCount(street)
     return count
 end
 
---[[RegisterServerEvent('cash-playerhousing:server:LogoutLocation')
-AddEventHandler('cash-playerhousing:server:LogoutLocation', function()
+--[[RegisterServerEvent('qb-houses:server:LogoutLocation')
+AddEventHandler('qb-houses:server:LogoutLocation', function()
 	local src = source
 	local Player = ESX.GetPlayerFromId(src)
 	local data = {identifier = GetPlayerIdentifiers(src)[1], license = GetPlayerIdentifiers(src)[1]}
@@ -431,8 +431,8 @@ AddEventHandler('cash-playerhousing:server:LogoutLocation', function()
     TriggerClientEvent('cash-multiplecharacters:client:chooseChar', src)
 end)]]--
 
-RegisterServerEvent('cash-playerhousing:server:giveHouseKey')
-AddEventHandler('cash-playerhousing:server:giveHouseKey', function(target, house)
+RegisterServerEvent('qb-houses:server:giveHouseKey')
+AddEventHandler('qb-houses:server:giveHouseKey', function(target, house)
 	local xPlayer = ESX.GetPlayerFromId(target)
 	local ident = GetPlayerIdentifier(target)
 	local tPlayer = ESX.GetPlayerFromId(target)
@@ -448,7 +448,7 @@ AddEventHandler('cash-playerhousing:server:giveHouseKey', function(target, house
 			end		
 			table.insert(housekeyholders[house], ident)
 			exports['ghmattimysql']:execute("UPDATE `player_houses` SET `keyholders` = '"..json.encode(housekeyholders[house]).."' WHERE `house` = '"..house.."'")
-			TriggerClientEvent('cash-playerhousing:client:refreshHouse', src)
+			TriggerClientEvent('qb-houses:client:refreshHouse', src)
 			TriggerClientEvent('notification', source ,'You have given the keys to '..Config.Houses[house].adress..' !', 1)
 			TriggerClientEvent('notification', target ,'You have received the keys to '..Config.Houses[house].adress..' !', 1)
 		else
@@ -458,7 +458,7 @@ AddEventHandler('cash-playerhousing:server:giveHouseKey', function(target, house
 			}
 			table.insert(housekeyholders[house],  ident)
 			exports['ghmattimysql']:execute("UPDATE `player_houses` SET `keyholders` = '"..json.encode(housekeyholders[house]).."' WHERE `house` = '"..house.."'")
-			TriggerClientEvent('cash-playerhousing:client:refreshHouse', src)
+			TriggerClientEvent('qb-houses:client:refreshHouse', src)
 			TriggerClientEvent('notification', src, 'You have the keys to '..Config.Houses[house].adress..' !', 1)
 		end
 	else
@@ -471,8 +471,8 @@ AddEventHandler('test:test', function(msg)
 	print(msg)
 end)
 
-RegisterServerEvent('cash-playerhousing:server:setLocation')
-AddEventHandler('cash-playerhousing:server:setLocation', function(coords, house, type)
+RegisterServerEvent('qb-houses:server:setLocation')
+AddEventHandler('qb-houses:server:setLocation', function(coords, house, type)
 	local src = source
 	local Player = ESX.GetPlayerFromId(src)
 
@@ -484,7 +484,7 @@ AddEventHandler('cash-playerhousing:server:setLocation', function(coords, house,
 		exports['ghmattimysql']:execute("UPDATE `player_houses` SET `logout` = '"..json.encode(coords).."' WHERE `house` = '"..house.."'")
 	end
 
-	TriggerClientEvent('cash-playerhousing:client:refreshLocations', -1, house, json.encode(coords), type)
+	TriggerClientEvent('qb-houses:client:refreshLocations', -1, house, json.encode(coords), type)
 end)
 
 RegisterCommand("createhouse", function(source, args)
@@ -497,7 +497,7 @@ RegisterCommand("createhouse", function(source, args)
     if Player["job"]["name"] == "realestateagent" then
         for k, v in pairs(authtiers) do 
             if v == tier then 
-                TriggerClientEvent("cash-playerhousing:client:createHouses", source, price, tier)
+                TriggerClientEvent("qb-houses:client:createHouses", source, price, tier)
                 found = true
                 break
             end
@@ -513,8 +513,8 @@ RegisterCommand("createhouse", function(source, args)
 end)
 
 
---[[RegisterServerEvent('cash-playerhousing:server:SetInsideMeta')
-AddEventHandler('cash-playerhousing:server:SetInsideMeta', function(insideId, bool)
+--[[RegisterServerEvent('qb-houses:server:SetInsideMeta')
+AddEventHandler('qb-houses:server:SetInsideMeta', function(insideId, bool)
     local src = source
     local Player = ESX.GetPlayerFromId(src)
     local insideMeta = Player["inside"]
@@ -622,26 +622,27 @@ ESX.RegisterServerCallback('cash-telephone:server:MeosGetPlayerHouses', function
 end)
 
 RegisterCommand('raidhouse', function(source)
-	local xPlayer = ESX.GetPlayerFromId(src)
+	local source = source
+	local xPlayer = ESX.GetPlayerFromId(source)
 
-	if Player["job"]["name"] == "police" then
-		TriggerClientEvent("cash-playerhousing:client:HomeInvasion", source)
+	if xPlayer.job.name == "police" then
+		TriggerClientEvent("qb-houses:client:HomeInvasion", source)
 	else
 		TriggerClientEvent('notification', source, "This is only possible for emergency services!", 2)
 	end
 end)
 
-RegisterServerEvent('cash-playerhousing:server:SetHouseRammed')
-AddEventHandler('cash-playerhousing:server:SetHouseRammed', function(bool, house)
+RegisterServerEvent('qb-houses:server:SetHouseRammed')
+AddEventHandler('qb-houses:server:SetHouseRammed', function(bool, house)
 	Config.Houses[house].IsRammed = bool
-	TriggerClientEvent('cash-playerhousing:client:SetHouseRammed', -1, bool, house)
+	TriggerClientEvent('qb-houses:client:SetHouseRammed', -1, bool, house)
 end)
 
 RegisterCommand("enter", function(source, args)
     local src = source
     local Player = ESX.GetPlayerFromId(src)
  
-    TriggerClientEvent('cash-playerhousing:client:EnterHouse', src)
+    TriggerClientEvent('qb-houses:client:EnterHouse', src)
 end)
 
 
@@ -650,5 +651,5 @@ RegisterCommand("ring", function(source, args)
     local src = source
     local Player = ESX.GetPlayerFromId(src)
  
-    TriggerClientEvent('cash-playerhousing:client:RequestRing', src)
+    TriggerClientEvent('qb-houses:client:RequestRing', src)
 end)
