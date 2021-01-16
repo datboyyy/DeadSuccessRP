@@ -51,10 +51,17 @@ RegisterNUICallback('drop', function(data, cb)
   print(data.noteText)
   information = {
     ["identifier"] = 'ply-'..exports["isPed"]:isPed("cid"),
-    ["eType"] = exports["isPed"]:isPed("fullname"),
+    ["eType"] = ''..exports["isPed"]:isPed("fullname"),
     ["other"] = data.noteText,
 }
   TriggerEvent("player:receiveItem", 'notepadpage', 1, true, information)
+end)
+
+RegisterCommand('cocktest', function()
+
+  local name = exports["isPed"]:isPed("fullname")
+  print(name)
+
 end)
 
 

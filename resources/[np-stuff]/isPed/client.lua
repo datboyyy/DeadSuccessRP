@@ -26,6 +26,7 @@ curPolice = 0
 curEms = 0
 curTaxi = 0
 curTow = 0
+fullname = "None"
 local curDoctors = 0
 local gangType = 0
 local incall = false
@@ -528,8 +529,8 @@ AddEventHandler("updatesteam", function(steampassed)
 end)
 
 RegisterNetEvent("updatefullname")
-AddEventHandler("updatefullname", function(fullname)
-    fullname = fullname
+AddEventHandler("updatefullname", function(fullnamepassed)
+    fullname = fullnamepassed
 end)
 
 RegisterNetEvent("phoneEnabled")
