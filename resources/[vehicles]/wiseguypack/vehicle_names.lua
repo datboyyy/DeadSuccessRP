@@ -38,6 +38,8 @@ Citizen.CreateThread(function()
 	AddTextEntry("0x9E7969A4","Chang Livery")
 	AddTextEntry("0xE1FCF0AA","Rat Livery")
 	AddTextEntry("0xD792DBD6","Mothership Livery")
+
+	AddTextEntry(GetHashKey("srtday20"), "Charger SRT Hellcat")
 	AddTextEntry("0xC4E1B674","Herbert Livery")
 	AddTextEntry("0xB31C12E9","Rusty Herbert Livery")
 	AddTextEntry("0x702F8D11","Ladybird Livery")
