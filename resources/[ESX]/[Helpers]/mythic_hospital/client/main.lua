@@ -31,25 +31,8 @@ function PrintHelpText(message)
 end
 
 function LeaveBed()
-    RequestAnimDict(getOutDict)
-    while not HasAnimDictLoaded(getOutDict) do
-        Citizen.Wait(0)
-    end
-    
-    RenderScriptCams(0, true, 200, true, true)
-    DestroyCam(cam, false)
-    
-    SetEntityInvincible(PlayerPedId(), false)
-    
-    SetEntityHeading(PlayerPedId(), bedOccupyingData.h - 90)
-    TaskPlayAnim(PlayerPedId(), getOutDict, getOutAnim, 8.0, -8.0, -1, 0, 0, false, false, false)
-    Citizen.Wait(5000)
-    ClearPedTasks(PlayerPedId())
-    FreezeEntityPosition(PlayerPedId(), false)
     TriggerServerEvent('mythic_hospital:server:LeaveBed', bedOccupying)
-    
     FreezeEntityPosition(bedObject, false)
-    
     bedOccupying = nil
     bedObject = nil
     bedOccupyingData = nil
@@ -83,9 +66,7 @@ AddEventHandler('mythic_hospital:client:SendToBed', function(id, data)
     FreezeEntityPosition(bedObject, true)
     
     SetEntityCoords(PlayerPedId(), data.x, data.y, data.z)
-    DoScreenFadeOut(1000)
     TriggerEvent('client:bed')
-    DoScreenFadeIn(1000)
         
         exports['mythic_notify']:SendAlert('inform', 'Doctors Are Treating You')
         Citizen.Wait(Config.AIHealTimer * 1000)
@@ -101,6 +82,7 @@ AddEventHandler('mythic_hospital:client:FinishServices', function()
     local source = source
     TriggerEvent('tp_ambulancejob:revive', source)
     TriggerEvent('client:bedleave')
+    LeaveBed()
 end)
 
 RegisterNetEvent('mythic_hospital:client:ForceLeaveBed')
@@ -122,7 +104,8 @@ Citizen.CreateThread(function()
                     DrawText3Ds(312.29, -592.88, 43.28, "[E] to Check in")
                     if IsControlJustReleased(0, 54) then
                         fuck = exports["ambulancejob"]:GetDeath()
-                        if (GetEntityHealth(PlayerPedId()) < 200) or (IsInjuredOrBleeding()) or fuck then
+                        if (GetEntityHealth(PlayerPedId()) < 201) or (IsInjuredOrBleeding()) or fuck then
+                            TriggerEvent('notepad')
                             exports["sway_taskbar"]:taskBar(7500, "Requesting Bed")
                             if not status then
                                 TriggerServerEvent('mythic_hospital:server:RequestBed')

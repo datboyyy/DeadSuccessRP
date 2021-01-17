@@ -7819,7 +7819,7 @@ AddEventHandler('notepad', function()
         TaskPlayAnim(PlayerPedId(), "amb@medic@standing@timeofdeath@exit",
                      "exit", 0.1, 1.0, 1.0, 48, 0, 0, 0, 0)
 
-        Citizen.Wait(5000)
+        Citizen.Wait(500)
         TriggerEvent("destroyProp")
         TriggerEvent("destroyProp69")
 
@@ -7846,11 +7846,12 @@ AddEventHandler("expressions", function(pArgs)
 end)
 
 RegisterNetEvent("expressions:clear")
-AddEventHandler("expressions:clear",
-                function() ClearFacialIdleAnimOverride(PlayerPedId()) end)
+AddEventHandler("expressions:clear",function() 
+    ClearFacialIdleAnimOverride(PlayerPedId()) 
+end)
                 
 
-                sleeping = false
+sleeping = false
 --missfbi5ig_0
 --lyinginpain_loop_steve
 --missprologueig_6
@@ -7871,9 +7872,7 @@ local beds = {
     -1091386327,
 }
 
-RegisterCommand('bed', function()
-    TriggerEvent('client:bed')
-end, false)
+
 
 RegisterNetEvent("client:bed")
 AddEventHandler("client:bed",function()
@@ -7900,7 +7899,6 @@ AddEventHandler("client:bed",function()
     end
 
     if DoesEntityExist(objFound) then
-        TriggerEvent("notification","Press [E] to leave the bed at any time.",1)
         loadAnimDict( "missfinale_c1@" ) 
         Citizen.Wait(500)
 
@@ -7924,6 +7922,7 @@ AddEventHandler("client:bed",function()
         
         local counter = 0    
         SetEntityHeading(GetEntityHeading(PlayerPedId()-90))
+        DetachEntity(PlayerPedId(), 1, true)
         TriggerEvent("animation:PlayAnimation","getup")
         local count=0
         while counter < 400 do
@@ -7931,21 +7930,15 @@ AddEventHandler("client:bed",function()
             
             if counter > 250 then
                 count = count + 0.004
-                AttachEntityToEntity(ped, objFound, 1, bedOffset.x+count, bedOffset.y, bedOffset.z / 2.0, 0.0, 0.0, -90.0, false, false, false, false, 0, false)
+               -- AttachEntityToEntity(ped, objFound, 1, bedOffset.x+count, bedOffset.y, bedOffset.z / 2.0, 0.0, 0.0, -90.0, false, false, false, false, 0, false)
             else
-                AttachEntityToEntity(ped, objFound, 1, bedOffset.x, bedOffset.y, bedOffset.z / 2.0, 0.0, 0.0, -90.0, false, false, false, false, 0, false)
+               -- AttachEntityToEntity(ped, objFound, 1, bedOffset.x, bedOffset.y, bedOffset.z / 2.0, 0.0, 0.0, -90.0, false, false, false, false, 0, false)
             end
             Citizen.Wait(1)
         end
-
-        
         camOff()
-        DetachEntity(PlayerPedId(), 1, true)
-
-        
-
+       -- DetachEntity(PlayerPedId(), 1, true)
     end
-    
 end)
 
 function camOn()
@@ -7969,72 +7962,3 @@ RegisterNetEvent("client:bedleave")
 AddEventHandler("client:bedleave",function()
     sleeping = false
 end, false)
-
-
-
-Citizen.CreateThread(function()
-    local minimap = RequestScaleformMovie("minimap")
-    SetRadarBigmapEnabled(true, false)
-    Wait(0)
-    SetRadarBigmapEnabled(false, false)
-
-
-    local counter = 0
-    local get_ped = PlayerPedId() -- current ped
-    local get_ped_veh = GetVehiclePedIsIn(get_ped,false) -- Current Vehicle ped is in
-    local plate_veh = GetVehicleNumberPlateText(get_ped_veh) -- Vehicle Plate
-    local veh_stop = IsVehicleStopped(get_ped_veh) -- Parked or not
-    local veh_engine_health = GetVehicleEngineHealth(get_ped_veh) -- Vehicle Engine Damage 
-    local veh_body_health = GetVehicleBodyHealth(get_ped_veh)
-    local veh_burnout = IsVehicleInBurnout(get_ped_veh) -- Vehicle Burnout
-    local thespeed = GetEntitySpeed(get_ped_veh) * 3.6
-    while true do
-
-        if sleeping then
-            if IsControlJustReleased(0,38) then
-                sleeping = false
-                DetachEntity(PlayerPedId(), 1, true)
-            end
-        end
-
-        Citizen.Wait(1)
-        
-
-        if counter == 0 then
-             -- current ped
-            get_ped = PlayerPedId()
-            SetPedSuffersCriticalHits(get_ped,false)
-            get_ped_veh = GetVehiclePedIsIn(get_ped,false) -- Current Vehicle ped is in
-
-            counter = 25
-
-        end
-
-        counter = counter - 1
-
-        if get_ped_veh ~= 0 then
-            local model = GetEntityModel(get_ped_veh)
-            local roll = GetEntityRoll(get_ped_veh)
-  
-            -- if not IsThisModelABoat(model) and not IsThisModelAHeli(model) and not IsThisModelAPlane(model) and IsEntityInAir(get_ped_veh) or (roll < -50 or roll > 50) then
-            --     DisableControlAction(0, 59) -- leaning left/right
-            --     DisableControlAction(0, 60) -- leaning up/down
-            -- end
-
-            if GetPedInVehicleSeat(GetVehiclePedIsIn(get_ped, false), 0) == get_ped then
-                if GetIsTaskActive(get_ped, 165) then
-                    SetPedIntoVehicle(get_ped, GetVehiclePedIsIn(get_ped, false), 0)
-                end
-            end
-
-            DisplayRadar(1)
-            SetRadarZoom(1000)
-        else
-            DisplayRadar(0)
-        end
-
-        BeginScaleformMovieMethod(minimap, "SETUP_HEALTH_ARMOUR")
-        ScaleformMovieMethodAddParamInt(3)
-        EndScaleformMovieMethod()
-    end
-end)
