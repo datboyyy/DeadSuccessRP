@@ -152,9 +152,13 @@ local isLoggedIn = false
 
 
 RegisterCommand("phone", function()
+    local HasPhone = exports["dsrp-inventory"]:hasEnoughOfItem("mobilephone", 1, false)
+    if HasPhone == false then
+        TriggerEvent('notification', 'You don\'t have a phone', 1)
+    else
     OpenPhone()
     newPhoneProp()
---TriggerEvent("8bit_MI-phone:client:UpdateAll")
+    end
 end)
 
 function CalculateTimeToDisplay()
@@ -292,17 +296,13 @@ function LoadPhone()
 end
 
 RegisterNUICallback('HasPhone', function(data, cb)
-        -- ESX.TriggerServerCallback('MI-phone:server:HasPhone', function(HasPhoLoadPhoneDatane)
-        --  cb(HasPhone)
-        cb(true)
+    local HasPhone = exports["dsrp-inventory"]:hasEnoughOfItem("mobilephone", 1, false)
+        cb(HasPhone)
 --end)
 end)
 
-RegisterCommand('qbphone', function()
-    OpenPhone()
-end, false)
 
-RegisterCommand('qbphoneclose', function()
+RegisterCommand('phoneclose', function()
     ClosePhone()
 end, false)
 
@@ -320,7 +320,7 @@ function ClosePhone()
 end
 
 function OpenPhone()
-    local HasPhone = true
+    local HasPhone = exports["dsrp-inventory"]:hasEnoughOfItem("mobilephone", 1, false)
 --    local HasPhone = exports["dsrp-inventory"]:hasEnoughOfItem("mobilephone", 1, false)
     ESX.TriggerServerCallback('MI-phone:server:GetCharacterData', function(chardata)
         if HasPhone then

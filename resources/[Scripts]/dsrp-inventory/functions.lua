@@ -679,7 +679,7 @@ end
     end
 
     if (itemid == "mobilephone") then
-        TriggerEvent('phoneGui2')
+        ExecuteCommand('phone')
     end
 
 
