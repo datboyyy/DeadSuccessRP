@@ -179,7 +179,7 @@ Citizen.CreateThread( function()
 				rightdoor = GetClosestObjectOfType(-631.9554, -236.3333, 38.20653, 11.0, GetHashKey("p_jewel_door_r1"), false, false, false)			
 				storeclosed = false
 				Citizen.Wait(100)
-				freezedoors(false)
+				freezedoors()
 				IsAbleToRob = true
 				HasNotified = false
 			
@@ -217,8 +217,8 @@ function hasgun()
 end
 
 function freezedoors(status)
-	FreezeEntityPosition(leftdoor, status)
-	FreezeEntityPosition(rightdoor, status)
+	FreezeEntityPosition(leftdoor, false)
+	FreezeEntityPosition(rightdoor, false)
 end
 
 Citizen.CreateThread( function()
@@ -236,7 +236,7 @@ Citizen.CreateThread( function()
 			end
 			Citizen.Wait(0)
 			sleep = 0
-			freezedoors(true)	
+			freezedoors()	
 			 if GetDistanceBetweenCoords(plyloc, -632.81, -237.9, 38.08, false) < 2.0 then
                 DrawText3Ds(- 631.4819, -237.6632, 39.07612, 'Store Closed')
             end

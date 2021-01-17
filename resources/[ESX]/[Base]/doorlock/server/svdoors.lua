@@ -522,3 +522,21 @@ Config.Doorlist = {}
 		objName = -96679321,
 		objCoords = vector3(458.6543, -990.6498, 30.82319)
 }
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'mafiahouse',
+		textCoords = vector3(-1041.202, 298.1797, 67.61916),
+		authorizedJobs = 'Mafia',
+		locked = true,
+		distance = 2,
+		objName = 1123731138,
+		objCoords = vector3(-1041.202, 298.1797, 67.61916)
+}
+	Config.Doorlist[#Config.Doorlist + 1] = {
+		name = 'mafiahouse',
+		textCoords = vector3(-1042.701, 297.6678, 67.61916),
+		authorizedJobs = 'Mafia',
+		locked = true,
+		distance = 2,
+		objName = 1123731138,
+		objCoords = vector3(-1042.701, 297.6678, 67.61916)
+}

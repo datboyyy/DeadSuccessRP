@@ -206,7 +206,7 @@ Citizen.CreateThread( function()
 					while IsPedInAnyVehicle(GetPlayerPed(-1)) do
 						Citizen.Wait(0)
 					end
-					Citizen.InvokeNative( 0xAE3CBE5BF394C9C9, Citizen.PointerValueIntInitialized( work_truck ) )
+					ESX.Game.DeleteVehicle(work_truck)
 					if Blips['delivery'] ~= nil then
 						RemoveBlip(Blips['delivery'])
 						Blips['delivery'] = nil

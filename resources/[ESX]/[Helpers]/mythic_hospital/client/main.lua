@@ -69,34 +69,9 @@ AddEventHandler('mythic_hospital:client:RPSendToBed', function(id, data)
     FreezeEntityPosition(bedObject, true)
     
     SetEntityCoords(PlayerPedId(), data.x, data.y, data.z)
-    
-    RequestAnimDict(inBedDict)
-    while not HasAnimDictLoaded(inBedDict) do
-        Citizen.Wait(0)
-    end
-    
-    TaskPlayAnim(PlayerPedId(), inBedDict, inBedAnim, 8.0, -8.0, -1, 1, 0, false, false, false)
-    SetEntityHeading(PlayerPedId(), data.h + 180)
-    
-    cam = CreateCam("DEFAULT_SCRIPTED_CAMERA", 1)
-    SetCamActive(cam, true)
-    RenderScriptCams(true, false, 1, true, true)
-    AttachCamToPedBone(cam, PlayerPedId(), 31085, 0, 0, 1.0, true)
-    SetCamFov(cam, 90.0)
-    SetCamRot(cam, -90.0, 0.0, GetEntityHeading(PlayerPedId()) + 180, true)
-    
-    SetEntityInvincible(PlayerPedId(), true)
-    
-    
-    Citizen.CreateThread(function()
-        while bedOccupyingData ~= nil do
-            Citizen.Wait(1)
-            PrintHelpText('Press ~INPUT_VEH_DUCK~ to get up')
-            if IsControlJustReleased(0, 73) then
-                LeaveBed()
-            end
-        end
-    end)
+    DoScreenFadeOut(1000)
+    TriggerEvent('client:bed')
+    DoScreenFadeIn(1000)
 end)
 
 RegisterNetEvent('mythic_hospital:client:SendToBed')
@@ -108,29 +83,13 @@ AddEventHandler('mythic_hospital:client:SendToBed', function(id, data)
     FreezeEntityPosition(bedObject, true)
     
     SetEntityCoords(PlayerPedId(), data.x, data.y, data.z)
-    RequestAnimDict(inBedDict)
-    while not HasAnimDictLoaded(inBedDict) do
-        Citizen.Wait(0)
-    end
-    TaskPlayAnim(PlayerPedId(), inBedDict, inBedAnim, 8.0, -8.0, -1, 1, 0, false, false, false)
-    SetEntityHeading(PlayerPedId(), data.h + 180)
-    SetEntityInvincible(PlayerPedId(), true)
-    
-    cam = CreateCam("DEFAULT_SCRIPTED_CAMERA", 1)
-    SetCamActive(cam, true)
-    RenderScriptCams(true, false, 1, true, true)
-    AttachCamToPedBone(cam, PlayerPedId(), 31085, 0, 0, 1.0, true)
-    SetCamFov(cam, 90.0)
-    SetCamRot(cam, -90.0, 0.0, GetEntityHeading(PlayerPedId()) + 180, true)
-    
-    Citizen.CreateThread(function()
-        Citizen.Wait(5)
-        local player = PlayerPedId()
+    DoScreenFadeOut(1000)
+    TriggerEvent('client:bed')
+    DoScreenFadeIn(1000)
         
         exports['mythic_notify']:SendAlert('inform', 'Doctors Are Treating You')
         Citizen.Wait(Config.AIHealTimer * 1000)
         TriggerServerEvent('mythic_hospital:server:EnteredBed')
-    end)
 end)
 
 RegisterNetEvent('mythic_hospital:client:FinishServices')
@@ -141,7 +100,7 @@ AddEventHandler('mythic_hospital:client:FinishServices', function()
     exports['mythic_notify']:SendAlert('inform', 'You\'ve Been Treated & Billed')
     local source = source
     TriggerEvent('tp_ambulancejob:revive', source)
-    LeaveBed()
+    TriggerEvent('client:bedleave')
 end)
 
 RegisterNetEvent('mythic_hospital:client:ForceLeaveBed')
