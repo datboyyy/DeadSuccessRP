@@ -4,6 +4,7 @@ ui_page 'html/index.html'
 
 files {
   'html/index.html',
+  'html/img/*.png',
   'html/css/index.css',
   'html/js/config.default.js',
   'html/js/config.js',

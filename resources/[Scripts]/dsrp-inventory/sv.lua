@@ -119,3 +119,23 @@ AddEventHandler("grpLockers:sendCaseFileID", function(id)
 local src = source
 TriggerClientEvent("evLockers:openCaseFile", src, id)
 end)
+
+
+
+RegisterServerEvent("police:showID")
+AddEventHandler("police:showID", function(pid,data)
+    local src = source
+    local xPlayer = ESX.GetPlayerFromId(src)
+    local identifier = xPlayer.identifier
+    local info = json.decode(data)
+    local info = {
+        status = 1,
+        Name = info.Name,
+        Surname = info.Surname,
+        DOB = info.DOB,
+        sex = info.Sex,
+        identifier = 'ply-'..info.identifier
+    }
+    TriggerClientEvent('chat:showCID', src, info)
+    TriggerClientEvent('chat:showCID', pid, info)
+end)

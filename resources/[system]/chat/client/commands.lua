@@ -147,3 +147,17 @@ RegisterCommand('311r', function(target, args, rawCommand)
         TriggerServerEvent('DiscordBot:ToDiscord', 'distress', '311 Reply', "**"..GetPlayerName(PlayerId()) .. ' [' .. GetPlayerServerId(PlayerId()) .."]** "..msg.."", 'SYSTEM', true)
     end
 end, false)
+
+
+RegisterNetEvent('chat:showCID')
+AddEventHandler('chat:showCID', function(cidInformation)
+  print('sending here', json.encode(cidInformation))
+  SendNUIMessage({
+    type = 'ON_MESSAGE',
+    message = {
+      color = 9,
+      multiline = false,
+      args = cidInformation
+    }
+  })
+end)

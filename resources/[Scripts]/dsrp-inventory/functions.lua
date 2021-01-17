@@ -824,15 +824,9 @@ end
         CreateCraftOption("1gcocaine", 80, true)
         
     end
-    local player, distance = ESX.Game.GetClosestPlayer()
     if (itemid == "idcard") then 
         local ItemInfo = GetItemInfo(slot)
-        if distance ~= -1 and distance <= 3.0 then
-            TriggerServerEvent('jsfour-idcard:open', GetPlayerServerId(PlayerId()), GetPlayerServerId(player))
-          else
-            ESX.ShowNotification('No players nearby')
-          end
-          
+        TriggerEvent("idcard:show",ItemInfo.information)
     end
 
     if (itemid == "drivingtest") then 
@@ -2007,3 +2001,21 @@ AddEventHandler("aqua-updatecash", function()
         cop = ispolice
     })
 end)
+
+
+RegisterNetEvent('idcard:show')
+AddEventHandler('idcard:show', function(data)
+    t, distance = GetClosestPlayer()
+    if(distance ~= -1 and distance < 5) then
+        print('data', data)
+        TriggerServerEvent("police:showID", GetPlayerServerId(t), data)
+    else
+        TriggerEvent("DoLongHudText", "No player nearby!",2)
+    end
+end)
+
+RegisterCommand('showCid', function()
+    print('test')
+cidInformation = 'Testtt'
+TriggerEvent('chat:showCID', cidInformation)
+end, false)

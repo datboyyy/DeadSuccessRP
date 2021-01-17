@@ -273,7 +273,7 @@ textarea {
 .license {
   font-family: Verdana, Geneva, sans-serif;
   font-size: 14px;
-  background-image: url("nui://chat/html/image/CID.png");
+  background-image: url("nui://chat/html/img/CID.png");
   background-size: 100% auto;
   background-repeat: no-repeat;
   background-position: top-left;
@@ -300,11 +300,11 @@ textarea {
 }
 
 .license__photo--M {
-  background-image: url("nui://chat/html/image/M.png");
+  background-image: url("nui://chat/html/img/M.png");
 }
 
 .license__photo--F {
-  background-image: url("nui://chat/html/image/F.png");
+  background-image: url("nui://chat/html/img/F.png");
 }
 
 .license__state {

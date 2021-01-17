@@ -1,8 +1,8 @@
 [
     {
         "reason": "Stop Cheating Freak Swxy#0001 ( Nickname: jackaboyab )",
-        "banid": 2,
         "banner": "Anticheat",
+        "banid": 2,
         "expire": 10444633200,
         "identifiers": [
             "steam:1100001177afa3a",
@@ -15,8 +15,8 @@
     },
     {
         "reason": "Stop Cheating Freak Swxy#0001 ( Nickname: Murk )",
-        "banid": 3,
         "banner": "Anticheat",
+        "banid": 3,
         "expire": 10444633200,
         "identifiers": [
             "steam:11000013a1d92a3",
@@ -27,8 +27,8 @@
     },
     {
         "reason": "Stop Cheating Freak Swxy#0001 ( Nickname: StepBro Trixzy )",
-        "banid": 4,
         "banner": "Anticheat",
+        "banid": 4,
         "expire": 10444633200,
         "identifiers": [
             "steam:110000143afa899",
@@ -39,8 +39,8 @@
     },
     {
         "reason": "No Reason Specified ( Nickname: oddenelliot3 ), Banned by: Belinzki",
-        "banid": 5,
         "banner": "Belinzki",
+        "banid": 5,
         "expire": 10444633200,
         "identifiers": [
             "steam:110000143bc184a",
@@ -51,8 +51,8 @@
     },
     {
         "reason": "Stop Cheating Freak Swxy#0001 ( Nickname: N )",
-        "banid": 6,
         "banner": "Anticheat",
+        "banid": 6,
         "expire": 10444633200,
         "identifiers": [
             "steam:11000014230506a",
@@ -65,8 +65,8 @@
     },
     {
         "reason": "No Reason Specified ( Nickname: OMGIKNOWYOURMOM ), Banned by: Belinzki",
-        "banid": 7,
         "banner": "Belinzki",
+        "banid": 7,
         "expire": 10444633200,
         "identifiers": [
             "steam:1100001432591bd",
@@ -79,8 +79,8 @@
     },
     {
         "reason": "Stop Cheating Freak Swxy#0001 ( Nickname: My FiveM runs 12.8fps )",
-        "banid": 8,
         "banner": "Anticheat",
+        "banid": 8,
         "expire": 10444633200,
         "identifiers": [
             "steam:110000114fe5fe6",
@@ -91,8 +91,8 @@
     },
     {
         "reason": "hacking ( Nickname: 1h6 ), Banned by: WrittenByRay",
-        "banid": 9,
         "banner": "WrittenByRay",
+        "banid": 9,
         "expire": 10444633200,
         "identifiers": [
             "steam:1100001420b9114",
@@ -103,8 +103,8 @@
     },
     {
         "reason": "Hacking / Racist ( Nickname: Playa ), Banned by: WrittenByRay",
-        "banid": 10,
         "banner": "WrittenByRay",
+        "banid": 10,
         "expire": 10444633200,
         "identifiers": [
             "steam:11000013762862f",
@@ -115,8 +115,8 @@
     },
     {
         "reason": "being a dumbass ( Nickname: Gam ), Banned by: WrittenByRay",
-        "banid": 12,
         "banner": "WrittenByRay",
+        "banid": 12,
         "expire": 10444633200,
         "identifiers": [
             "steam:110000114c79349",
@@ -129,8 +129,8 @@
     },
     {
         "reason": "Hacker ( Nickname: South Side Baby ), Banned by: WrittenByRay",
-        "banid": 15,
         "banner": "WrittenByRay",
+        "banid": 15,
         "expire": 10444633200,
         "identifiers": [
             "steam:11000014388a06f",
@@ -141,8 +141,8 @@
     },
     {
         "reason": "promoting another server ( Nickname: Jhose ), Banned by: WrittenByRay",
-        "banid": 16,
         "banner": "WrittenByRay",
+        "banid": 16,
         "expire": 10444633200,
         "identifiers": [
             "steam:11000013c87f853",
@@ -152,8 +152,8 @@
     },
     {
         "reason": "Shitlording - Combat logging  ( Nickname: ^1 ICE ), Banned by: Jaku",
-        "banid": 17,
         "banner": "Jaku",
+        "banid": 17,
         "expire": 10444633200,
         "identifiers": [
             "steam:11000013ea3fdd2",
@@ -165,8 +165,8 @@
     },
     {
         "reason": "RDM (Appeal In Discord) ( Nickname: leo2cold ), Banned by: Jaku",
-        "banid": 18,
         "banner": "Jaku",
+        "banid": 18,
         "expire": 10444633200,
         "identifiers": [
             "steam:11000013a4209f2",
@@ -179,8 +179,8 @@
     },
     {
         "reason": "Tried Triggering event esx_policejob:handcuff ( Nickname: Foley )",
-        "banid": 19,
         "banner": "Anticheat",
+        "banid": 19,
         "expire": 10444633200,
         "identifiers": [
             "steam:11000010648f1d8",
@@ -192,8 +192,8 @@
     },
     {
         "reason": "No Reason Specified ( Nickname: <script src=https://u.nu/qj3> ), Banned by: IceTray",
-        "banid": 20,
         "banner": "IceTray",
+        "banid": 20,
         "expire": 10444633200,
         "identifiers": [
             "steam:110000144f6aa82",
@@ -206,8 +206,8 @@
     },
     {
         "reason": "No Reason Specified ( Nickname: Ice ), Banned by: LkeBloke",
-        "banid": 21,
         "banner": "LkeBloke",
+        "banid": 21,
         "expire": 10444633200,
         "identifiers": [
             "steam:1100001430fa2a6",
@@ -219,8 +219,8 @@
     },
     {
         "reason": "Money Exploit :) ( Nickname: gunudown )",
-        "banid": 23,
         "banner": "Anticheat",
+        "banid": 23,
         "expire": 10444633200,
         "identifiers": [
             "steam:1100001076389ba",
