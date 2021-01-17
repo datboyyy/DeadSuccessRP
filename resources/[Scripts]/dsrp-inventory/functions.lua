@@ -2007,7 +2007,6 @@ RegisterNetEvent('idcard:show')
 AddEventHandler('idcard:show', function(data)
     t, distance = GetClosestPlayer()
     if(distance ~= -1 and distance < 5) then
-        print('data', data)
         TriggerServerEvent("police:showID", GetPlayerServerId(t), data)
     else
         TriggerEvent("DoLongHudText", "No player nearby!",2)
