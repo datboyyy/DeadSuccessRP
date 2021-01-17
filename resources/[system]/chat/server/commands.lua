@@ -1,8 +1,6 @@
---[[ COMMANDS ]]--
-
 ESX = nil
 
-TriggerEvent('esx:getSharAVACedObject', function(obj) ESX = obj end)
+TriggerEvent('esx:getSharAVACedObject', function(obj)ESX = obj end)
 
 function getIdentity(source)
 	local identifier = GetPlayerIdentifiers(source)[1]
@@ -28,7 +26,10 @@ RegisterCommand('clear', function(source, args, rawCommand)
 end, false)
 
 RegisterCommand('clear', function(source, args, rawCommand)
-    TriggerClientEvent('chat:client:ClearChat', source)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    if xPlayer.getGroup() == 'superadmin' then
+    TriggerClientEvent('chat:client:ClearChat', -1)
+    end
 end, false)
 
 RegisterCommand('ooc', function(source, args, rawCommand, suggestions)
@@ -41,7 +42,7 @@ RegisterCommand('ooc', function(source, args, rawCommand, suggestions)
         TriggerEvent('DiscordBot:ToDiscord', 'chat', 'OOC LOG', '> ' .. '[' .. src ..'] ' .. GetPlayerName(src) .. ' ```' .. msg .. '```', 'IMAGE_URL', true)
         GetRPName(source, function(Firstname, Lastname)
             TriggerClientEvent('chat:addMessageOOC', -1, {
-            template = '<div class="chat-message"><b>OOC '.. Firstname.. ' '.. Lastname.. ':</b> {1}</div>',
+            template = '<div class="chat-message"><b>OOC ' ..GetPlayerName(src).. ':</b> {1}</div>',
             args = { user, msg }
         })
     end)

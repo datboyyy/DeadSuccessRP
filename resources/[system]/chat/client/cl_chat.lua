@@ -143,6 +143,7 @@ AddEventHandler('chat:client:ClearChat', function(name)
   SendNUIMessage({
     type = 'ON_CLEAR'
   })
+  TriggerEvent("chatMessage", "Console:", 3, "Chat Cleared")
 end)
 
 AddEventHandler('chat:toggleChat',function()
