@@ -612,7 +612,7 @@ Citizen.CreateThread(function()
         if IsControlJustPressed(1, Keys["E"]) then
             if jailTime > 0 then
                 print(jailTime)
-                TriggerEvent('chat:addMessage', { template = '<div style="padding: 0.475vw; padding-left: 0.8vw; padding-right: 0.7vw; margin: 0.1vw; background-color: rgba(51, 112, 165, 0.85); border-radius: 10px 10px 10px 10px;"><span style="font-weight: bold;">DOC|: You have</b> {0} months remaining </div>', args = { jailTime } })
+                TriggerEvent("chatMessage", "DOC:", 3, jailTime)
                 Wait(10000)
             else
                 Wait(10000)

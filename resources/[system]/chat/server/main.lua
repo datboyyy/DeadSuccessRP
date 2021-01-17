@@ -44,7 +44,7 @@ function getIdentity(source)
 	end
 end
 
-AddEventHandler("chatMessage", function(source, color, message)
+--[[AddEventHandler("chatMessage", function(source, color, message)
     local src = source
     args = stringsplit(message, " ")
     CancelEvent()
@@ -52,7 +52,7 @@ AddEventHandler("chatMessage", function(source, color, message)
         local cmd = args[1]
         table.remove(args, 1)
     end
-end)
+end)]]--
 
 RegisterServerEvent('chat:server:ServerPSA')
 AddEventHandler('chat:server:ServerPSA', function(message)

@@ -212,7 +212,7 @@ local CorrectStore = 0
 RegisterNetEvent("lucky:store")
 AddEventHandler("lucky:store", function()
 	CorrectStore = math.random(18)
-	TriggerEvent('phone:addnotification', 'EMAIL', "Hey, I heard a store has some hot shit in it, go check it out @ " .. SecurityCamLocations[CorrectStore]["info"])
+	TriggerServerEvent("MI-phone:server:sendNewMail", { sender = "Unknown", subject = "Decrypter Enzo Results", message = SecurityCamLocations[CorrectStore]["info"]})
 end)
 
 

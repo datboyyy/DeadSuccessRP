@@ -325,12 +325,15 @@ TriggerEvent('es:addGroupCommand', 'heal', 'admin', function(source, args, user)
 				TriggerClientEvent('MF_SkeletalSystem:HealBones', target, "all")
 				TriggerEvent('mythic_hospital:client:ResetLimbs', target)
 				TriggerEvent('mythic_hospital:client:RemoveBleed', target)
-				TriggerClientEvent('chatMessage', target, "HEAL", {223, 66, 244}, "You have been healed!")
+			--	TriggerClientEvent('chatMessage', target, "HEAL", {223, 66, 244}, "You have been healed!")
+
+				TriggerClientEvent('chat:svtocl', source 'Heal', 4, "You have been healed!")
 			else
-				TriggerClientEvent('chatMessage', source, "HEAL", {255, 0, 0}, "Player not found!")
+				TriggerClientEvent('chat:svtocl', source 'Heal', 4, "Player not found!")
 			end
 		else
-			TriggerClientEvent('chatMessage', source, "HEAL", {255, 0, 0}, "Incorrect syntax! You must provide a valid player ID")
+			--TriggerClientEvent('chatMessage', source, "HEAL", {255, 0, 0}, "Incorrect syntax! You must provide a valid player ID")
+			TriggerClientEvent('chat:svtocl', source 'Heal', 4, "Incorrect syntax! You must provide a valid player ID")
 		end
 	else
 		-- heal source
@@ -339,9 +342,10 @@ TriggerEvent('es:addGroupCommand', 'heal', 'admin', function(source, args, user)
 		TriggerEvent('mythic_hospital:client:ResetLimbs')
 		TriggerEvent('mythic_hospital:client:RemoveBleed')
 		TriggerClientEvent('MF_SkeletalSystem:HealBones', source, "all")
-		print('^1[DeadSuccessRP]^7 ' .. GetPlayerName(source) .. ' is healing!')
+		--print('^1[DeadSuccessRP]^7 ' .. GetPlayerName(source) .. ' is healing!')
+		TriggerClientEvent('chat:svtocl', source 'Heal', 4, "You have been healed!")
 		TriggerClientEvent('esx_basicneeds:healPlayer', source)
 	end
 end, function(source, args, user)
-	TriggerClientEvent('chatMessage', source, "HEAL", {255, 0, 0}, "Insufficient Permissions.")
+	TriggerClientEvent('chat:svtocl', source 'Heal', 4, "Insufficient Permissions")
 end, {help = "Heal a player, or yourself - restores thirst, hunger and health."})

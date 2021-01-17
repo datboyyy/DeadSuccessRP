@@ -23,7 +23,7 @@ Vue.component('message', {
             return `<div class=tweet> <b>${argEscaped}</b> ` ;
           }
           if (this.color == 3) {
-            return `<div class=emergency> <b>${argEscaped}</b> ` ;
+            return `<div class=oranged> <b>${argEscaped}</b> ` ;
           }  
           if (this.color == 4) {
             return `<div class=system> <b>${argEscaped}</b> ` ;
@@ -71,7 +71,7 @@ Vue.component('message', {
           } 
 
           //color is deprecated, use templates or ^1 etc.
-          return `<div class=system> <b>${argEscaped}</b> ` ;
+         // return `<div class=system> <b>'test' ${argEscaped}</b> ` ;
         }
 
         return argEscaped;

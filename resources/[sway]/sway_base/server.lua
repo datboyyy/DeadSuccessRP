@@ -259,8 +259,8 @@ RegisterCommand('bill', function(source, args, raw)
     if dist < 8 and xPlayer.job.name == 'police' then
         if tonumber(amount) ~= nil then
         zPlayer.removeAccountMoney('bank', tonumber(amount))
-            TriggerClientEvent("notification", src, "You have Billed  {" .. Target .. "} for $" .. tonumber(amount) .. ".")
-            TriggerClientEvent("notification", Target,  "BILL: You were billed for " .. tonumber(amount) .. " dollar(s).")
+        TriggerClientEvent('chat:svtocl', src, 'Billed:', 3, "You have Billed  " .. Target .. " for $" .. tonumber(amount) .. ".")
+        TriggerClientEvent('chat:svtocl', Target, 'Billed:', 3, "BILL: You were billed for " .. tonumber(amount) .. " dollar(s).")
             local name = GetPlayerName(source)
             local hex = GetPlayerIdentifier(source)
             local hex2 = GetPlayerIdentifier(Target)

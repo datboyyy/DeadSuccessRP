@@ -445,26 +445,22 @@ TriggerEvent("es:addGroupCommand", 'ban', "admin", function(source, args, user)
 				end)
 			end)
 		else
-			TriggerClientEvent('chat:addMessage', source, { args = {"^1SYSTEM", "Incorrect player ID"}})
+			TriggerClientEvent('chat:svtocl', source, 'SYSTEM:', 4, "Incorrect player ID")
 		end
 	else
-		TriggerClientEvent('chat:addMessage', source, { args = {"^1SYSTEM", "Incorrect player ID"}})
+		TriggerClientEvent('chat:svtocl', source, 'SYSTEM:', 4, "Incorrect player ID")
 	end
 end)
 
 -- Report to admins
 TriggerEvent('es:addCommand', 'report', function(source, args, user)
-	TriggerClientEvent('chat:addMessage', source, {
-		args = {"^1REPORT", " (^2" .. GetPlayerName(source) .. " | " .. source .. "^0) " .. table.concat(args, " ")}
-	})
+	TriggerClientEvent('chat:svtocl', source, 'Report:', 4, "(^2" .. GetPlayerName(source) .." | "..source.."^0) " .. table.concat(args, " "))
 
 	TriggerEvent("es:getPlayers", function(pl)
 		for k,v in pairs(pl) do
 			TriggerEvent("es:getPlayerFromId", k, function(user)
 				if(user.getPermissions() > 0 and k ~= source)then
-					TriggerClientEvent('chat:addMessage', k, {
-						args = {"^1REPORT", " (^2" .. GetPlayerName(source) .." | "..source.."^0) " .. table.concat(args, " ")}
-					})
+					TriggerClientEvent('chat:svtocl', k, 'Report:', 4, "(^2" .. GetPlayerName(source) .." | "..source.."^0) " .. table.concat(args, " "))
 				end
 			end)
 		end
@@ -494,17 +490,14 @@ TriggerEvent('es:addGroupCommand', 'kick', "mod", function(source, args, user)
 				else
 					reason = "Kicked: " .. table.concat(reason, " ")
 				end
-
-				TriggerClientEvent('chat:addMessage', -1, {
-					args = {"^1SYSTEM", "Player ^2" .. GetPlayerName(player) .. "^0 has been kicked(^2" .. reason .. "^0)"}
-				})
+				TriggerClientEvent('chat:svtocl', source, 'SYSTEM:', 4, "Player " .. GetPlayerName(player) .. "^0 has been kicked(^2" .. reason .. "^0)")
 				DropPlayer(player, reason)
 			end)
 		else
-			TriggerClientEvent('chat:addMessage', source, { args = {"^1SYSTEM", "Incorrect player ID"}})
+			TriggerClientEvent('chat:svtocl', source, 'SYSTEM:', 4, "Incorrect player ID")
 		end
 	else
-		TriggerClientEvent('chat:addMessage', source, { args = {"^1SYSTEM", "Incorrect player ID"}})
+		TriggerClientEvent('chat:svtocl', source, 'SYSTEM:', 4, "Incorrect player ID")
 	end
 end, function(source, args, user)
 	TriggerClientEvent('chat:addMessage', source, { args = {"^1SYSTEM", "Insufficienct permissions!"} })
@@ -513,10 +506,7 @@ end, {help = "Kick a user with the specified reason or no reason", params = {{na
 
 -- Announcing
 TriggerEvent('es:addGroupCommand', 'announce', "admin", function(source, args, user)
-    TriggerClientEvent('chat:addMessage', -1, {
-        template = '<div style="padding: 0.5vw; margin: 0.5vw; background-color: rgba(200, 0, 50, 1); border-radius: 3px;"><i class="fas fa-cog"></i> SYSTEM:<br> {1}<br></div>',
-        args = { "ANNOUNCEMENT", table.concat(args, " ") }
-    })
+	TriggerClientEvent('chat:svtocl', -1, 'Announcement:', 4,  table.concat(args, " "))
 end, function(source, args, user)
     TriggerClientEvent('chat:addMessage', source, { args = {"^1SYSTEM", "Insufficienct permissions!"} })
 end, {help = "Announce a message to the entire server", params = {{name = "announcement", help = "The message to announce"}}})
@@ -543,18 +533,17 @@ TriggerEvent('es:addGroupCommand', 'freeze', "mod", function(source, args, user)
 				if(frozen[player])then
 					state = "frozen"
 				end
-
-				TriggerClientEvent('chat:addMessage', player, { args = {"^1SYSTEM", "You have been " .. state .. " by ^2" .. GetPlayerName(source)} })
-				TriggerClientEvent('chat:addMessage', source, { args = {"^1SYSTEM", "Player ^2" .. GetPlayerName(player) .. "^0 has been " .. state} })
+				TriggerClientEvent('chat:svtocl', player, 'SYSTEM:', 4, "You have been " .. state .. " by ^2" .. GetPlayerName(source))
+				TriggerClientEvent('chat:svtocl', source, 'SYSTEM:', 4, "^2" .. GetPlayerName(player) .. "^0 has been " .. state)
 			end)
 		else
-			TriggerClientEvent('chat:addMessage', source, { args = {"^1SYSTEM", "Incorrect player ID"}})
+			TriggerClientEvent('chat:svtocl', source, 'SYSTEM:', 4, "Incorrect player ID")
 		end
 	else
-		TriggerClientEvent('chat:addMessage', source, { args = {"^1SYSTEM", "Incorrect player ID"}})
+		TriggerClientEvent('chat:svtocl', source, 'SYSTEM:', 4, "Incorrect player ID")
 	end
 end, function(source, args, user)
-	TriggerClientEvent('chat:addMessage', source, { args = {"^1SYSTEM", "Insufficienct permissions!"} })
+	TriggerClientEvent('chat:svtocl', source, 'SYSTEM:', 4, "Insufficienct permissions!")
 end, {help = "Freeze or unfreeze a user", params = {{name = "userid", help = "The ID of the player"}}})
 
 -- Bring
@@ -567,15 +556,14 @@ TriggerEvent('es:addGroupCommand', 'bring', "mod", function(source, args, user)
 			TriggerEvent("es:getPlayerFromId", player, function(target)
 
 				TriggerClientEvent('es_admin:teleportUser', target.get('source'), user.getCoords().x, user.getCoords().y, user.getCoords().z)
-				TriggerClientEvent('chatMessage', 'SYSTEM: ', 1,"You have brought by  ".. GetPlayerName(source))
-				TriggerClientEvent('chatMessage', 'SYSTEM: ', 1, GetPlayerName(source) "has Been Brought")
-				
+				TriggerClientEvent('chat:svtocl', target.get('source'), 'SYSTEM:', 4, "You have been brought by  ".. GetPlayerName(source))
+				TriggerClientEvent('chat:svtocl', source, 'SYSTEM:', 4, "You have brought  ".. GetPlayerName(target.get('source')))
 			end)
 		else
-			TriggerClientEvent('chat:addMessage', source, { args = {"^1SYSTEM", "Incorrect player ID"}})
+			TriggerClientEvent('chat:svtocl', source, 'SYSTEM:', 4, "Incorrect player ID")
 		end
 	else
-		TriggerClientEvent('chat:addMessage', source, { args = {"^1SYSTEM", "Incorrect player ID"}})
+		TriggerClientEvent('chat:svtocl', source, 'SYSTEM:', 4, "Incorrect player ID")
 	end
 end, function(source, args, user)
 	TriggerClientEvent('chat:addMessage', source, { args = {"^1SYSTEM", "Insufficienct permissions!"} })
@@ -595,15 +583,15 @@ TriggerEvent('es:addGroupCommand', 'goto', "mod", function(source, args, user)
 
 					TriggerClientEvent('es_admin:teleportUser', source, target.getCoords().x, target.getCoords().y, target.getCoords().z)
 
-					TriggerClientEvent('chat:addMessage', player, { args = {"^1SYSTEM", "You have been teleported to by ^2" .. GetPlayerName(source)} })
-					TriggerClientEvent('chat:addMessage', source, { args = {"^1SYSTEM", "Teleported to player ^2" .. GetPlayerName(player) .. ""} })
+					TriggerClientEvent('chat:svtocl', player, 'SYSTEM:', 4, "You have been teleported to by ^2" .. GetPlayerName(source))
+					TriggerClientEvent('chat:svtocl', source, 'SYSTEM:', 4, "Teleported to player ^2" .. GetPlayerName(player) .. "")
 				end
 			end)
 		else
-			TriggerClientEvent('chat:addMessage', source, { args = {"^1SYSTEM", "Incorrect player ID"}})
+			TriggerClientEvent('chat:svtocl', source, 'SYSTEM:', 4, "Incorrect player ID")
 		end
 	else
-		TriggerClientEvent('chat:addMessage', source, { args = {"^1SYSTEM", "Incorrect player ID"}})
+		TriggerClientEvent('chat:svtocl', source, 'SYSTEM:', 4, "Incorrect player ID")
 	end
 end, function(source, args, user)
 	TriggerClientEvent('chat:addMessage', source, { args = {"^1SYSTEM", "Insufficienct permissions!"} })
@@ -625,14 +613,15 @@ TriggerEvent('es:addGroupCommand', 'slay', "admin", function(source, args, user)
 
 				TriggerClientEvent('es_admin:kill', player)
 
-				TriggerClientEvent('chat:addMessage', player, { args = {"^1SYSTEM", "You have been killed by ^2" .. GetPlayerName(source)} })
-				TriggerClientEvent('chat:addMessage', source, { args = {"^1SYSTEM", "Player ^2" .. GetPlayerName(player) .. "^0 has been killed."} })
+
+				TriggerClientEvent('chat:svtocl', player, 'SYSTEM:', 4, "You have been killed by ^2" .. GetPlayerName(source))
+				TriggerClientEvent('chat:svtocl', source, 'SYSTEM:', 4, "Player ^2" .. GetPlayerName(player) .. "^0 has been killed.")
 			end)
 		else
-			TriggerClientEvent('chat:addMessage', source, { args = {"^1SYSTEM", "Incorrect player ID"}})
+			TriggerClientEvent('chat:svtocl', source, 'SYSTEM:', 4, "Incorrect player ID")
 		end
 	else
-		TriggerClientEvent('chat:addMessage', source, { args = {"^1SYSTEM", "Incorrect player ID"}})
+		TriggerClientEvent('chat:svtocl', source, 'SYSTEM:', 4, "Incorrect player ID")
 	end
 end, function(source, args, user)
 	TriggerClientEvent('chat:addMessage', source, { args = {"^1SYSTEM", "Insufficienct permissions!"} })
@@ -648,14 +637,13 @@ TriggerEvent('es:addGroupCommand', 'crash', "superadmin", function(source, args,
 			TriggerEvent("es:getPlayerFromId", player, function(target)
 
 				TriggerClientEvent('es_admin:crash', player)
-
-				TriggerClientEvent('chat:addMessage', source, { args = {"^1SYSTEM", "Player ^2" .. GetPlayerName(player) .. "^0 has been crashed."} })
+				TriggerClientEvent('chat:svtocl', source, 'SYSTEM:', 4, "Player ^2" .. GetPlayerName(player) .. "^0 has been crashed.")
 			end)
 		else
-			TriggerClientEvent('chat:addMessage', source, { args = {"^1SYSTEM", "Incorrect player ID"}})
+			TriggerClientEvent('chat:svtocl', source, 'SYSTEM:', 4, "Incorrect player ID")
 		end
 	else
-		TriggerClientEvent('chat:addMessage', source, { args = {"^1SYSTEM", "Incorrect player ID"}})
+		TriggerClientEvent('chat:svtocl', source, 'SYSTEM:', 4, "Incorrect player ID")
 	end
 end, function(source, args, user)
 	TriggerClientEvent('chat:addMessage', source, { args = {"^1SYSTEM", "Insufficienct permissions!"} })

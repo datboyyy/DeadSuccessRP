@@ -22,6 +22,9 @@ Citizen.CreateThread(function()
 	end
 end)
 
+RegisterCommand('testchat', function()
+    TriggerEvent("chatMessage", "EMAIL ", "Yo, here are the coords for the drop off, you have 10 minutes - it will cost  Pixerium")
+end, false)
 
 
 RegisterCommand('911', function(source, args, rawCommand)

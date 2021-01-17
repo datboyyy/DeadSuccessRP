@@ -51,10 +51,7 @@ RegisterNUICallback('escape', function(data, cb)
 	if hasIdentity then
 		EnableGui(false)
 	else
-		TriggerEvent('chat:addMessage', {
-			template = '<div style="padding: 0.6vw; padding-left: 0.8vw; background-color: rgba(207, 37, 37, 0.9); border-radius: 6px;"><span style="width: 100%; font-weight: bold;">SYSTEM: </span>You need to make you characters identity first.</div>',
-			args = {}
-		}) 
+		TriggerEvent("chatMessage", "SYSTEM:", 4, "You need to finish making your identity")
 	end
 end)
 
@@ -103,15 +100,9 @@ RegisterNUICallback('register', function(data, cb)
 		TriggerEvent('aqua:load', false)
 		TriggerEvent("raid_clothes:register")
 		TriggerEvent("raid_clothes:myFirstSpawn", true)
-		TriggerEvent('chat:addMessage', {
-			template = '<div style="padding: 0.6vw; padding-left: 0.8vw; background-color: rgba(207, 125, 25, 0.9); border-radius: 6px;"><span style="width: 100%; font-weight: bold;">[SYSTEM]: </span>Welcome to DeadSuccessRP!, Make sure to join the discord @discord.gg/p6ZcHN5 check out all the rules.</div>',
-			args = {}
-		})  
+		TriggerEvent("chatMessage", "SYSTEM:", 4, "Welcome to DeadSuccessRP!, Make sure to join the discord @discord.gg/p6ZcHN5 check out all the rules.")
 		Wait(10000)
-		TriggerEvent('chat:addMessage', {
-			template = '<div style="padding: 0.6vw; padding-left: 0.8vw; background-color: rgba(207, 125, 25, 0.9); border-radius: 6px;"><span style="width: 100%; font-weight: bold;">[SYSTEM]: </span>Your starting items was already given to you! Enjoy! .</div>',
-			args = {}
-		}) 
+		TriggerEvent("chatMessage", "SYSTEM:", 4, "Your starting items was already given to you! Enjoy!.")
 		TransitionFromBlurred(500)
 		TriggerEvent('phone:addnotification','Newbie', 'Welcome to DeadSuccessRP. We sent you a starting items. Enjoy!')
 		TriggerEvent('player:receiveItem', 'idcard', 1)

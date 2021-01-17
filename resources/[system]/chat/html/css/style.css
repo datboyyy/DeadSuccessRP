@@ -4,7 +4,7 @@
 .color-3{color: #ffbb33;}
 .color-4{color: #0099cc;}
 .color-5{color: #33b5e5;}
-.color-6{color: #aa66cc;}
+.color-6{color: #da9df9;}
 .color-8{color: #cc0000;}
 .color-9{color: #cc0068;}
 
@@ -168,31 +168,16 @@ textarea {
 
 .system {
     border-radius: 10px 10px 10px 10px;
-    background-color: rgba(190, 97, 18, 0.85);
+    background-color: rgba(169, 33, 33, 0.85);
     color: #fff;
     margin-top: 10px;
     padding: 8px;
-    padding-left:10px;
+    padding-left:37px;
     display: inline-block;
     line-height: 26px;
     width:auto;
     float:left;
-    margin-left:10px;    
-}
-
-.chat-message-system {
-  display: inline-block !important;
-  padding: 0.5vw;
-  padding-top: 0.5vw;
-  padding-bottom: 0.6vw;
-  margin: 0.1vw;
-  margin-left: 0.4vw;
-  border-radius: 10px;
-  background-color: rgba(190, 97, 18, 0.85);
-  width: fit-content;
-  max-width: 100%;
-  overflow: hidden;
-  word-break: break-word;
+    margin-left:10px;
 }
 
 
@@ -229,7 +214,7 @@ textarea {
 
 .smsto {
     border-radius: 10px 10px 10px 10px;
-    background-color: rgba(77, 36, 92, 0.85);
+    background-color: rgba(210, 143, 234, 0.85);
     color: #fff;
     margin-top: 10px;
     padding: 8px;
@@ -239,6 +224,19 @@ textarea {
     width:auto;
     float:left;
     margin-left:10px;
+}
+.oranged {
+  border-radius: 10px 10px 10px 10px;
+  background-color: rgba(190, 97, 18, 0.85);
+  color: #fff;
+  margin-top: 10px;
+  padding: 8px;
+  padding-left:37px;
+  display: inline-block;
+  line-height: 26px;
+  width:auto;
+  float:left;
+  margin-left:10px;
 }
 
 .multiline {

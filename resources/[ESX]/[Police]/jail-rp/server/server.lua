@@ -17,7 +17,8 @@ RegisterCommand("jail", function(src, args, raw)
 			if jailTime ~= nil then
 				JailPlayer(jailPlayer, jailTime)
 
-				TriggerClientEvent("esx:showNotification", src, GetPlayerName(jailPlayer) .. " Jailed for " .. jailTime .. " minutes!")
+				--TriggerClientEvent("esx:showNotification", src, GetPlayerName(jailPlayer) .. " Jailed for " .. jailTime .. " minutes!")
+				TriggerClientEvent('chat:svtocl', -1, 'JUDGE:', 3 , GetCharacterName(jailPlayer) .. " Jailed for " .. jailTime .. " months!" )
 				
 				if args[3] ~= nil then
 					GetRPName(jailPlayer, function(Firstname, Lastname)

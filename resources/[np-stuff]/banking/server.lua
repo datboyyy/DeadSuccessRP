@@ -240,7 +240,7 @@ RegisterCommand('givecash', function(source, args, rawCommand)
 
 
   local playerRec = ESX.GetPlayerFromId(reciever)
-
+  TriggerClientEvent('chat:svtocl', source, 'Transfer:', 3, "You have transfered $"..amount)
   TriggerClientEvent("bank:givecash", source, sender, reciever, amount)
   local givecash = {
     {
@@ -298,6 +298,7 @@ RegisterCommand('cash', function(source, args, rawCommand)
   local _source = source
 local xPlayer = ESX.GetPlayerFromId(_source)
   cash = xPlayer.getMoney()
+  TriggerClientEvent('chat:svtocl', 'Cash:', 3, cash)
   TriggerClientEvent('banking:updateCash', source, cash)
 end)
 
@@ -305,5 +306,6 @@ RegisterCommand('bank', function(source, args, rawCommand)
   local _source = source
 local xPlayer = ESX.GetPlayerFromId(_source)
   bank = xPlayer.getAccount('bank').money
+  TriggerClientEvent('chat:svtocl', 'Bank:', 3, bank)
   TriggerClientEvent('banking:updateBalance', source, bank)
 end)

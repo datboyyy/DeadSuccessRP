@@ -93,7 +93,6 @@ AddEventHandler('police:SeizeCash', function(target)
 
 end)
 
-
 RegisterServerEvent('cash-checksv')
 AddEventHandler('cash-checksv', function(target)
     local src = source
@@ -102,14 +101,10 @@ AddEventHandler('cash-checksv', function(target)
     local zPlayer = ESX.GetPlayerFromId(target)
     local money = zPlayer.getMoney()
     local money2 = zPlayer.getAccount('bank').money
-	TriggerClientEvent('chat:addMessage',  src, {
-        template =  '<div style="padding: 0.5vw; padding-left: 0.8vw; background-color: rgba(207, 125, 25, 0.7); border-radius: 6px;"><span style="width: 100%; font-weight: bold;"></span>Cash: ${0}</div>',
-        args = {money}
-    }) 
-	TriggerClientEvent('chat:addMessage',  src, {
-        template =  '<div style="padding: 0.5vw; padding-left: 0.8vw; background-color: rgba(207, 125, 25, 0.7); border-radius: 6px;"><span style="width: 100%; font-weight: bold;"></span>Bank: ${0}</div>',
-        args = {money2}
-    }) 
+    print('ran?')
+    TriggerClientEvent('chat:svtocl', source, 'Bank:', 3, money2)
+    TriggerClientEvent('chat:svtocl', source, 'Cash:', 3, money)
+
     TriggerClientEvent("notification", target, "Your Balances were checked")
 end)
 

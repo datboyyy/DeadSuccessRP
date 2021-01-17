@@ -141,7 +141,7 @@ AddEventHandler('es_admin:quick', function(t, target)
 			msg = "enabled"
 		end
 
-		TriggerEvent("chatMessage", "SYSTEM", {255, 0, 0}, "Noclip has been ^2^*" .. msg)
+		TriggerEvent("chatMessage", "SYSTEM", 4, "Noclip has been ^2^*" .. msg)
 	end
 	if t == "freeze" then
 		local player = PlayerId()
@@ -329,7 +329,8 @@ AddEventHandler("es_admin:noclip", function(t)
     FreezeEntityPosition(noclipEntity, noclipActive)
     SetEntityInvincible(noclipEntity, noclipActive)
     SetVehicleRadioEnabled(noclipEntity, not noclipActive) -- [[Stop radio from appearing when going upwards.]]
-	TriggerEvent("notification",'SYSTEM: Noclip has been'  ..msg, 1)
+	--TriggerEvent("notification",'SYSTEM: Noclip has been'  ..msg, 1)
+	TriggerEvent("chatMessage", "NoClip:", 4, msg)
 end)
 
 function getPlayers()

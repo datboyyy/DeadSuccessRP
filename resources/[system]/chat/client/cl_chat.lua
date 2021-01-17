@@ -349,3 +349,8 @@ end, false)
 -- AddEventHandler('chat:toggle:false', function()
 --   chatVisibilityToggle = false
 -- end)
+
+RegisterNetEvent('chat:svtocl')
+AddEventHandler('chat:svtocl', function(title, color, message)
+  TriggerEvent("chatMessage", title, color, message)
+end)
