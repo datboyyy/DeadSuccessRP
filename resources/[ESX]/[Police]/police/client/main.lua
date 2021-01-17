@@ -911,6 +911,8 @@ AddEventHandler('tp_policejob:handcuff', function()
     if finished ~= 100 then
         TriggerEvent('notification', 'Failed to resist...', 2)
         isHandcuffed = not isHandcuffed
+        local playerPed = PlayerPedId()
+        SetPedComponentVariation(playerPed, 7, 54, 0, 2)
     else
         TriggerEvent('notification', 'You have resisted, NOW RUN')
     end
@@ -958,14 +960,14 @@ end)
 
 RegisterNetEvent('tp_policejob:uncuff')
 AddEventHandler('tp_policejob:uncuff', function()
-    isHandcuffed = not isHandcuffed
+    isHandcuffed = false
     local playerPed = PlayerPedId()
     
     Citizen.CreateThread(function()
         if Config.EnableHandcuffTimer and handcuffTimer.active then
             ESX.ClearTimeout(handcuffTimer.task)
         end
-        
+        SetPedComponentVariation(playerPed, 7, 0, 0, 2)
         ClearPedSecondaryTask(playerPed)
         SetEnableHandcuffs(playerPed, false)
         DisablePlayerFiring(playerPed, false)
@@ -981,8 +983,10 @@ AddEventHandler('tp_policejob:softcuff', function()
     if finished ~= 100 then
         TriggerEvent('notification', 'failed to resist...', 2)
         isHandcuffed = not isHandcuffed
+        local playerPed = PlayerPedId()
+        SetPedComponentVariation(playerPed, 7, 54, 0, 2)
     else
-        TriggerEvent('notification', 'you have resisted, NOW RUN')
+        TriggerEvent('notification', 'You have resisted, NOW RUN')
     
     end
     --isHandcuffed = not isHandcuffed
@@ -1023,7 +1027,7 @@ AddEventHandler('esx_policejob:unrestrain', function()
     if isHandcuffed then
         local playerPed = PlayerPedId()
         isHandcuffed = false
-        
+        SetPedComponentVariation(playerPed, 7, 0, 0, 2)
         ClearPedSecondaryTask(playerPed)
         SetEnableHandcuffs(playerPed, false)
         DisablePlayerFiring(playerPed, false)
@@ -1942,7 +1946,7 @@ Citizen.CreateThread(function()
                 --shift and e == cuff
                 if IsControlPressed(0, 38) and IsControlPressed(0, 209) then
                     TriggerEvent("tp:handcuff")
-                    Citizen.Wait(1000)
+                    Citizen.Wait(2000)
                 end
                 -- shift and h = uncuff
                 if IsControlPressed(0, 209) and IsControlPressed(0, 74) then

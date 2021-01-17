@@ -1193,47 +1193,31 @@ AddEventHandler('MI-phone:client:TransferMoney', function(amount, newmoney)
 end)
 
 RegisterNetEvent('MI-phone:client:UpdateTweets')
-AddEventHandler('MI-phone:client:UpdateTweets', function(src, Tweets, NewTweetData)
-    PhoneData.Tweets = Tweets
-    local MyPlayerId = PhoneData.PlayerData.source
-    
-    if src ~= MyPlayerId then
-        if not PhoneData.isOpen then
-            SendNUIMessage({
-                action = "Notification",
-                NotifyData = {
-                    title = Lang("TWITTER_NEW") .. " (@" .. NewTweetData.firstName .. " " .. NewTweetData.lastName .. ")",
-                    content = NewTweetData.message,
-                    icon = "fab fa-twitter",
-                    timeout = 3500,
-                    color = nil,
-                },
-            })
-        else
-            SendNUIMessage({
-                action = "PhoneNotification",
-                PhoneNotify = {
-                    title = Lang("TWITTER_NEW") .. " (@" .. NewTweetData.firstName .. " " .. NewTweetData.lastName .. ")",
-                    text = NewTweetData.message,
-                    icon = "fab fa-twitter",
-                    color = "#1DA1F2",
-                },
-            })
-        end
-    else
-        SendNUIMessage({
-            action = "PhoneNotification",
-            PhoneNotify = {
-                title = Lang("TWITTER_TITLE"),
-                text = Lang("TWITTER_POSTED"),
-                icon = "fab fa-twitter",
-                color = "#1DA1F2",
-                timeout = 1000,
-            },
-        })
+AddEventHandler('MI-phone:client:UpdateTweets', function(firstName, lastname, message)
+
+if not PhoneData.isOpen then
+    SendNUIMessage({
+        action = "Notification",
+        NotifyData = {
+            title = Lang("TWITTER_NEW") .. " (@" .. firstName .. " " .. lastname .. ")",
+            content = message,
+            icon = "fab fa-twitter",
+            timeout = 3500,
+            color = nil,
+        },
+    })
+else
+    SendNUIMessage({
+        action = "PhoneNotification",
+        PhoneNotify = {
+            title = Lang("TWITTER_NEW") .. " (@" .. firstName .. " " .. lastname .. ")",
+            text = message,
+            icon = "fab fa-twitter",
+            color = "#1DA1F2",
+        },
+    })
     end
 end)
-
 RegisterNUICallback('GetMentionedTweets', function(data, cb)
     cb(PhoneData.MentionedTweets)
 end)

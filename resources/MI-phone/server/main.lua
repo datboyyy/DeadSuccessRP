@@ -140,21 +140,23 @@ end)
 
 RegisterServerEvent('lucid_phone:saveTwitterToDatabase')
 AddEventHandler('lucid_phone:saveTwitterToDatabase', function(firstName, lastname, message, url, time, picture)
-    local xPlayer = ESX.GetPlayerFromId(source)
+    local src = source
+    local xPlayer = ESX.GetPlayerFromId(src)
+    local character = GetCharacter(src)
 
-	MySQL.Async.execute('INSERT INTO twitter_tweets (firstname, lastname, message, url, time, picture, owner) VALUES (@firstname, @lastname, @message, @url, @time, @picture, @owner)',
-	{
-		['@firstname']   	= firstName,
-		['@lastname']   	= lastname,
-		['@message'] 	= message,
-        ['@url']       = url,
-		['@time']  = time,
-        ['@picture'] 		= picture,
-        ['@owner'] 		= xPlayer.identifier,
+    MySQL.Async.execute('INSERT INTO twitter_tweets (firstname, lastname, message, url, time, picture, owner) VALUES (@firstname, @lastname, @message, @url, @time, @picture, @owner)',
+    {
+        ['@firstname'] = firstName,
+        ['@lastname'] = lastname,
+        ['@message'] = message,
+        ['@url'] = url,
+        ['@time'] = time,
+        ['@picture'] = picture,
+        ['@owner'] = xPlayer.identifier,
 
-	})
+    })    
+    TriggerClientEvent('MI-phone:client:UpdateTweets', -1, firstName, lastname, message)
 end)
-
 
 
 RegisterServerEvent('MI-phone:server:AddAdvert')
