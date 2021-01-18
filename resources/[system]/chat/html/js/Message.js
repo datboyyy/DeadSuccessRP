@@ -49,7 +49,7 @@ Vue.component('message', {
             var sex = this.args.sex.toUpperCase();
             var identifier = this.args.identifier;
             return `<div class="license">
-            <div class="license__state">San Andreas</div>
+              <div class="license__state">San Andreas</div>
               <div class="license__signature">${Fname} ${Lname}</div>
               <div class="license__photo license__photo--${sex[0]}"></div>
               <div class="license__row license__row--red license__row--exp">${dob.getMonth() + 1}/${dob.getDate() + 1}/${now.getFullYear() + 4}</div>
