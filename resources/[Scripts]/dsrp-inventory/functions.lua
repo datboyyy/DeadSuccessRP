@@ -987,6 +987,9 @@ end
     if (itemid == "notepad") then
         TriggerEvent("Notepad:open")
     end
+    if (itemid == "fishingrod") then
+        TriggerEvent("BegingFish")
+    end
 
     if (itemid == "harness") then
         local veh = GetVehiclePedIsIn(player, false)

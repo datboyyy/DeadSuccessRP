@@ -44,7 +44,7 @@ function OpenBoatShop(shop)
 				{label = _U('confirm_yes'), value = 'yes'}
 		}}, function (data2, menu2)
 			if data2.current.value == 'yes' then
-				local plate = exports['esx_vehicleshop']:GeneratePlate()
+				local plate = generatePlate(8)
 				local vehicle = GetVehiclePedIsIn(playerPed, false)
 				local props = ESX.Game.GetVehicleProperties(vehicle)
 				props.plate = plate
@@ -245,3 +245,25 @@ function getVehicleLabelFromHash(hash)
 
 	return 'Unknown model [' .. model .. ']'
 end
+
+
+function stringsplit(self, delimiter)
+	local a = self:Split(delimiter)
+	local t = {}
+  
+	for i = 0, #a - 1 do
+	   table.insert(t, a[i])
+	end
+  
+	return t
+  end
+  
+  local charset = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","1","2","3","4","5","6","7","8","9"}
+  
+  function generatePlate(length)
+	if length > 0 then
+	  return generatePlate(length - 1) .. charset[math.random(1, #charset)]
+	else
+	  return ""
+	end
+  end
