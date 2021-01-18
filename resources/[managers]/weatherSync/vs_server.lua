@@ -7,6 +7,8 @@ local currenttime = 130000
 
 RegisterServerEvent('kGetWeather')
 AddEventHandler('kGetWeather', function()
+    print('Set Weather', source, currentweather)
+    print('Set Time', source, currenttime)
     TriggerClientEvent('kWeatherSync', source, currentweather)
     TriggerClientEvent('kTimeSync', source, currenttime)
 end)
@@ -64,3 +66,10 @@ RegisterCommand('weather', function(source, args)
         end
     end
 end)
+
+
+RegisterServerEvent('weather:receivefromcl')
+AddEventHandler('weather:receivefromcl', function(secondsofday)
+currenttime = secondsofday
+end)
+

@@ -431,17 +431,9 @@ function fishingStart()
 	attachModel = GetHashKey('prop_fishing_rod_01')
 
 	SetCurrentPedWeapon(GetPlayerPed(-1), 0xA2719263) 
-	local bone = GetPedBoneIndex(GetPlayerPed(-1), 60309)
-
-	RequestModel(attachModel)
-	while not HasModelLoaded(attachModel) do
-		Citizen.Wait(100)
-	end
 
 
-	FishRod = CreateObject(attachModel, 1.0, 1.0, 1.0, 1, 1, 0)
 
-	AttachEntityToEntity(FishRod, GetPlayerPed(-1), bone, 0,0,0, 0,0,0, 1, 1, 0, 0, 2, 1)
 
 
 	local leftFishing = false

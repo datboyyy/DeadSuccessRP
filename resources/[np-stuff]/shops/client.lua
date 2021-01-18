@@ -131,9 +131,9 @@ AddEventHandler("shop:isNearPed", function()
 	end
 end)
 
+
 function setShopBlip()
 
-	
 	for station,pos in pairs(weashop_locations) do
 		local loc = pos
 		pos = pos.entering
@@ -178,6 +178,7 @@ function DisplayHelpText(str)
 	AddTextComponentString(str)
 	DisplayHelpTextFromStringLabel(0, 0, 1, -1)
 end
+
 
 
 
