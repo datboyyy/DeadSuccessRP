@@ -463,7 +463,7 @@ AddEventHandler("weather:setCycle", function(cycle)
 end)
 
 insideWeather = "CLEAR"
-curWeather = "XMAS"
+curWeather = "CLEAR"
 RegisterNetEvent("kWeatherSync")
 AddEventHandler("kWeatherSync", function(wfer)
 	curWeather = wfer
