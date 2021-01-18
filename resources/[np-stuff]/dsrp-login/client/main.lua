@@ -93,13 +93,6 @@ AddEventHandler('kashactersC:SpawnCharacter', function(spawn, isnew)
     TriggerServerEvent('kashactersS:requestPlyName')
     TriggerServerEvent('kashactersS:requestfunds')
     ExecuteCommand('hud')
-    ESX.TriggerServerCallback('esx-qalle-jail:retrieveJailTime', function(cb) 
-        if cb == true then 
-            TriggerEvent('notfication','You have been jailed since you logged out while jailed.', 2)
-            SetEntityCoords(PlayerPedId(), 1785.99, 2577.46, 45.71)
-        else 
-        end
-	end)
 end)
 
 RegisterNetEvent('kashactersC:ReloadCharacters')

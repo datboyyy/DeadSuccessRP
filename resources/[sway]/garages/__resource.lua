@@ -1,18 +1,27 @@
 resource_manifest_version '44febabe-d386-4d18-afbe-5e627f4af937'
--- What to run
-client_scripts {
-    'client.lua',
-    'gui.lua'
-}
+
+description 'ESX Advanced Garage'
+
+version '1.0.0'
+
 server_scripts {
-    "@mysql-async/lib/MySQL.lua",
-    'server.lua',
-    'gui.lua'
+	'@mysql-async/lib/MySQL.lua',
+	'@es_extended/locale.lua',
+	'locales/en.lua',
+	'config.lua',
+	'server/main.lua'
 }
 
--- Extra data can be used as well
-my_data 'one' { two = 42 }
-my_data 'three' { four = 69 }
+client_scripts {
+	'@es_extended/locale.lua',
+	'locales/en.lua',
+	'config.lua',
+	'client/vehicle_names.lua',
+	'client/main.lua'
+}
 
--- due to Lua syntax, the following works too:
-my_data('nine')({ninety = "nein"})
+client_script '@AntiCheat/SkidKnocker.lua'
+
+dependencies {
+	'es_extended'
+}
