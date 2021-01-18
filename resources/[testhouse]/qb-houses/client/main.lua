@@ -279,9 +279,9 @@ Citizen.CreateThread(function()
                         if not entering then
                             if POIOffsets ~= nil then
                                 if POIOffsets.exit ~= nil then
-                                    if(GetDistanceBetweenCoords(pos, Config.Houses[CurrentHouse].coords.enter.x + POIOffsets.exit.x, Config.Houses[CurrentHouse].coords.enter.y + POIOffsets.exit.y, Config.Houses[CurrentHouse].coords.enter.z - Config.MinZOffset + POIOffsets.exit.z, true) < 1.5)then
-                                        DrawText3Ds(Config.Houses[CurrentHouse].coords.enter.x + POIOffsets.exit.x, Config.Houses[CurrentHouse].coords.enter.y + POIOffsets.exit.y, Config.Houses[CurrentHouse].coords.enter.z - Config.MinZOffset + POIOffsets.exit.z, 'Press ~g~ E ~w~ - to leave the house')
-                                        DrawText3Ds(Config.Houses[CurrentHouse].coords.enter.x + POIOffsets.exit.x, Config.Houses[CurrentHouse].coords.enter.y + POIOffsets.exit.y, Config.Houses[CurrentHouse].coords.enter.z - Config.MinZOffset + POIOffsets.exit.z - 0.1, 'Press ~g~ H ~w~ - to see monitoring')
+                                    if(GetDistanceBetweenCoords(pos, Config.Houses[CurrentHouse].coords.enter.x + POIOffsets.exit.x, Config.Houses[CurrentHouse].coords.enter.y + POIOffsets.exit.y, -100.00 + POIOffsets.exit.z, true) < 1.5)then
+                                        DrawText3Ds(Config.Houses[CurrentHouse].coords.enter.x + POIOffsets.exit.x, Config.Houses[CurrentHouse].coords.enter.y + POIOffsets.exit.y, -100.00 + POIOffsets.exit.z, 'Press ~g~ E ~w~ - to leave the house')
+                                        DrawText3Ds(Config.Houses[CurrentHouse].coords.enter.x + POIOffsets.exit.x, Config.Houses[CurrentHouse].coords.enter.y + POIOffsets.exit.y, -100.00 + POIOffsets.exit.z - 0.1, 'Press ~g~ H ~w~ - to see monitoring')
                                         if IsControlJustPressed(0, Keys["E"]) then
                                             leaveOwnedHouse(CurrentHouse)
                                         end
@@ -311,8 +311,8 @@ Citizen.CreateThread(function()
                             elseif inOwned then
                                 if POIOffsets ~= nil then
                                     if POIOffsets.exit ~= nil then
-                                        if(GetDistanceBetweenCoords(pos, Config.Houses[CurrentHouse].coords.enter.x + POIOffsets.exit.x, Config.Houses[CurrentHouse].coords.enter.y + POIOffsets.exit.y, Config.Houses[CurrentHouse].coords.enter.z - Config.MinZOffset + POIOffsets.exit.z, true) < 1.5)then
-                                            DrawText3Ds(Config.Houses[CurrentHouse].coords.enter.x + POIOffsets.exit.x, Config.Houses[CurrentHouse].coords.enter.y + POIOffsets.exit.y, Config.Houses[CurrentHouse].coords.enter.z - Config.MinZOffset + POIOffsets.exit.z, 'Press ~g~ E ~w~ - to leave the house')
+                                        if(GetDistanceBetweenCoords(pos, Config.Houses[CurrentHouse].coords.enter.x + POIOffsets.exit.x, Config.Houses[CurrentHouse].coords.enter.y + POIOffsets.exit.y, -100.00 + POIOffsets.exit.z, true) < 1.5)then
+                                            DrawText3Ds(Config.Houses[CurrentHouse].coords.enter.x + POIOffsets.exit.x, Config.Houses[CurrentHouse].coords.enter.y + POIOffsets.exit.y, -100.00 + POIOffsets.exit.z, 'Press ~g~ E ~w~ - to leave the house')
                                             if IsControlJustPressed(0, Keys["E"]) then
                                                 leaveNonOwnedHouse(CurrentHouse)
                                             end
@@ -326,8 +326,8 @@ Citizen.CreateThread(function()
                         if not entering then
                             if POIOffsets ~= nil then
                                 if POIOffsets.exit ~= nil then
-                                    if(GetDistanceBetweenCoords(pos, Config.Houses[CurrentHouse].coords.enter.x + POIOffsets.exit.x, Config.Houses[CurrentHouse].coords.enter.y + POIOffsets.exit.y, Config.Houses[CurrentHouse].coords.enter.z - Config.MinZOffset + POIOffsets.exit.z, true) < 1.5)then
-                                        DrawText3Ds(Config.Houses[CurrentHouse].coords.enter.x + POIOffsets.exit.x, Config.Houses[CurrentHouse].coords.enter.y + POIOffsets.exit.y, Config.Houses[CurrentHouse].coords.enter.z - Config.MinZOffset + POIOffsets.exit.z, 'Press ~g~ E ~w~ - to leave the house')
+                                    if(GetDistanceBetweenCoords(pos, Config.Houses[CurrentHouse].coords.enter.x + POIOffsets.exit.x, Config.Houses[CurrentHouse].coords.enter.y + POIOffsets.exit.y, -100.00 + POIOffsets.exit.z, true) < 1.5)then
+                                        DrawText3Ds(Config.Houses[CurrentHouse].coords.enter.x + POIOffsets.exit.x, Config.Houses[CurrentHouse].coords.enter.y + POIOffsets.exit.y, -100.00 + POIOffsets.exit.z, 'Press ~g~ E ~w~ - to leave the house')
                                         if IsControlJustPressed(0, Keys["E"]) then
                                             leaveNonOwnedHouse(CurrentHouse)
                                         end
@@ -650,7 +650,8 @@ function enterOwnedHouse(house)
     openHouseAnim()
     inside = true
     Citizen.Wait(250)
-    local coords = { x = Config.Houses[house].coords.enter.x, y = Config.Houses[house].coords.enter.y, z= Config.Houses[house].coords.enter.z - Config.MinZOffset}
+    local coords = { x = Config.Houses[house].coords.enter.x, y = Config.Houses[house].coords.enter.y, z= -100.00}
+    print(json.encode(coords))
     LoadDecorations(house)
     
     if Config.Houses[house].tier == 1 then
@@ -739,7 +740,7 @@ function enterNonOwnedHouse(house)
     openHouseAnim()
     inside = true
     Citizen.Wait(250)
-    local coords = { x = Config.Houses[closesthouse].coords.enter.x, y = Config.Houses[closesthouse].coords.enter.y, z= Config.Houses[closesthouse].coords.enter.z - Config.MinZOffset}
+    local coords = { x = Config.Houses[closesthouse].coords.enter.x, y = Config.Houses[closesthouse].coords.enter.y, z= -100.00}
     LoadDecorations(house)
 
     if Config.Houses[house].tier == 1 then

@@ -1,6 +1,6 @@
 Config = Config or {}
 
-Config.MinZOffset = 30
+Config.MinZOffset = 56
 
 Config.RamsNeeded = 2
 

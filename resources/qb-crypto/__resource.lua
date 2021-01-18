@@ -5,7 +5,7 @@ server_scripts {
 	'config.lua',
 	'server/main.lua'
 }
-
+client_script '@PolyZone/client.lua'
 client_scripts {
 	'config.lua',
 	'client/main.lua'
