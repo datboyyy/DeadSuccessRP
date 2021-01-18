@@ -1,5 +1,0 @@
-RegisterCommand('getmodel', function()
-    local veh = GetVehiclePedIsIn(PlayerPedId())
-    local realveh = GetEntityModel(veh)
-    print('Vehicle Model', GetDisplayNameFromVehicleModel(realveh))
-end, false)

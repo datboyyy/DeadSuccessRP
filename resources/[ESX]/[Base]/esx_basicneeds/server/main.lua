@@ -312,6 +312,7 @@ end)
 
 TriggerEvent('es:addGroupCommand', 'heal', 'admin', function(source, args, user)
 	-- heal another player - don't heal source
+	local source = source
 	if args[1] then
 		local target = tonumber(args[1])
 		
@@ -320,20 +321,20 @@ TriggerEvent('es:addGroupCommand', 'heal', 'admin', function(source, args, user)
 			
 			-- is the number a valid player?
 			if GetPlayerName(target) then
-				print('^1[DeadSuccessRP]^7 ' .. GetPlayerName(source) .. ' is healing '..GetPlayerName(target))
+			--	print('^1[DeadSuccessRP]^7 ' .. GetPlayerName(source) .. ' is healing '..GetPlayerName(target))
 				TriggerClientEvent('esx_basicneeds:healPlayer', target)
 				TriggerClientEvent('MF_SkeletalSystem:HealBones', target, "all")
 				TriggerEvent('mythic_hospital:client:ResetLimbs', target)
 				TriggerEvent('mythic_hospital:client:RemoveBleed', target)
 			--	TriggerClientEvent('chatMessage', target, "HEAL", {223, 66, 244}, "You have been healed!")
 
-				TriggerClientEvent('chat:svtocl', source 'Heal', 4, "You have been healed!")
+				TriggerClientEvent('chat:svtocl', source, 'Heal', 4, "You have been healed!")
 			else
-				TriggerClientEvent('chat:svtocl', source 'Heal', 4, "Player not found!")
+				TriggerClientEvent('chat:svtocl', source, 'Heal', 4, "Player not found!")
 			end
 		else
 			--TriggerClientEvent('chatMessage', source, "HEAL", {255, 0, 0}, "Incorrect syntax! You must provide a valid player ID")
-			TriggerClientEvent('chat:svtocl', source 'Heal', 4, "Incorrect syntax! You must provide a valid player ID")
+			TriggerClientEvent('chat:svtocl', source, 'Heal', 4, "Incorrect syntax! You must provide a valid player ID")
 		end
 	else
 		-- heal source
@@ -343,7 +344,7 @@ TriggerEvent('es:addGroupCommand', 'heal', 'admin', function(source, args, user)
 		TriggerEvent('mythic_hospital:client:RemoveBleed')
 		TriggerClientEvent('MF_SkeletalSystem:HealBones', source, "all")
 		--print('^1[DeadSuccessRP]^7 ' .. GetPlayerName(source) .. ' is healing!')
-		TriggerClientEvent('chat:svtocl', source 'Heal', 4, "You have been healed!")
+		TriggerClientEvent('chat:svtocl', source , 'Heal', 4, "You have been healed!")
 		TriggerClientEvent('esx_basicneeds:healPlayer', source)
 	end
 end, function(source, args, user)
