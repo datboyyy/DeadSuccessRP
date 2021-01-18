@@ -1203,7 +1203,7 @@ if not PhoneData.isOpen then
             content = message,
             icon = "fab fa-twitter",
             timeout = 3500,
-            color = nil,
+            color = "#1DA1F2",
         },
     })
 else
