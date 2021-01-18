@@ -20,7 +20,6 @@ client_scripts {
 	'client/main.lua'
 }
 
-client_script '@AntiCheat/SkidKnocker.lua'
 
 dependencies {
 	'es_extended'

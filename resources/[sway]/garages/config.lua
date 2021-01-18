@@ -16,9 +16,9 @@ Config.PolicingPoundPrice  = 175 -- Policing Pound Price.
 Config.AmbulancePoundPrice = 175 -- Ambulance Pound Price.
 
 Config.UseCarGarages        = true -- Allows use of Car Garages.
-Config.UseBoatGarages       = true -- Allows use of Boat Garages.
+Config.UseBoatGarages       = false -- Allows use of Boat Garages.
 Config.UseAircraftGarages   = false -- Allows use of Aircraft Garages.
-Config.UseJobCarGarages     = true -- Allows use of Job Garages.
+Config.UseJobCarGarages     = false -- Allows use of Job Garages.
 
 Config.DontShowPoundCarsInGarage = false -- If set to true it won't show Cars at the Pound in the Garage.
 Config.ShowVehicleLocation       = true -- If set to true it will show the Location of the Vehicle in the Pound/Garage in the Garage menu.

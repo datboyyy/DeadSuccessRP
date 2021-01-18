@@ -854,13 +854,10 @@ function SpawnVehicle(vehicle, plate)
 		z = this_Garage.SpawnPoint.z + 1
 	}, this_Garage.SpawnPoint.h, function(callback_vehicle)
 		ESX.Game.SetVehicleProperties(callback_vehicle, vehicle)
-		print("Properties set")
-		print("Setting vehicle props", vehicle)
 		SetVehRadioStation(callback_vehicle, "OFF")
 		TaskWarpPedIntoVehicle(PlayerPedId(), callback_vehicle, -1)
 		local plate = GetVehicleNumberPlateText(callback_vehicle)
 		TriggerServerEvent('garage:addKeys', plate)
-		SetVehicleEngineHealth(GetVehiclePedIsIn(PlayerPedId(), props.engineHealth))
 	end)
 	TriggerServerEvent('esx_advancedgarage:setVehicleState', plate, false)
 
@@ -1330,10 +1327,9 @@ end
 
 RegisterCommand('headlights', function(source, args)
 	local playerPed     = PlayerPedId()
-	local vehicle       = GetVehiclePedIsIn(playerPed, false)
-	SetVehicleDoorBroken(vehicle, 1, true)
-	SetVehicleDoorBroken(vehicle, 2, true)
-	SetVehicleDoorBroken(vehicle, 3, true)
-	SetVehicleDoorBroken(vehicle, 4, true)
-	print('Number of Doors: ',GetNumberOfVehicleDoors(vehicle))
-end)
+	local playerVeh = GetPlayersLastVehicle()
+
+	ToggleVehicleMod(playerVeh, 22, true)
+	SetVehicleXenonLightsColour(playerVeh, 8)
+
+print('dasda') end)
