@@ -25,7 +25,7 @@ RegisterCommand('clear', function(source, args, rawCommand)
     TriggerClientEvent('chat:client:ClearChat', source)
 end, false)
 
-RegisterCommand('clear', function(source, args, rawCommand)
+RegisterCommand('clearchat', function(source, args, rawCommand)
     local xPlayer = ESX.GetPlayerFromId(source)
     if xPlayer.getGroup() == 'superadmin' then
     TriggerClientEvent('chat:client:ClearChat', -1)

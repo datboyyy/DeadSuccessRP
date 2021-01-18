@@ -86,7 +86,6 @@ AddEventHandler('kashactersC:SpawnCharacter', function(spawn, isnew)
         TriggerEvent("spawnselector:openspawner")
         
         IsChoosing = false
-        TriggerEvent("notification", "Tax is currently set to: 0%", 1)
         TriggerEvent('aqua:load', false)
     end
     TriggerServerEvent('kashactersS:requestSteam')
@@ -94,6 +93,13 @@ AddEventHandler('kashactersC:SpawnCharacter', function(spawn, isnew)
     TriggerServerEvent('kashactersS:requestPlyName')
     TriggerServerEvent('kashactersS:requestfunds')
     ExecuteCommand('hud')
+    ESX.TriggerServerCallback('esx-qalle-jail:retrieveJailTime', function(cb) 
+        if cb == true then 
+            TriggerEvent('notfication','You have been jailed since you logged out while jailed.', 2)
+            SetEntityCoords(PlayerPedId(), 1785.99, 2577.46, 45.71)
+        else 
+        end
+	end)
 end)
 
 RegisterNetEvent('kashactersC:ReloadCharacters')
