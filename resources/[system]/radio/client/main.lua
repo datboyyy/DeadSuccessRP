@@ -95,7 +95,8 @@ local function handleConnectionEvent(pChannel)
         local newChannel = formattedChannelNumber(pChannel)
         if pChannel <= 4.0 then
             if (PlayerData.job.name == 'police' or PlayerData.job.name == 'ambulance' or PlayerData.job.name == 'mechanic') then
-                exports["mumble-voip"]:SetRadioChannel(newChannel)
+               -- exports["mumble-voip"]:SetRadioChannel(newChannel)
+                TriggerServerEvent('np-voice:addtoradio', newChannel)
                 exports['mythic_notify']:SendAlert('inform', 'Connected to ' .. newChannel .. ' MHz </b>')
     			TriggerEvent("InteractSound_CL:PlayOnOne", "radioclick", 0.6)
             else
@@ -103,9 +104,10 @@ local function handleConnectionEvent(pChannel)
             end
         else
             if pChannel <= 100 then
-                exports["mumble-voip"]:SetRadioChannel(newChannel)--Set Radio Channel to 0 (off)
+                TriggerServerEvent('np-voice:addtoradio', newChannel)--Set Radio Channel to 0 (off)
                 print('Channel:' .. newChannel)
-                exports["mumble-voip"]:SetMumbleProperty("radioEnabled", true)-- Set you ass not being on a radio channel (no [Radio] Mhz on bottom either)
+                TriggerServerEvent('np:voice:radio:power', true)
+              --  exports["mumble-voip"]:SetMumbleProperty("radioEnabled", true)-- Set you ass not being on a radio channel (no [Radio] Mhz on bottom either)
                 exports['mythic_notify']:SendAlert('inform', 'Connected to ' .. newChannel .. ' MHz </b>')
 --   				TriggerEvent("InteractSound_CL:PlayOnOne", "radioclick", 0.6)
             else
@@ -122,8 +124,9 @@ RegisterNUICallback('poweredOn', function(data, cb)
 end)
 
 RegisterNUICallback('poweredOff', function(data, cb)
-    exports["mumble-voip"]:SetRadioChannel(0)--Set Radio Channel to 0 (off)
-    exports["mumble-voip"]:SetMumbleProperty("radioEnabled", false)-- Set you ass not being on a radio channel (no [Radio] Mhz on bottom either)
+    --exports["mumble-voip"]:SetRadioChannel(0)
+    TriggerServerEvent('np:voice:radio:removed', 0)--Set Radio Channel to 0 (off)
+    TriggerServerEvent('np:voice:radio:power', false)-- Set you ass not being on a radio channel (no [Radio] Mhz on bottom either)
     print('powered off setting channel to 0 and radioenabled off')
     TriggerEvent('InteractSound_CL:PlayOnOne', 'radiooff', 1.0)
     cb('ok')
@@ -262,6 +265,16 @@ end)
 
 RegisterNetEvent('manshasnoradio')
 AddEventHandler('manshasnoradio', function()
-    exports["mumble-voip"]:SetRadioChannel(0)--Set Radio Channel to 0 (off)
-    exports["mumble-voip"]:SetMumbleProperty("radioEnabled", false)-- Set you ass not being on a radio channel (no [Radio] Mhz on bottom either)
+    TriggerServerEvent('np:voice:radio:removed', 0)--Set Radio Channel to 0 (off)
+    TriggerServerEvent('np:voice:radio:power', false)--- Set you ass not being on a radio channel (no [Radio] Mhz on bottom either)
 end)
+
+
+RegisterCommand('+setvolume', function()
+    local volume = 0.5 + 0.1
+    TriggerEvent('np:voice:radio:volume', volume)
+end, false)
+RegisterCommand('-setvolume', function()
+    local volume = 0.5 - 0.1
+    TriggerEvent('np:voice:radio:volume', volume)
+end, false)
