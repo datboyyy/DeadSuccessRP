@@ -86,7 +86,6 @@ AddEventHandler('kashactersC:SpawnCharacter', function(spawn, isnew)
         TriggerEvent("spawnselector:openspawner")
         
         IsChoosing = false
-        TriggerEvent("notification", "Tax is currently set to: 0%", 1)
         TriggerEvent('aqua:load', false)
     end
     TriggerServerEvent('kashactersS:requestSteam')

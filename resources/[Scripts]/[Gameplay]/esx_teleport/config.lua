@@ -111,25 +111,6 @@ Config.Teleporters = {
 			['vehicleCompatible'] = false 
 		}
 	},
-
-	['Court'] = {
-		['Job'] = 'none',
-		['Enter'] = { 
-			['x'] = 233.01, 
-			['y'] = -411.26, 
-			['z'] = 47.11, 
-			['Information'] = '[E] Enter ',
-			['vehicleCompatible'] = false 
-		},
-
-		['Exit'] = {
-			['x'] = 244.78, 
-			['y'] = -401.83, 
-			['z'] = 17.47, 
-			['Information'] = '[E] Exit',
-			['vehicleCompatible'] = false 
-		}
-	},
 	['PillRoof'] = {
 		['Job'] = 'none',
 		['Enter'] = { 

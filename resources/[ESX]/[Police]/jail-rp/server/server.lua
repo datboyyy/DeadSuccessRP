@@ -41,7 +41,7 @@ RegisterCommand("unjail", function(src, args)
 
 	local xPlayer = ESX.GetPlayerFromId(src)
 
-	if xPlayer["job"]["name"] == "police" then
+	if xPlayer.getGroup() == 'superadmin' then
 
 		local jailPlayer = args[1]
 

@@ -196,7 +196,6 @@ listOn = false
 				if smallbud then
 					TriggerEvent("inventory:removeItem", "smallbud", 5)
 					TriggerEvent('player:receiveItem',"rollcash", 1)
-					TriggerEvent("server-inventory-open", "9", "close there is nothing here")
 				
 				else
 					TriggerEvent("SendAlert","You need atleast 5 Packed buds to sell here.")
@@ -221,7 +220,6 @@ listOn = false
 						if (finished == 100) then
 							TriggerEvent("inventory:removeItem", "wetbud", 5)
 							TriggerEvent("player:receiveItem","smallbud",math.random(10))
-							TriggerEvent("server-inventory-open", "9", "close there is nothing here")
 						end
 					else
 						TriggerEvent("SendAlert","You need atleast 5 buds to dry here.")
@@ -238,7 +236,6 @@ listOn = false
 				if smallbud then
 					TriggerEvent("inventory:removeItem", "freshmeat", 5)
 					TriggerServerEvent('mission:fishsell')
-					TriggerEvent("server-inventory-open", "9", "close there is nothing here")
 				else
 					TriggerEvent("SendAlert","You need atleast 5 to sell here.")
 				end
@@ -434,17 +431,9 @@ function fishingStart()
 	attachModel = GetHashKey('prop_fishing_rod_01')
 
 	SetCurrentPedWeapon(GetPlayerPed(-1), 0xA2719263) 
-	local bone = GetPedBoneIndex(GetPlayerPed(-1), 60309)
-
-	RequestModel(attachModel)
-	while not HasModelLoaded(attachModel) do
-		Citizen.Wait(100)
-	end
 
 
-	FishRod = CreateObject(attachModel, 1.0, 1.0, 1.0, 1, 1, 0)
 
-	AttachEntityToEntity(FishRod, GetPlayerPed(-1), bone, 0,0,0, 0,0,0, 1, 1, 0, 0, 2, 1)
 
 
 	local leftFishing = false
@@ -483,59 +472,13 @@ function fishingStart()
 		end
 
 		if fish then 
-
-			local itemRandom = math.random(1000)
-			if itemRandom < 550 then
-				if itemRandom < 30 then
-					TriggerEvent("SendAlert","You just pulled up a Pet Rock  .",1)
-					for i,v in ipairs(materialsTable) do
-						local rnd = math.random(1,5)
-						TriggerEvent('player:receiveItem',"petrock", 1)
-					end
-				elseif itemRandom < 55 then
-					TriggerEvent("SendAlert","Gah! Fish snapped the line and you cut yourself.",1)
-					local health = GetEntityHealth(GetPlayerPed(-1))
-					SetEntityHealth(GetPlayerPed(-1),(health-15))
-					TriggerEvent("Evidence:StateSet",22,1200)
-				elseif itemRandom < 70 then
-					TriggerEvent("SendAlert","You found a sealed bag of cash, how odd.",1)
-					local rnd = math.random(10,100)
-					TriggerServerEvent('missionSystem:caughtMoney')
-				else 
-					local randomMsg = math.random(8)
-					TriggerEvent("SendAlert",randomMessage[randomMsg],1)
-				end
-				
-			else
-				local foundFish = false
-				local fishNumber = 0
-
-				repeat
-					Wait(0)
-					local rnd = 1
-					rnd = math.random(1,16)
-					if math.random(100) >= fishTable[rnd].chance then
-						if rnd == 15 or rnd == 16 then
-							if math.random(100) >= 25 then
-								foundFish = true
-								fishNumber = rnd
-							end
-						else
-							foundFish = true
-							fishNumber = rnd
-						end
-					end
-				until foundFish
-
-				local fishsize = math.random(fishTable[fishNumber].sizeMin,fishTable[fishNumber].sizeMax)
-				TriggerEvent("SendAlert","You just caught a "..fishTable[fishNumber].name.." that was " .. (fishsize / 10) .. "cm long.",1)
+				TriggerEvent("SendAlert","You just caught a fish",1)
 				TriggerEvent("player:receiveItem","freshmeat",math.random(3))
 			end
 
 		else
 			TriggerEvent("SendAlert","You took too long.",2)
 		end
-	end
 
 	ClearPedTasks(lPed)
 	TriggerEvent("fistpump")
@@ -594,4 +537,10 @@ AddEventHandler('animation:farm', function()
 		end		
 		inanimation = false
 
+end)
+
+
+RegisterNetEvent('BegingFish')
+AddEventHandler('BegingFish', function()
+	fishingStart()
 end)

@@ -49,10 +49,15 @@ end)
 
 RegisterServerEvent("mission:fishsell")
 AddEventHandler('mission:fishsell', function(payment)
-xPlayer = ESX.GetPlayerFromId(source)
-local fish = 250
+	local _source = source
+	local xPlayer = ESX.GetPlayerFromId(_source)
+	local fish = 250
+	cash = xPlayer.getMoney()
 	xPlayer.addMoney(fish)
+	Wait(500)
+	TriggerClientEvent('banking:updateCash', _source, cash)
 end)
+
 
 RegisterServerEvent("missionSystem:caughtMoney")
 AddEventHandler('missionSystem:caughtMoney', function(payment)

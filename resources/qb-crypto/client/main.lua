@@ -503,8 +503,7 @@ function EnterXE(i)
 		if interiors[i].locked == false then
 			--spawnMetalDetector()
             local myjob = exports["isPed"]:isPed("myjob")
-            local cock = true
-			if cock == true  then
+			if found == false then
 
 				SetEntityCoords(PlayerPedId(), 294.98,-1599.13,-66.78)
 				Citizen.Wait(1500)
@@ -926,3 +925,43 @@ function CleanUpArea()
     until not success
     EndFindObject(handle)
 end
+
+local metaldetect = 
+PolyZone:Create({
+	vector2(253.62646484375, -366.95492553711),
+	vector2(253.09452819824, -368.38104248047),
+	vector2(254.69816589355, -368.6301574707),
+	vector2(255.04437255859, -367.28967285156)
+  }, {
+	name="metaldetect",
+	maxZ = -43.137630462646,
+	minZ = -46.137630462646,
+	debugGrid = false,
+  })
+  
+  metaldetect:onPointInOut(PolyZone.getPlayerPosition, function(isPointInside, point)
+    if isPointInside then
+		FreezeEntityPosition(PlayerPedId(), true)
+			local getweapons = exports["dsrp-inventory"]:GetCurrentWeapons() 
+			local tablelength = tablelength(getweapons)
+			exports["sway_taskbar"]:taskBar(4000, "Scanning for metal")
+			if getweapons and tablelength >= 1 then
+				TriggerServerEvent('InteractSound_SV:PlayWithinDistance', 3.0, 'metaldetected', 0.85)
+				TriggerEvent('notification', 'Weapons Detected', 1)
+				FreezeEntityPosition(PlayerPedId(), false)
+				found = true
+            else
+				TriggerEvent('notification', 'No Weapons Detected', 1)
+				FreezeEntityPosition(PlayerPedId(), false)
+				found = false
+		end
+    else
+        print('out of zone')
+    end
+end)
+
+function tablelength(T)
+	local count = 0
+	for _ in pairs(T) do count = count + 1 end
+	return count
+  end

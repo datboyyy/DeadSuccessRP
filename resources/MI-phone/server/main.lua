@@ -1083,22 +1083,29 @@ ESX.RegisterServerCallback('MI-phone:server:GetGarageVehicles', function(source,
         if result[1] ~= nil then
             for k, v in pairs(result) do
 
-                if v.garage == "OUT" then
+--                if v.garage == "OUT" then
+--                    VehicleState = "OUT"
+--                else
+--                    VehicleState = "Garage"
+--                end
+
+                if v.stored == 0 then
                     VehicleState = "OUT"
                 else
                     VehicleState = "Garage"
                 end
 
                 local vehdata = {}
+                local veh = v.vehicle
 
                 vehdata = {
                     model = v.vehiclename,
                     plate = v.plate,
                     garage = v.garage,
                     state = VehicleState,
-                    fuel = v.fuel or 1000,
-                    engine = v.engine or 1000,
-                    body = v.body or 1000,
+                    fuel = veh.fuel or 100,
+                    engine = veh.engineHealth or 100,
+                    body = veh.bodyHealth or 100,
                 }
 
                 table.insert(Vehicles, vehdata)

@@ -404,7 +404,7 @@ Citizen.CreateThread( function()
 		synctime.m = math.floor( (secondOfDay - (synctime.h * 3600)) / 60 )
 		synctime.s = secondOfDay - (synctime.h * 3600) - (synctime.m * 60)
 		
-		if enableSync and not insidebuilding and not inhotel and not robbing and not inhouse and not spawning then NetworkOverrideClockTime( synctime.h, synctime.m, synctime.s ) end
+		if enableSync and not insidebuilding and not inhotel and not robbing and not inhouse and not spawning then NetworkOverrideClockTime(synctime.h, synctime.m, synctime.s)  TriggerServerEvent('weather:receivefromcl', secondOfDay)end
 
 	end
 
