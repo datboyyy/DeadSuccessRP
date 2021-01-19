@@ -232,9 +232,8 @@
     },
     {
         "reason": "No Reason Specified ( Nickname: Logan69Geib ), Banned by: Aquaman",
-        "name": "Logan69Geib",
-        "banid": 24,
         "banner": "Aquaman",
+        "banid": 24,
         "expire": 10444633200,
         "identifiers": [
             "steam:11000013f8e0b03",
@@ -245,19 +244,36 @@
             "fivem:1450486",
             "license2:22844f08658125d83cbaef02fb1fcde7fe621f9c",
             "ip:67.214.0.254"
-        ]
+        ],
+        "name": "Logan69Geib"
     },
     {
+        "reason": "combat logging ( Nickname: Hellboy ), Banned by: Shaz",
+        "banner": "Shaz",
         "banid": 25,
+        "expire": 1611213966,
         "identifiers": [
             "steam:110000111492c10",
             "license:77903bb822fbccd109ede3bd76be1bc52446bc49",
             "discord:651857439402098689",
             "ip:97.103.3.139"
         ],
-        "reason": "combat logging ( Nickname: Hellboy ), Banned by: Shaz",
-        "banner": "Shaz",
-        "expire": 1611213966,
         "name": "Hellboy"
+    },
+    {
+        "reason": "combat logging ( Nickname: kevincastillo145 ), Banned by: Shaz",
+        "banner": "Shaz",
+        "banid": 26,
+        "expire": 1611280443,
+        "identifiers": [
+            "steam:11000010fea0370",
+            "license:300668d0ab75bff688cb74b42a185302fbb56237",
+            "xbl:2533275007357531",
+            "live:1688853591800607",
+            "discord:673427810588819486",
+            "license2:300668d0ab75bff688cb74b42a185302fbb56237",
+            "ip:98.196.242.232"
+        ],
+        "name": "kevincastillo145"
     }
 ]

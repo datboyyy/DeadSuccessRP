@@ -411,6 +411,7 @@ Citizen.CreateThread(function()
 						DrawText3DTest(interiors[scannedEntry].xo,interiors[scannedEntry].yo,interiors[scannedEntry].zo, "["..Controlkey["generalUse"][2].."] " .. interiors[scannedEntry].name)						
 					
 						if comparedst2 < 1.1 and timer == 0 and IsControlJustReleased(0,Controlkey["generalUse"][1]) then
+							print(scannedEntry)
 							EnterXE(scannedEntry)
 							Citizen.Wait(1000)
 							scannedEntry = 0
@@ -502,6 +503,7 @@ function EnterXE(i)
 	elseif i == 19 then
 		if interiors[i].locked == false then
 			--spawnMetalDetector()
+			print('make shit')
             local myjob = exports["isPed"]:isPed("myjob")
 			if found == false then
 
@@ -615,6 +617,7 @@ function EnterXE(i)
 				timer = 5
 			end
 			if i == 30 then
+				print('make sh but checkst')
 				spawnMetalDetector()
 				timer = 5
 			end

@@ -67,7 +67,8 @@ AddEventHandler("esx-qalle-jail:jaAVACilPlayer", function(targetSrc, jailTime, j
 		JailPlayer(targetSrc, jailTime)
 
 		GetRPName(targetSrc, function(Firstname, Lastname)
-			TriggerClientEvent('chat:addMessage', -1, { args = { "JUDGE",  Firstname .. " " .. Lastname .. " Is now in jail for the reason: " .. jailReason }, color = { 249, 166, 0 } })
+			--TriggerClientEvent('chat:addMessage', -1, { args = { "JUDGE",  Firstname .. " " .. Lastname .. " Is now in jail for the reason: " .. jailReason }, color = { 249, 166, 0 } })
+			TriggerClientEvent('chat:svtocl', -1, 'JUDGE:', 3 , GetCharacterName(targetSrc) .. " Jailed for " .. jailReason .. " months!" )
 		end)
 
 		TriggerClientEvent("esx:showNotification", src, GetPlayerName(targetSrc) .. " Jailed for " .. jailTime .. " minutes!")

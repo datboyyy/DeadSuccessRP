@@ -82,10 +82,7 @@ RegisterCommand("say", function(source, args, rawCommand)
     local msg = rawCommand:sub(5)
     if player ~= false then
         local user = GetPlayerName(-1)
-            TriggerClientEvent('chat:addMessages', -1, {
-            template = '<div class="chat-message-system"><b>Console:</b> {0}</div>',
-            args = { msg }
-        })
+        TriggerEvent('chat:svtocl', -1, 'Console:', 3, msg)
     end
 end, true)
 --[[

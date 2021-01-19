@@ -675,7 +675,7 @@ ESX.Game.GetVehicleProperties = function(vehicle)
 		xenonheadlights   = GetVehicleXenonLightsColour(vehicle),
 		neonColor         = table.pack(GetVehicleNeonLightsColour(vehicle)),
 		tyreSmokeColor    = table.pack(GetVehicleTyreSmokeColor(vehicle)),
-		vehiclegasoline   = GetVehicleFuelLevel(vehicle),
+		--vehiclegasoline   = GetVehicleFuelLevel(vehicle),
 		modSpoilers       = GetVehicleMod(vehicle, 0),
 		modFrontBumper    = GetVehicleMod(vehicle, 1),
 		modRearBumper     = GetVehicleMod(vehicle, 2),
@@ -743,13 +743,13 @@ ESX.Game.SetVehicleProperties = function(vehicle, props)
 	if props.bodyHealth ~= nil then
 		SetVehicleBodyHealth(vehicle, props.bodyHealth)
 	end
-	if props.vehiclegasoline ~= nil then
-		SetVehicleFuelLevel(vehicle, props.vehiclegasoline)
-	end
+--	if props.vehiclegasoline ~= nil then
+	--	SetVehicleFuelLevel(vehicle, props.vehiclegasoline)
+	--end
 
-	if props.engineHealth ~= nil then
-		SetVehicleEngineHealth(vehicle, props.engineHealth)
-	end
+	--if props.engineHealth ~= nil then
+		--SetVehicleEngineHealth(vehicle, props.engineHealth)
+	--end
 
 	if props.dirtLevel ~= nil then
 		SetVehicleDirtLevel(vehicle, props.dirtLevel)
