@@ -279,7 +279,6 @@ body {
     left: 0;
     right: 0;
     top: -8%;
-    border-radius: 3vh;
     overflow: hidden;
     box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 0.11);
     z-index: 140;
@@ -358,7 +357,6 @@ body {
     width: 34vh;
     bottom: 5vh;
     right: -35vh;
-    border-radius: 1.7vh;
     z-index: -5;
 }
 
