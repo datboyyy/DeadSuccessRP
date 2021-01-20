@@ -16,6 +16,18 @@ Citizen.CreateThread(function()
     ESX.PlayerData = ESX.GetPlayerData()
 end)
 
+local currentValues = {
+    ["health"] = 100,
+    ["armor"] = 100,
+    ["hunger"] = 100,
+    ["thirst"] = 100,
+    ["oxy"] = 100,
+    ["stress"] = 100,
+    ["voice"] = 2,
+    ["dev"] = false,
+    ["devdebug"] = false,
+    ["is_talking"] = false
+}
 
 Citizen.CreateThread(function()
     while true do
@@ -57,7 +69,6 @@ Citizen.CreateThread(function()
         end
         if fuckerspawned == true then
             
-            local tok = exports['mumble-voip']:GetVoiceRange()
             local player = PlayerPedId()
             local id = PlayerId()
             local health = (GetEntityHealth(player) - 100)
@@ -70,46 +81,13 @@ Citizen.CreateThread(function()
                 varSetArmor = armor,
                 varSetOxy = oxy,
                 colorblind = colorblind,
-                varSetVoice = tok,
+                varSetVoice = currentValues["voice"],
                 varDev = 0,
                 varDevDebug = 0,
                 is_talking = IsControlPressed(0, 306)
             })
-            Citizen.Wait(200)
+            Citizen.Wait(500)
         end
-    end
-end)
-
-Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(1)
-        if fuckerspawned == true then
-            local onradio = exports["mumble-voip"]:GetRadioStatus()
-            
-            if onradio then
-                SendNUIMessage({type = "radiostatus", radiotalk = true})
-            else
-                local onphone = exports["mumble-voip"]:GetPhoneStatus()
-                if onphone and IsControlPressed(0, 306) then
-                    SendNUIMessage({type = "phonestatus", phonetalk = true})
-                else
-                    SendNUIMessage({type = "phonestatus", phonetalk = false})
-                    
-                    
-                    SendNUIMessage({type = "radiostatus", radiotalk = false})
-                    
-                    if IsControlPressed(0, 306) then
-                        SendNUIMessage({type = "talkingStatus", is_talking = true})
-                    elseif not IsControlPressed(0, 306) then
-                        SendNUIMessage({type = "talkingStatus", is_talking = false})
-                    end
-                end
-                
-                is_talking = IsControlPressed(0, 306)
-            
-            end
-        end
-        Citizen.Wait(200)
     end
 end)
 
@@ -126,7 +104,6 @@ end)
 function fuckerspawned()
     fuckerspawned = true
 end
-
 
 -- Parachute Item
 RegisterNetEvent('useparachute')
@@ -145,19 +122,33 @@ function giveParachute()
 end
 
 
-
-Citizen.CreateThread(function()
+Citizen.CreateThread(function ()
     while true do
-        Citizen.Wait(0)
-        local veh = GetVehiclePedIsIn(PlayerPedId(), false)
-        if DoesEntityExist(veh) and not IsEntityDead(veh) then
-            local model = GetEntityModel(veh)
-            -- If it's not a boat, plane or helicopter, and the vehilce is off the ground with ALL wheels, then block steering/leaning left/right/up/down.
-            if not IsThisModelABoat(model) and not IsThisModelAHeli(model) and not IsThisModelAPlane(model) and IsEntityInAir(veh) then
-                DisableControlAction(0, 59)-- leaning left/right
-                DisableControlAction(0, 60)-- leaning up/down
-            end
+        local isTalking = NetworkIsPlayerTalking(PlayerId())
+
+        if isTalking and not currentValues["is_talking"] then
+            SendNUIMessage({type = "talkingStatus", is_talking = true})
+        elseif not isTalking and currentValues["is_talking"] then
+            SendNUIMessage({type = "talkingStatus", is_talking = false})
         end
+
+        currentValues["is_talking"] = isTalking
+
+        Citizen.Wait(100)
+    end
+end)
+
+
+RegisterNetEvent("hud:changeRange")
+AddEventHandler("hud:changeRange", function(pRange)
+    currentValues["voice"] = pRange or 2
+end)
+RegisterNetEvent("hud:talkonradio")
+AddEventHandler("hud:talkonradio", function(talk)
+    if talk == true then 
+    SendNUIMessage({type = "radiostatus", radiotalk = true})
+    else 
+    SendNUIMessage({type = "radiostatus", radiotalk = false})
     end
 end)
 

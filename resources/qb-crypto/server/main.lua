@@ -146,10 +146,10 @@ end)
 
 ESX.RegisterServerCallback('qb-crypto:server:BuyCrypto', function(source, cb, data)
     local xPlayer = ESX.GetPlayerFromId(source)
-    
-    print(json.encode(data))
-    print(xPlayer.getBank(), data.Coins)
-    
+
+    if tonumber(data.Price) <= 0 then
+    	cb(false)
+    end    
     if xPlayer.getBank() >= tonumber(data.Price) then
         local CryptoData = {
             History = Crypto.History["qbit"],
@@ -158,9 +158,8 @@ ESX.RegisterServerCallback('qb-crypto:server:BuyCrypto', function(source, cb, da
             WalletId = xPlayer.getIBAN(),
         }
         xPlayer.removeBank(tonumber(data.Price))
-        TriggerClientEvent('MI-phone:client:AddTransaction', source, Player, data, "You bought " .. tonumber(data.Coins) .. " Qbit('s)!", "Purchase")
-        print("Adding " .. data.Coins .. "x Crypto")
-        xPlayer.addCrypto(tonumber(data.Coins))
+        TriggerClientEvent('MI-phone:client:AddTransaction', source, Player, data, "You bought "..tonumber(data.Coins).." Qbit('s)!", "Purchase")
+        xPlayer.addCrypto(tonumber(data.Coins))        
         cb(CryptoData)
     else
         cb(false)
@@ -171,8 +170,10 @@ end)
 
 ESX.RegisterServerCallback('qb-crypto:server:SellCrypto', function(source, cb, data)
     local xPlayer = ESX.GetPlayerFromId(source)
-    
-    print(xPlayer.getBank(), data.Coins)
+
+    if tonumber(data.Coins) <= 0 then
+    	cb(false)
+    end
     if xPlayer.getCrypto() >= tonumber(data.Coins) then
         local CryptoData = {
             History = Crypto.History["qbit"],
@@ -181,13 +182,14 @@ ESX.RegisterServerCallback('qb-crypto:server:SellCrypto', function(source, cb, d
             WalletId = xPlayer.getIBAN(),
         }
         xPlayer.removeCrypto(tonumber(data.Coins))
-        TriggerClientEvent('MI-phone:client:AddTransaction', source, Player, data, "You sold " .. tonumber(data.Coins) .. " Qbit('s)!", "Sale")
+        TriggerClientEvent('MI-phone:client:AddTransaction', source, Player, data, "You sold "..tonumber(data.Coins).." Qbit('s)!", "Sale")
         xPlayer.addMoney(tonumber(data.Price))
         cb(CryptoData)
     else
         cb(false)
     end
 end)
+
 
 ESX.RegisterServerCallback('qb-crypto:server:TransferCrypto', function(source, cb, data)
     local xPlayer = ESX.GetPlayerFromId(source)

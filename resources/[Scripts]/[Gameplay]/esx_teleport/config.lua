@@ -106,7 +106,7 @@ Config.Teleporters = {
 		['Exit'] = {
 			['x'] = 68.07, 
 			['y'] = -1577.08, 
-			['z'] = -29.75, 
+			['z'] = -68.75, 
 			['Information'] = '[E] Exit',
 			['vehicleCompatible'] = false 
 		}

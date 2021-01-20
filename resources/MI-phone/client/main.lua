@@ -1375,7 +1375,8 @@ CancelCall = function()
     TriggerServerEvent('MI-phone:server:CancelCall', PhoneData.CallData)
     if PhoneData.CallData.CallType == "ongoing" then
         -- exports.tokovoip_script:removePlayerFromRadio(PhoneData.CallData.CallId)
-        exports["mumble-voip"]:SetCallChannel(0)
+
+        TriggerServerEvent('lol:voice:server:phone:endCall', PhoneData.CallData.CallId)
     end
     PhoneData.CallData.CallType = nil
     PhoneData.CallData.InCall = false
@@ -1435,7 +1436,7 @@ AddEventHandler('MI-phone:client:CancelCall', function()
             action = "CancelOngoingCall"
         })
         --exports.tokovoip_script:removePlayerFromRadio(PhoneData.CallData.CallId)
-        exports["mumble-voip"]:SetCallChannel(0)
+        TriggerServerEvent('lol:voice:server:phone:endCall', PhoneData.CallData.CallId)
     end
     PhoneData.CallData.CallType = nil
     PhoneData.CallData.InCall = false
@@ -1607,11 +1608,13 @@ function AnswerCall()
                 Citizen.Wait(1000)
             end
         end)
-        
-        TriggerServerEvent('MI-phone:server:AnswerCall', PhoneData.CallData)
+        local source = source
+        TriggerServerEvent('MI-phone:server:AnswerCall', PhoneData.CallData, GetPlayerServerId(PlayerId()))
         
         -- exports.tokovoip_script:addPlayerToRadio(PhoneData.CallData.CallId, 'Phone')
-        exports["mumble-voip"]:SetCallChannel(PhoneData.CallData.CallId)
+
+ --       TriggerServerEvent('lol:voice:server:phone:startCall', PhoneData.CallData.CallId)
+--        exports["mumble-voip"]:SetCallChannel(PhoneData.CallData.CallId)
     else
         PhoneData.CallData.InCall = false
         PhoneData.CallData.CallType = nil
@@ -1630,7 +1633,7 @@ function AnswerCall()
 end
 
 RegisterNetEvent('MI-phone:client:AnswerCall')
-AddEventHandler('MI-phone:client:AnswerCall', function()
+AddEventHandler('MI-phone:client:AnswerCall', function(id)
     if (PhoneData.CallData.CallType == "incoming" or PhoneData.CallData.CallType == "outgoing") and PhoneData.CallData.InCall and not PhoneData.CallData.AnsweredCall then
         PhoneData.CallData.CallType = "ongoing"
         PhoneData.CallData.AnsweredCall = true
@@ -1665,7 +1668,8 @@ AddEventHandler('MI-phone:client:AnswerCall', function()
         end)
         
         --exports.tokovoip_script:addPlayerToRadio(PhoneData.CallData.CallId, 'Phone')
-        exports["mumble-voip"]:SetCallChannel(PhoneData.CallData.CallId)
+        TriggerServerEvent("lol:voice:server:phone:startCall", PhoneData.CallData.CallId, id)
+--        exports["mumble-voip"]:SetCallChannel(PhoneData.CallData.CallId)
     else
         PhoneData.CallData.InCall = false
         PhoneData.CallData.CallType = nil

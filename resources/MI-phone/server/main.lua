@@ -840,11 +840,10 @@ AddEventHandler('MI-phone:server:CancelCall', function(ContactData)
 end)
 
 RegisterServerEvent('MI-phone:server:AnswerCall')
-AddEventHandler('MI-phone:server:AnswerCall', function(CallData)
+AddEventHandler('MI-phone:server:AnswerCall', function(CallData, id)
     local Ply = GetPlayerFromPhone(CallData.TargetData.number)
-
     if Ply ~= nil then
-        TriggerClientEvent('MI-phone:client:AnswerCall', Ply.source)
+        TriggerClientEvent('MI-phone:client:AnswerCall', Ply.source, id)
     end
 end)
 
@@ -1089,23 +1088,18 @@ ESX.RegisterServerCallback('MI-phone:server:GetGarageVehicles', function(source,
 --                    VehicleState = "Garage"
 --                end
 
-                if v.stored == 0 then
-                    VehicleState = "OUT"
-                else
-                    VehicleState = "Garage"
-                end
-
                 local vehdata = {}
                 local veh = v.vehicle
-
+                if v.stored == false then 
+                    v.stored = 'Impound / Out'
+                else 
+                    v.stored = 'Stored'
+                end
                 vehdata = {
                     model = v.vehiclename,
                     plate = v.plate,
                     garage = v.garage,
-                    state = VehicleState,
-                    fuel = veh.fuel or 100,
-                    engine = veh.engineHealth or 100,
-                    body = veh.bodyHealth or 100,
+                    state = v.stored,
                 }
 
                 table.insert(Vehicles, vehdata)

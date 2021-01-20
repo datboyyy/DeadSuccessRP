@@ -110,7 +110,7 @@ local drugLocs = {
 	[3] =  { ['x'] = -676.81,['y'] = -877.94,['z'] = 24.48,['h'] = 324.9, ['info'] = ' Wei Cheng' },
 }
 
-local pillWorker = { ['x'] = 68.32,['y'] = -1570.19,['z'] = -28.75,['h'] = 268.58, ['info'] = ' lol' }
+local pillWorker = { ['x'] = 68.32,['y'] = -1570.19,['z'] = -68.75,['h'] = 268.58, ['info'] = ' lol' }
 
 
 local rnd = 0
