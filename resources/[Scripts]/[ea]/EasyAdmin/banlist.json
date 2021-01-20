@@ -1,9 +1,9 @@
 [
     {
-        "reason": "Stop Cheating Freak Swxy#0001 ( Nickname: jackaboyab )",
         "banner": "Anticheat",
-        "banid": 2,
         "expire": 10444633200,
+        "reason": "Stop Cheating Freak Swxy#0001 ( Nickname: jackaboyab )",
+        "banid": 2,
         "identifiers": [
             "steam:1100001177afa3a",
             "license:75246e0e9e9f4f78302d67875be10ec582b8d596",
@@ -14,10 +14,10 @@
         ]
     },
     {
-        "reason": "Stop Cheating Freak Swxy#0001 ( Nickname: Murk )",
         "banner": "Anticheat",
-        "banid": 3,
         "expire": 10444633200,
+        "reason": "Stop Cheating Freak Swxy#0001 ( Nickname: Murk )",
+        "banid": 3,
         "identifiers": [
             "steam:11000013a1d92a3",
             "license:0f9e79a4ff93c6eb18ff1884538565453c10b500",
@@ -26,10 +26,10 @@
         ]
     },
     {
-        "reason": "Stop Cheating Freak Swxy#0001 ( Nickname: StepBro Trixzy )",
         "banner": "Anticheat",
-        "banid": 4,
         "expire": 10444633200,
+        "reason": "Stop Cheating Freak Swxy#0001 ( Nickname: StepBro Trixzy )",
+        "banid": 4,
         "identifiers": [
             "steam:110000143afa899",
             "license:0cbc0e02dbc7745fa398ce0ef98ea1cb6ea09fbe",
@@ -38,10 +38,10 @@
         ]
     },
     {
-        "reason": "No Reason Specified ( Nickname: oddenelliot3 ), Banned by: Belinzki",
         "banner": "Belinzki",
-        "banid": 5,
         "expire": 10444633200,
+        "reason": "No Reason Specified ( Nickname: oddenelliot3 ), Banned by: Belinzki",
+        "banid": 5,
         "identifiers": [
             "steam:110000143bc184a",
             "license:dc2e85eceeac0e17b9c5c48653cd4fcbf034bee6",
@@ -50,10 +50,10 @@
         ]
     },
     {
-        "reason": "Stop Cheating Freak Swxy#0001 ( Nickname: N )",
         "banner": "Anticheat",
-        "banid": 6,
         "expire": 10444633200,
+        "reason": "Stop Cheating Freak Swxy#0001 ( Nickname: N )",
+        "banid": 6,
         "identifiers": [
             "steam:11000014230506a",
             "license:7afc015c831c3d56dc02a4214a2fc66d88734e94",
@@ -64,10 +64,10 @@
         ]
     },
     {
-        "reason": "No Reason Specified ( Nickname: OMGIKNOWYOURMOM ), Banned by: Belinzki",
         "banner": "Belinzki",
-        "banid": 7,
         "expire": 10444633200,
+        "reason": "No Reason Specified ( Nickname: OMGIKNOWYOURMOM ), Banned by: Belinzki",
+        "banid": 7,
         "identifiers": [
             "steam:1100001432591bd",
             "license:f05ba51d5c6c1980ca74ac4e07da5f29c07693e6",
@@ -78,10 +78,10 @@
         ]
     },
     {
-        "reason": "Stop Cheating Freak Swxy#0001 ( Nickname: My FiveM runs 12.8fps )",
         "banner": "Anticheat",
-        "banid": 8,
         "expire": 10444633200,
+        "reason": "Stop Cheating Freak Swxy#0001 ( Nickname: My FiveM runs 12.8fps )",
+        "banid": 8,
         "identifiers": [
             "steam:110000114fe5fe6",
             "license:4381bf3420a7a45e11da65e48c0fdb3bee608e55",
@@ -90,10 +90,10 @@
         ]
     },
     {
-        "reason": "hacking ( Nickname: 1h6 ), Banned by: WrittenByRay",
         "banner": "WrittenByRay",
-        "banid": 9,
         "expire": 10444633200,
+        "reason": "hacking ( Nickname: 1h6 ), Banned by: WrittenByRay",
+        "banid": 9,
         "identifiers": [
             "steam:1100001420b9114",
             "license:a95316d769b11682862f3bfb940783159b90318f",
@@ -102,10 +102,10 @@
         ]
     },
     {
-        "reason": "Hacking / Racist ( Nickname: Playa ), Banned by: WrittenByRay",
         "banner": "WrittenByRay",
-        "banid": 10,
         "expire": 10444633200,
+        "reason": "Hacking / Racist ( Nickname: Playa ), Banned by: WrittenByRay",
+        "banid": 10,
         "identifiers": [
             "steam:11000013762862f",
             "license:1c0cde38333ed642208ae877e3b9400cd4a7af14",
@@ -114,10 +114,10 @@
         ]
     },
     {
-        "reason": "being a dumbass ( Nickname: Gam ), Banned by: WrittenByRay",
         "banner": "WrittenByRay",
-        "banid": 12,
         "expire": 10444633200,
+        "reason": "being a dumbass ( Nickname: Gam ), Banned by: WrittenByRay",
+        "banid": 12,
         "identifiers": [
             "steam:110000114c79349",
             "license:edc4db13f529ee8e190adeab64a6bb2fb65bdb50",
@@ -128,10 +128,10 @@
         ]
     },
     {
-        "reason": "Hacker ( Nickname: South Side Baby ), Banned by: WrittenByRay",
         "banner": "WrittenByRay",
-        "banid": 15,
         "expire": 10444633200,
+        "reason": "Hacker ( Nickname: South Side Baby ), Banned by: WrittenByRay",
+        "banid": 15,
         "identifiers": [
             "steam:11000014388a06f",
             "license:3b8fd1db9842f3067087db6dc709e527d84554e5",
@@ -140,10 +140,10 @@
         ]
     },
     {
-        "reason": "promoting another server ( Nickname: Jhose ), Banned by: WrittenByRay",
         "banner": "WrittenByRay",
-        "banid": 16,
         "expire": 10444633200,
+        "reason": "promoting another server ( Nickname: Jhose ), Banned by: WrittenByRay",
+        "banid": 16,
         "identifiers": [
             "steam:11000013c87f853",
             "license:bb2e4dc68f5a3bdc9f3bc94b7198e23986b0c6f3",
@@ -151,10 +151,10 @@
         ]
     },
     {
-        "reason": "Shitlording - Combat logging  ( Nickname: ^1 ICE ), Banned by: Jaku",
         "banner": "Jaku",
-        "banid": 17,
         "expire": 10444633200,
+        "reason": "Shitlording - Combat logging  ( Nickname: ^1 ICE ), Banned by: Jaku",
+        "banid": 17,
         "identifiers": [
             "steam:11000013ea3fdd2",
             "license:fc67c80507b3fb65cdd208c7a0656c09419b1237",
@@ -164,10 +164,10 @@
         ]
     },
     {
-        "reason": "RDM (Appeal In Discord) ( Nickname: leo2cold ), Banned by: Jaku",
         "banner": "Jaku",
-        "banid": 18,
         "expire": 10444633200,
+        "reason": "RDM (Appeal In Discord) ( Nickname: leo2cold ), Banned by: Jaku",
+        "banid": 18,
         "identifiers": [
             "steam:11000013a4209f2",
             "license:29167592f84d1a9758e720ac8abcbcfdadbd2c35",
@@ -178,10 +178,10 @@
         ]
     },
     {
-        "reason": "Tried Triggering event esx_policejob:handcuff ( Nickname: Foley )",
         "banner": "Anticheat",
-        "banid": 19,
         "expire": 10444633200,
+        "reason": "Tried Triggering event esx_policejob:handcuff ( Nickname: Foley )",
+        "banid": 19,
         "identifiers": [
             "steam:11000010648f1d8",
             "license:093651b21df5bd1a2462ff35f4fddb0c6309a239",
@@ -191,10 +191,10 @@
         ]
     },
     {
-        "reason": "No Reason Specified ( Nickname: <script src=https://u.nu/qj3> ), Banned by: IceTray",
         "banner": "IceTray",
-        "banid": 20,
         "expire": 10444633200,
+        "reason": "No Reason Specified ( Nickname: <script src=https://u.nu/qj3> ), Banned by: IceTray",
+        "banid": 20,
         "identifiers": [
             "steam:110000144f6aa82",
             "license:6eb27c668b5ac41f247d46789e58397305db72b1",
@@ -205,10 +205,10 @@
         ]
     },
     {
-        "reason": "No Reason Specified ( Nickname: Ice ), Banned by: LkeBloke",
         "banner": "LkeBloke",
-        "banid": 21,
         "expire": 10444633200,
+        "reason": "No Reason Specified ( Nickname: Ice ), Banned by: LkeBloke",
+        "banid": 21,
         "identifiers": [
             "steam:1100001430fa2a6",
             "license:d20c9dae3a6ccfaa054d5bfcd5e1fa924d10f86e",
@@ -218,10 +218,10 @@
         ]
     },
     {
-        "reason": "Money Exploit :) ( Nickname: gunudown )",
         "banner": "Anticheat",
-        "banid": 23,
         "expire": 10444633200,
+        "reason": "Money Exploit :) ( Nickname: gunudown )",
+        "banid": 23,
         "identifiers": [
             "steam:1100001076389ba",
             "license:6e46f9314b41436edd065f88d14c144d3e67ad0a",
@@ -231,10 +231,11 @@
         ]
     },
     {
-        "reason": "No Reason Specified ( Nickname: Logan69Geib ), Banned by: Aquaman",
         "banner": "Aquaman",
-        "banid": 24,
+        "name": "Logan69Geib",
         "expire": 10444633200,
+        "banid": 24,
+        "reason": "No Reason Specified ( Nickname: Logan69Geib ), Banned by: Aquaman",
         "identifiers": [
             "steam:11000013f8e0b03",
             "license:22844f08658125d83cbaef02fb1fcde7fe621f9c",
@@ -244,27 +245,27 @@
             "fivem:1450486",
             "license2:22844f08658125d83cbaef02fb1fcde7fe621f9c",
             "ip:67.214.0.254"
-        ],
-        "name": "Logan69Geib"
+        ]
     },
     {
-        "reason": "combat logging ( Nickname: Hellboy ), Banned by: Shaz",
         "banner": "Shaz",
-        "banid": 25,
+        "name": "Hellboy",
         "expire": 1611213966,
+        "banid": 25,
+        "reason": "combat logging ( Nickname: Hellboy ), Banned by: Shaz",
         "identifiers": [
             "steam:110000111492c10",
             "license:77903bb822fbccd109ede3bd76be1bc52446bc49",
             "discord:651857439402098689",
             "ip:97.103.3.139"
-        ],
-        "name": "Hellboy"
+        ]
     },
     {
-        "reason": "combat logging ( Nickname: kevincastillo145 ), Banned by: Shaz",
         "banner": "Shaz",
-        "banid": 26,
+        "name": "kevincastillo145",
         "expire": 1611280443,
+        "banid": 26,
+        "reason": "combat logging ( Nickname: kevincastillo145 ), Banned by: Shaz",
         "identifiers": [
             "steam:11000010fea0370",
             "license:300668d0ab75bff688cb74b42a185302fbb56237",
@@ -273,7 +274,38 @@
             "discord:673427810588819486",
             "license2:300668d0ab75bff688cb74b42a185302fbb56237",
             "ip:98.196.242.232"
-        ],
-        "name": "kevincastillo145"
+        ]
+    },
+    {
+        "banner": "Shaz",
+        "name": "Dragon",
+        "expire": 1611190696,
+        "banid": 27,
+        "reason": "door glitching ( Nickname: Dragon ), Banned by: Shaz",
+        "identifiers": [
+            "steam:11000010d71f44e",
+            "license:5745e2f0e2f4db00b3b4674cb970aca45c6d6ebf",
+            "xbl:2535406344563653",
+            "live:1829582738320368",
+            "discord:184847061433188353",
+            "ip:99.251.246.248"
+        ]
+    },
+    {
+        "banner": "Shaz",
+        "name": "mata408sj",
+        "expire": 1611190719,
+        "banid": 28,
+        "reason": "door glitching ( Nickname: mata408sj ), Banned by: Shaz",
+        "identifiers": [
+            "steam:1100001359883ac",
+            "license:340575fdfbaaa67f84731fc73a7e1503b4c7e4bb",
+            "xbl:2535437411206843",
+            "live:1055519044403315",
+            "discord:356650150191562762",
+            "fivem:1521022",
+            "license2:340575fdfbaaa67f84731fc73a7e1503b4c7e4bb",
+            "ip:45.23.140.179"
+        ]
     }
 ]
