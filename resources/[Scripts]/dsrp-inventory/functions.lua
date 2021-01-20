@@ -1900,7 +1900,7 @@ Citizen.CreateThread(function()
     nearBM = blackmarket:isPointInside(coord)
     if nearBM then
         DrawText3D(-1051.78, 308.87, 62.22, "[E] - Open ")
-        if IsControlJustReleased(0, 86) then
+        if IsControlJustReleased(0, 86) and ESX.PlayerData.job.name == 'mafia' then
             Citizen.Wait(1)
             TriggerEvent("server-inventory-open", "31", "Craft");	
         end
