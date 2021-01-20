@@ -1264,7 +1264,7 @@ function ConvenienceStore() {
         { item_id: "ciggy", id: 0, name: "Shop", information: "{}", slot: 10, amount: 50 },
         { item_id: "mobilephone", id: 0, name: "Shop", information: "{}", slot: 11, amount: 50 },
         { item_id: "rollingpaper", id: 0, name: "Shop", information: "{}", slot: 12, amount: 50 },
-        { item_id: "idcard", id: 0, name: "Shop", information: "{}", slot: 13, amount: 1 },
+        { item_id: "fishingrod", id: 0, name: "Shop", information: "{}", slot: 13, amount: 1 },
         { item_id: "qualityscales", id: 0, name: "Shop", information: "{}", slot: 14, amount: 1 },
         { item_id: "notepad", id: 0, name: "Shop", information: "{}", slot: 15, amount: 1 },
     ];

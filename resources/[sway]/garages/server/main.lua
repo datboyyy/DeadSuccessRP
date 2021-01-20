@@ -139,7 +139,7 @@ ESX.RegisterServerCallback('esx_advancedgarage:storeVehicle', function (source, 
 					['@plate']  = vehicleProps.plate
 				}, function (rowsChanged)
 					if rowsChanged == 0 then
-						print(('esx_advancedgarage: %s attempted (2) to store an vehicle they don\'t own!'):format(GetPlayerIdentifiers(source)[1]))
+					--	print(('esx_advancedgarage: %s attempted (2) to store an vehicle they don\'t own!'):format(GetPlayerIdentifiers(source)[1]))
 					end
 					cb(true)
 				end)
@@ -148,7 +148,7 @@ ESX.RegisterServerCallback('esx_advancedgarage:storeVehicle', function (source, 
 				cb(false)
 			end
 		else
-			print(('esx_advancedgarage: %s attempted (1) to store an vehicle they don\'t own!'):format(GetPlayerIdentifiers(source)[1]))
+			--print(('esx_advancedgarage: %s attempted (1) to store an vehicle they don\'t own!'):format(GetPlayerIdentifiers(source)[1]))
 			cb(false)
 		end
 	end)
@@ -378,9 +378,9 @@ end)
 
 RegisterServerEvent('esx_advancedgarage:store')
 AddEventHandler('esx_advancedgarage:store', function(plate, vehicleProps)
-	print('esx_advancedgarage:store', plate, json.encode(vehicleProps))
+	--print('esx_advancedgarage:store', plate, json.encode(vehicleProps))
 
-	print("Bottom One Save Shit")
+	--print("Bottom One Save Shit")
 	MySQL.Async.execute('UPDATE owned_vehicles SET `vehicle` = @vehicle WHERE plate = @plate', {
 		['@plate'] = plate,
 		['@vehicle'] = json.encode(vehicleProps)

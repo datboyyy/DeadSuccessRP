@@ -31,14 +31,14 @@ Config.ShowGarageSpacer3 = true -- If true it shows Spacer 3 in the List | Don't
 Config.ShowPoundSpacer2 = false -- If true it shows Spacer 2 in the List | Don't use if spacer3 is set to true.
 Config.ShowPoundSpacer3 = true -- If true it shows Spacer 3 in the List | Don't use if Spacer2 is set to true.
 
-Config.MarkerType   = 1
-Config.DrawDistance = 100.0
+Config.MarkerType   = 27
+Config.DrawDistance = 55.0
 
 Config.BlipGarage = {
-	Sprite = 290,
-	Color = 38,
-	Display = 2,
-	Scale = 0.8
+	Sprite = 357,
+	Color = 67,
+	Display = 4,
+	Scale = 0.65
 }
 
 Config.BlipGaragePrivate = {
@@ -63,12 +63,12 @@ Config.BlipJobPound = {
 }
 
 Config.PointMarker = {
-	r = 0, g = 255, b = 0,     -- Green Color
+	r = 25, g = 165, b = 165,     -- Green Color
 	x = 1.5, y = 1.5, z = 1.0  -- Standard Size Circle
 }
 
 Config.DeleteMarker = {
-	r = 255, g = 0, b = 0,     -- Red Color
+	r = 255, g = 255, b = 255,     -- Red Color
 	x = 5.0, y = 5.0, z = 1.0  -- Big Size Circle
 }
 
@@ -126,7 +126,7 @@ Config.CarGarages = {
 	Garage_Sandy = {
 		GaragePoint = { x = 1737.59, y = 3710.2, z = 33.14 },
 		SpawnPoint = { x = 1737.84, y = 3719.28, z = 33.04, h = 21.22 },
-		DeletePoint = { x = 1746.31, y = 3719.86, z = 33.21 }
+		DeletePoint = { x =  1723.19, y = 3713.53, z = 33.14 }
 	},
 	Garage_Paleto = {
 		GaragePoint = { x = 105.359, y = 6613.586, z = 31.3973 },
@@ -134,39 +134,39 @@ Config.CarGarages = {
 		DeletePoint = { x = 126.3572, y = 6608.4150, z = 30.8565 }
 	},
 	Garage_Grove = {
-		GaragePoint = { x = -73.31, y = -1821.73, z = 26.12 },
+		GaragePoint = { x = -73.31, y = -1821.73, z = 25.9   },
 		SpawnPoint = { x = -69.04, y = -1830.43, z = 26.94, h = 317.91 },
-		DeletePoint = { x = -47.56, y = -1845.62, z = 25.09 }
+		DeletePoint = { x = -47.56, y = -1845.62, z = 26.09 - 0.9 }
 	},
 	Garage_PlayBoy = {
-		GaragePoint = { x = -1231.17, y = -663.71, z = 29.73 },
-		SpawnPoint = { x = -1229.18, y = -667.29, z = 30.72, h = 240.24 },
-		DeletePoint = { x = -1208.11, y = -657.33, z = 29.65 }
+		GaragePoint = { x = -1212.07, y = -654.18, z = 25.00 - 0.1 },
+		SpawnPoint = { x = -1210.69, y = -664.71, z = 25.00 , h = 36.42 },
+		DeletePoint = { x = -1223.92, y = -646.41, z = 25.00 - 0.1 }
 	},
 	Garage_PinkCage = {
 		GaragePoint = { x = 275.69, y = -344.78, z = 44.17 },
-		SpawnPoint = { x = 289.66, y = -341.62, z = 44.92, h = 170.81 },
-		DeletePoint = { x = 276.07, y = -323.84, z = 44.17 }
+		SpawnPoint = { x = 289.66, y = -341.62, z = 44.92, h = 157.96 },
+		DeletePoint = { x = 276.07, y = -323.84, z = 44.17 - 0.3 }
 	},
 	Garage_West_Vinewood = {
-		GaragePoint = { x = -340.68, y = 266.04, z = 84.67 },
+		GaragePoint = { x = -340.81, y = 266.98, z = 84.67 - 0.1},
 		SpawnPoint = { x = -344.80, y = 273.36, z = 85.36, h = 359.73 },
 		DeletePoint = { x = -330.04, y = 270.19, z = 85.26 }
 	},
 	Garage_PizzaJob = {
-		GaragePoint = { x = 596.48, y = 90.68, z = 92.12 },
+		GaragePoint = { x = 596.80, y = 91.39, z = 92.12 },
 		SpawnPoint = { x = 601.04, y = 90.24, z = 92.35, h = 339.22 },
 		DeletePoint = { x = 597.46, y = 85.33, z = 91.70 }
 	},
 	Garage_MirrorPark = {
-		GaragePoint = { x = 1036.18, y = -763.36, z = 57.01 },
+		GaragePoint = { x = 1036.18, y = -763.36, z = 57.01 - 0.1 },
 		SpawnPoint = { x = 1039.62, y = -770.09, z = 58.02, h = 195.42 },
-		DeletePoint = { x = 1012.33, y = -766.24, z = 57.01 }
+		DeletePoint = { x = 1025.43, y = -760.06, z = 57.01 - 0.1 }
 	},
 	Garage_SouthVespucci = {
-		GaragePoint = { x = -1184.38, y = -1509.41, z = 4.65},
+		GaragePoint = { x = -1184.38, y = -1509.41, z = 4.65 - 1.1},
 		SpawnPoint = { x = -1184.8, y = -1501.55, z = 3.87, h = 215.82 },
-		DeletePoint = { x = -1021.02, y = -1480.02, z = 3.87 }
+		DeletePoint = { x = -1184.8, y = -1501.55, z =  4.65 - 1.35 }
 	},
 }
 

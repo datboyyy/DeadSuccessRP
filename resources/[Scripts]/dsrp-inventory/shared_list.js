@@ -478,7 +478,7 @@ itemList["DuffelBag"] = { fullyDegrades: false, decayrate: 0.0, displayname: "Bl
 itemList["dusche"] = { fullyDegrades: false, decayrate: 0.0, displayname: "Dusche Gold", price: 1, weight: 0, nonStack: false, model: "", image: "np_dusche-gold.png", information: "Let it pour", deg: false }
 itemList["dye"] = { fullyDegrades: false, decayrate: 0.0, displayname: "Dye", price: 10, weight: 0, nonStack: false, model: "", image: "np_dye.png", deg: false }
 
-itemList["fishingrod"] = { fullyDegrades: false, decayrate: 0.0, displayname: "Fishing Rod", price: 0, weight: 1, nonStack: true, model: "", image: "fishingrod.png", deg: false }
+itemList["fishingrod"] = { fullyDegrades: false, decayrate: 0.0, displayname: "Fishing Rod", price: 500, weight: 1, nonStack: true, model: "", image: "fishingrod.png", deg: false }
 itemList["electronickit"] = { fullyDegrades: false, decayrate: 0.0, displayname: "Electronic Kit", craft: [{ itemid: "electronics", amount: 230 }], price: 900, weight: 15, nonStack: false, model: "", image: "np_electronic-kit.png", deg: false }
 itemList["emptybaggies"] = { fullyDegrades: false, decayrate: 0.0, displayname: "Pack of Empty Baggies", price: 50, weight: 1, nonStack: false, model: "", image: "np_pack-of-empty-baggies.png", deg: false }
 itemList["enchiladas"] = { fullyDegrades: false, decayrate: 0.0, displayname: "Enchiladas", price: 1, weight: 0, nonStack: false, model: "", image: "np_enchiladas.png", information: "Mas chile por favor", deg: false }

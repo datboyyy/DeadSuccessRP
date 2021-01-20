@@ -15,7 +15,6 @@ Config.Map = {
  -- {name="Cluckin Bell ",color=4, id=52,x = 177.12, y = -1044.68, z = 1},
   {name="Taco Shop ",color=4, id=52,x = 10.84, y = -1607.16, z = 1},
   {name="Recycling plant ",color=17, id=304,x = 746.75518798828, y=-1400.094482421, z=1},
-  {name="Impound Lot ",color=17, id=68,x = 549.50, y=-55.39, z=555},
   
 
 }
