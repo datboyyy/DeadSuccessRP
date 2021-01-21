@@ -43,6 +43,13 @@ end)
 -----------------------------------------------------------------------------
 -- NUI CALLBACKS
 -----------------------------------------------------------------------------
+RegisterNUICallback('miner', function()
+    local job = 'miner'
+    TriggerServerEvent('setjob:jobcenter', job)
+    TriggerEvent('notification', 'Job Set to ' .. job, 1)
+end)
+
+
 RegisterNUICallback('garbage', function()
     local job = 'garbage'
     TriggerServerEvent('setjob:jobcenter', job)

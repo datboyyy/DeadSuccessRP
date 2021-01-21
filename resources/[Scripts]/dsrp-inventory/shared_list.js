@@ -807,3 +807,8 @@ itemList["humantongue"] = { fullyDegrades: false, decayrate: 2.0, displayname: "
 itemList["humantooth"] = { fullyDegrades: false, decayrate: 0.0, displayname: "Human Tooth", price: 1, weight: 0, nonStack: true, model: "", image: "np_humantooth.png", information: "A single tooth with root and all.", deg: false }
 itemList["ram"] = { fullyDegrades: false, decayrate: 0.0, displayname: "Battering Ram", price: 1, weight: 0, nonStack: true, model: "", image: "ram.png", information: "Police Battering Ram.", deg: false }
 itemList["PowerPlantCard"] = { fullyDegrades: false, decayrate: 0.0, displayname: "Power Plant Security Card", price: 1, weight: 0, nonStack: true, model: "", image: "powerplantsecutiy.png", information: "Power Plant Security Card.", deg: false }
+// Mining
+
+itemList["stone"]	= {fullyDegrades: false, decayrate: 0.0, displayname: "Stone", price: 1, weight: 2, nonStack: true, model:  "", image: "stone.png", information: "You completed step 1 to mining head to step 2!", deg: false }
+itemList["washedstone"]	= {fullyDegrades: false, decayrate: 0.0, displayname: "Washed Stone", price: 1, weight: 5, nonStack: true, model:  "", image: "washed_stone.png", information: "You completed step 2 to mining head to step 3!", deg: false }
+itemList["iron"]	= {fullyDegrades: false, decayrate: 0.0, displayname: "Iron", price: 1, weight: 5, nonStack: true, model:  "", image: "iron.png", information: "Iron Material", deg: false }
