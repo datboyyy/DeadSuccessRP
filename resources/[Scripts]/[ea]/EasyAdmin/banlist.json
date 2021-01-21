@@ -248,19 +248,6 @@
         ]
     },
     {
-        "expire": 1611213966,
-        "name": "Hellboy",
-        "banid": 25,
-        "reason": "combat logging ( Nickname: Hellboy ), Banned by: Shaz",
-        "banner": "Shaz",
-        "identifiers": [
-            "steam:110000111492c10",
-            "license:77903bb822fbccd109ede3bd76be1bc52446bc49",
-            "discord:651857439402098689",
-            "ip:97.103.3.139"
-        ]
-    },
-    {
         "expire": 1611280443,
         "name": "kevincastillo145",
         "banid": 26,

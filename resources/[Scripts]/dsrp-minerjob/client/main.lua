@@ -52,7 +52,7 @@ end)
 
 
 Citizen.CreateThread(function()
-    blip1 = AddBlipForCoord(-597.01, 2091.42, 131.41)
+    blip1 = AddBlipForCoord(3004.58, 2773.00, 43.03)
     blip2 = AddBlipForCoord(Config.WashingX, Config.WashingY, Config.WashingZ)
     blip3 = AddBlipForCoord(Config.RemeltingX, Config.RemeltingY, Config.RemeltingZ)
     blip4 = AddBlipForCoord(Config.SellX, Config.SellY, Config.SellZ)
