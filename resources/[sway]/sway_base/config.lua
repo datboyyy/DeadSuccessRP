@@ -3,7 +3,7 @@ Config = {}
 Config.Map = {
   {name="Benny's Original Motor Works",color=7, id=446,x = -205.28, y = -1304.52, z = 1},
   {name="Court House",color=0, id=419,x = 244.48, y = -387.04, z = 1},
-  {name="Rebel Radio [Studio]",color=1, id=136,x =  736.6, y = 2523.36, z = 1},
+  {name="GoPostal",color=5, id=541,x = 70.98, y = 114.30, z = 1},
   {name="Police Department",color= 68, id=60,x =  423.04, y = -980.08, z = 1},
   {name="Job Center", colour=17, id=351, x= 172.78, y= -26.89, z= 1},
   {name="Discount Furniture Store", colour=78, id=177, x= 803.08, y= -991.2, z= 1},

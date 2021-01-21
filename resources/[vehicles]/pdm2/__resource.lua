@@ -1,4 +1,4 @@
-resource_manifest_version "44febabe-d386-4d18-afbe-5e627f4af937"
+--[[resource_manifest_version "44febabe-d386-4d18-afbe-5e627f4af937"
 
 files {
   'vehiclelayouts.meta',
@@ -41,3 +41,20 @@ client_script {
     'vehicle_names.lua'
 }
 
+]]--
+
+resource_manifest_version "44febabe-d386-4d18-afbe-5e627f4af937"
+
+files {
+  '*.meta',
+}
+
+data_file 'VEHICLE_LAYOUTS_FILE' '*.meta'
+data_file 'HANDLING_FILE' '*.meta'
+data_file 'VEHICLE_METADATA_FILE' '*.meta'
+data_file 'CARCOLS_FILE' '*.meta'
+data_file 'VEHICLE_VARIATION_FILE' '*.meta'
+
+client_script {
+    'vehicle_names.lua'
+}
