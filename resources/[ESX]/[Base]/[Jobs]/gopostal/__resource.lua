@@ -10,6 +10,7 @@ server_scripts {
 }
 
 client_scripts {
+	'@PolyZone/client.lua',
 	'client/base.lua',
 	'client/cl.lua'
 }

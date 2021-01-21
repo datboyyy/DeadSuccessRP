@@ -32,7 +32,7 @@ AddEventHandler('gpstools:getpos', function()
 	finalPos.z = string.format("%.2f", pos.z)
 	finalPos.h = string.format("%.2f", heading)
 
-	local formattedText = "x = " .. finalPos.x .. ", y = " .. finalPos.y .. ", z = " .. finalPos.z .. ', h = ' .. finalPos.h
+	local formattedText = "" .. finalPos.x .. "," .. finalPos.y .. "," .. finalPos.z .. ', h = ' .. finalPos.h
 	TriggerEvent('chatMessage', 'SYSTEM', { 0, 0, 0 }, formattedText)
 	print(formattedText)
 end)
