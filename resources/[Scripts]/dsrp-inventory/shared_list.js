@@ -543,6 +543,7 @@ itemList["homme"] = { fullyDegrades: false, decayrate: 0.0, displayname: "L'Homm
 itemList["horchata"] = { fullyDegrades: false, decayrate: 0.0, displayname: "Horchata", price: 1, weight: 0, nonStack: false, model: "", image: "np_horchata.png", information: "A la gran puchica!", deg: false }
 itemList["icbelt"] = { fullyDegrades: false, decayrate: 0.0, displayname: "Intercontinental Belt", price: 1, weight: 0, nonStack: false, model: "", image: "np_intercontinental-belt.png", information: "Bah gawd!", deg: false }
 itemList["idcard"] = { fullyDegrades: false, decayrate: 0.0, displayname: "Citizen Card", price: 25, weight: 0, nonStack: true, model: "", image: "np_citizen-card.png", deg: false }
+itemList["fbicard"] = { fullyDegrades: false, decayrate: 0.0, displayname: "FIB Id Card", price: 25, weight: 0, nonStack: true, model: "", image: "fbicard.png", deg: false }
 itemList["IFAK"] = { fullyDegrades: false, decayrate: 0.0, displayname: "IFAK", price: 200, weight: 0, nonStack: false, model: "", image: "ifak.png", information: "Heals you over time and clots wounds.", deg: false }
 itemList["inkedmoneybag"] = { fullyDegrades: false, illegal: true, decayrate: 0.0, displayname: "Inked Money Bag", price: 100000, weight: 35, nonStack: false, model: "", image: "np_inked-money-bag.png", information: "This belongs to the Vault Bank", deg: false }
 itemList["inkset"] = { fullyDegrades: false, illegal: true, decayrate: 0.0, displayname: "Inked Set", price: 500, weight: 15, nonStack: false, model: "", image: "np_inked-money-bag.png", deg: false }

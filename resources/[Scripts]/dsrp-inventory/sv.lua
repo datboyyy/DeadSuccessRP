@@ -134,3 +134,22 @@ AddEventHandler("police:showID", function(pid,data)
     TriggerClientEvent('chat:showCID', src, info)
     TriggerClientEvent('chat:showCID', pid, info)
 end)
+
+
+RegisterServerEvent("police:showFBIID")
+AddEventHandler("police:showFBIID", function(pid,data)
+    local src = source
+    local xPlayer = ESX.GetPlayerFromId(src)
+    local identifier = xPlayer.identifier
+    local info = json.decode(data)
+    local info = {
+        status = 1,
+        Name = info.Name,
+        Surname = info.Surname,
+        DOB = info.DOB,
+        sex = info.Sex,
+        identifier = 'ply-'..info.identifier
+    }
+    TriggerClientEvent('chat:showFBI', src, info)
+    TriggerClientEvent('chat:showFBI', pid, info)
+end)

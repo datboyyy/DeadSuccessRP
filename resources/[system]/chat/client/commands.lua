@@ -164,3 +164,16 @@ AddEventHandler('chat:showCID', function(cidInformation)
     }
   })
 end)
+
+RegisterNetEvent('chat:showFBI')
+AddEventHandler('chat:showFBI', function(cidInformation)
+  print('sending here fed', json.encode(cidInformation))
+  SendNUIMessage({
+    type = 'ON_MESSAGE',
+    message = {
+      color = 10,
+      multiline = false,
+      args = cidInformation
+    }
+  })
+end)

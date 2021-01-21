@@ -990,7 +990,10 @@ end
     if (itemid == "fishingrod") then
         TriggerEvent("BegingFish")
     end
-
+    if (itemid == 'fbicard') then
+        local ItemInfo = GetItemInfo(slot)
+        TriggerEvent('idcard:Fedshow', ItemInfo.information)
+    end
     if (itemid == "harness") then
         local veh = GetVehiclePedIsIn(player, false)
         local driver = GetPedInVehicleSeat(veh, -1)
@@ -2012,7 +2015,17 @@ AddEventHandler('idcard:show', function(data)
     if(distance ~= -1 and distance < 5) then
         TriggerServerEvent("police:showID", GetPlayerServerId(t), data)
     else
-        TriggerEvent("DoLongHudText", "No player nearby!",2)
+        TriggerEvent("notification", "No player nearby!",2)
+    end
+end)
+
+RegisterNetEvent('idcard:Fedshow')
+AddEventHandler('idcard:Fedshow', function(data)
+    t, distance = GetClosestPlayer()
+    if(distance ~= -1 and distance < 5) then
+        TriggerServerEvent("police:showFBIID", GetPlayerServerId(t), data)
+    else
+        TriggerEvent("notification", "No player nearby!",2)
     end
 end)
 

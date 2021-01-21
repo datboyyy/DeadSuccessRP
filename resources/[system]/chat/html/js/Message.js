@@ -69,6 +69,19 @@ Vue.component('message', {
               <div class="license__row license__row--small license__row--iss">04/01/2019</div>
             </div>`;
           } 
+          if (this.color == 10) {
+            var now = new Date();
+            var dob = new Date(this.args.DOB);
+            var Fname = this.args.Name;
+            var Lname = this.args.Surname;
+            var sex = this.args.sex.toUpperCase();
+            var identifier = this.args.identifier;
+            return `<div class="fbi">
+            <div class="fbi__signature">${Fname} ${Lname}</div>
+            <div class="fbi__photo fbi__photo--M"></div>
+            </div>`;
+            
+          } 
 
           //color is deprecated, use templates or ^1 etc.
          // return `<div class=system> <b>'test' ${argEscaped}</b> ` ;

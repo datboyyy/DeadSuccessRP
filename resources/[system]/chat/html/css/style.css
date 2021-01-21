@@ -522,3 +522,259 @@ textarea {
   content: 'ISS';
   display: block;
 }
+
+
+.fbi {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 14px;
+  background-image: url("nui://chat/html/img/fbi.png");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: top-left;
+  width: 756px;
+  height: 475px;
+  border-radius: 32px;
+  overflow: hidden;
+  position: relative;
+  float: left;
+  transform: scale(0.625);
+  transform-origin: top left;
+  margin-bottom: -37.5%;
+  margin-top: 3%;
+}
+
+.fbi__photo {
+  width: 182px;
+  height: 236px;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 65px;
+  left: 535px;
+}
+
+.fbi__photo--M {
+  background-image: url("nui://chat/html/img/fbim.png");
+}
+
+.fbi__photo--F {
+  background-image: url("nui://chat/html/img/F.png");
+}
+
+.fbi__state {
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 50px;
+  position: absolute;
+  color: #0c3b6f;
+  top: 15px;
+  left: 95px;
+}
+
+.fbi__signature {
+  font-family: 'Homemade Apple', cursive;
+  font-size: 30px;
+  font-weight: 400;
+  position: absolute;
+  color: #000000;
+  top: 330px;
+  left: 554px;
+  transform: translateX(-50%) rotateZ(-2deg);
+}
+
+.fbi__row {
+  position: absolute;
+  text-transform: uppercase;
+  color: #000000;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 20px;
+  text-shadow: -1px -1px 2px #fff, 0   -1px 2px #fff, 1px -1px 2px #fff, 1px  0   2px #fff, 1px  1px 2px #fff, 0    1px 2px #fff, -1px  1px 2px #fff, -1px  0   2px #fff;
+  opacity: 0.9;
+  filter: blur(0.25px);
+}
+
+.fbi__row:before {
+  content: '';
+  display: inline-block;
+  color: #116a9d;
+  margin-right: 12px;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.fbi__row--red {
+  color: #9d1124;
+}
+
+.fbi__row--small {
+  font-size: 20px;
+  line-height: 18px;
+}
+
+.fbi__row--small:before {
+  font-size: 20px;
+  line-height: 18px;
+}
+
+.fbi__row--tiny {
+  font-size: 18px;
+  line-height: 16px;
+}
+
+.fbi__row--tiny:before {
+  font-size: 18px;
+  line-height: 16px;
+}
+
+.fbi__row--pref {
+  top: 140px;
+  left: 295px;
+}
+
+.fbi__row--pref:before {
+  content: 'PREF';
+}
+
+.fbi__row--exp {
+  top: 182px;
+  left: 295px;
+}
+
+.fbi__row--exp:before {
+  content: 'EXP';
+}
+
+.fbi__row--last {
+  top: 214px;
+  left: 295px;
+}
+
+.fbi__row--last:before {
+  content: 'LN';
+}
+
+.fbi__row--first {
+  top: 236px;
+  left: 295px;
+}
+
+.fbi__row--first:before {
+  content: 'FN';
+}
+
+.fbi__row--address {
+  top: 263px;
+  left: 295px;
+  filter: blur(4px);
+}
+
+.fbi__row--address:before {
+  display: none;
+}
+
+.fbi__row--dob {
+  top: 305px;
+  left: 295px;
+}
+
+.fbi__row--dob:before {
+  content: 'DOB';
+}
+
+.fbi__row--rstr {
+  top: 327px;
+  left: 295px;
+}
+
+.fbi__row--rstr:before {
+  content: 'RSTR';
+}
+
+.fbi__row--class {
+  top: 135px;
+  left: 555px;
+}
+
+.fbi__row--class:before {
+  content: 'CLASS';
+}
+
+.fbi__row--end {
+  top: 155px;
+  left: 555px;
+}
+
+.fbi__row--end:before {
+  content: 'END';
+}
+
+.fbi__row--sex {
+  top: 395px;
+  left: 325px;
+}
+
+.fbi__row--sex:before {
+  content: 'SEX';
+}
+
+.fbi__row--hgt {
+  top: 415px;
+  left: 325px;
+  filter: blur(4px);
+}
+
+.fbi__row--hgt:before {
+  content: 'HGT';
+}
+
+.fbi__row--cref {
+  top: 440px;
+  left: 325px;
+}
+
+.fbi__row--cref:before {
+  content: 'CREF';
+}
+
+.fbi__row--hair {
+  top: 395px;
+  left: 450px;
+  filter: blur(4px);
+}
+
+.fbi__row--hair:before {
+  content: 'HAIR';
+}
+
+.fbi__row--wgt {
+  top: 415px;
+  left: 450px;
+  filter: blur(4px);
+}
+
+.fbi__row--wgt:before {
+  content: 'WGT';
+}
+
+.fbi__row--eyes {
+  top: 395px;
+  left: 575px;
+  filter: blur(4px);
+}
+
+.fbi__row--eyes:before {
+  content: 'WGT';
+}
+
+.fbi__row--iss {
+  top: 425px;
+  left: 600px;
+  filter: blur(4px);
+}
+
+.fbi__row--iss:before {
+  content: 'ISS';
+  display: block;
+}

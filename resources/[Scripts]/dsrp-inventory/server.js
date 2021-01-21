@@ -147,6 +147,34 @@ function GenerateInformation(player, itemid, itemdata) {
                         });
                     }
                     break;
+                    case "fbicard":
+                        if (itemdata == itemdata.fake) {
+                            returnInfo = JSON.stringify({
+                                identifier: itemdata, charID,
+                                Name: itemdata.first.replace(/[^\w\s]/gi, ''),
+                                Surname: itemdata.last.replace(/[^\w\s]/gi, ''),
+                                Sex: itemdata.sex,
+                                DOB: itemdata.dateofbirth
+                            })
+                            timeout = 1
+                            clearTimeout(timeout)
+                            return resolve(returnInfo);
+                        } else {
+                            let string = `SELECT firstname,lastname,sex,dateofbirth FROM users WHERE id = '${player}'`;
+                            exports.ghmattimysql.execute(string, {}, function (result) {
+                                returnInfo = JSON.stringify({
+                                    identifier: player.toString(),
+                                    Name: result[0].firstname.replace(/[^\w\s]/gi, ''),
+                                    Surname: result[0].lastname.replace(/[^\w\s]/gi, ''),
+                                    Sex: result[0].sex,
+                                    DOB: result[0].dateofbirth
+                                })
+                                timeout = 1
+                                clearTimeout(timeout)
+                                return resolve(returnInfo);
+                            });
+                        }
+                        break;
                 case "casing":
                     returnInfo = JSON.stringify({ Identifier: itemdata.identifier, type: itemdata.eType, other: itemdata.other })
                     timeout = 1
@@ -232,6 +260,10 @@ onNet("server-inventory-give", async (player, itemid, slot, amount, generateInfo
     let creationDate = Date.now()
 
     if (itemid == "idcard") {
+        information = await GenerateInformation(player, itemid, itemdata)
+    }
+
+    if (itemid == "fbicard") {
         information = await GenerateInformation(player, itemid, itemdata)
     }
 

@@ -45,6 +45,9 @@
       $.post('http://dsrp-jobcenter/NUIFocusOff', JSON.stringify({}));
     }
   }
+  $('#miner').click(function () {
+    $.post('http://dsrp-jobcenter/miner', JSON.stringify({}));
+  })
 
   $('#garbage').click(function () {
     $.post('http://dsrp-jobcenter/garbage', JSON.stringify({}));
