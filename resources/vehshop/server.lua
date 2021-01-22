@@ -5,13 +5,13 @@ local repayTime = 7 -- hours * 60
 local timer = ((60 * 1000) * 60) -- 10 minute timer
 
 local carTable = {
-	[1] = { ["model"] = "gauntlet", ["baseprice"] = 100000, ["commission"] = 15 }, 
-	[2] = { ["model"] = "dubsta3", ["baseprice"] = 100000, ["commission"] = 15 },
-	[3] = { ["model"] = "landstalker", ["baseprice"] = 100000, ["commission"] = 15 },
-	[4] = { ["model"] = "bobcatxl", ["baseprice"] = 100000, ["commission"] = 15 },
-	[5] = { ["model"] = "surfer", ["baseprice"] = 100000, ["commission"] = 15 },
-	[6] = { ["model"] = "glendale", ["baseprice"] = 100000, ["commission"] = 15 },
-	[7] = { ["model"] = "washington", ["baseprice"] = 100000, ["commission"] = 15 },
+    [1] = {["model"] = "unicycle", ["baseprice"] = 2000, ["commission"] = 15},
+    [2] = {["model"] = "lp700r", ["baseprice"] = 1000000, ["commission"] = 15},
+    [3] = {["model"] = "chargerscat", ["baseprice"] = 550000, ["commission"] = 15},
+    [4] = {["model"] = "subwrx", ["baseprice"] = 150000, ["commission"] = 15},
+    [5] = {["model"] = "19ramoffroad", ["baseprice"] = 150000, ["commission"] = 15},
+    [6] = {["model"] = "c8", ["baseprice"] = 400000, ["commission"] = 10},
+    [7] = {["model"] = "r820", ["baseprice"] = 680000, ["commission"] = 15},
 }
 
 -- Update car table to server
@@ -59,7 +59,10 @@ AddEventHandler('CheckMoneyForVeh', function(name, model,price,financed)
     if financed then
         local financedPrice = math.ceil(price / 4)
         if money >= financedPrice then
-            xPlayer.removeMoney(financedPrice)
+                xPlayer.removeMoney(financedPrice)
+                cash = xPlayer.getMoney()
+                TriggerClientEvent('banking:removeCash', source, financedPrice)
+                TriggerClientEvent('banking:updateCash', source, cash)
             TriggerClientEvent('FinishMoneyCheckForVeh', source, name, model, price, financed)
         else
             TriggerClientEvent('notification', source, 'You dont have enough money on you!', 2)
@@ -68,6 +71,9 @@ AddEventHandler('CheckMoneyForVeh', function(name, model,price,financed)
     else
         if money >= price then
             xPlayer.removeMoney(price)
+            cash = xPlayer.getMoney()
+            TriggerClientEvent('banking:removeCash', source, price)
+            TriggerClientEvent('banking:updateCash', source, cash)
             TriggerClientEvent('FinishMoneyCheckForVeh', source, name, model, price, financed)
         else
             TriggerClientEvent('notification', source, 'You dont have enough money on you!', 2)
@@ -98,10 +104,9 @@ AddEventHandler('BuyForVeh', function(platew, name, vehicle, price, financed)
             ['@payments_left'] = 12,
         })
     else
-        exports.ghmattimysql:execute('INSERT INTO owned_vehicles (owner,  plate, name, vehiclename, purchase_price) VALUES (@owner,  @plate, @name, @vehiclename, @buy_price)',{
+        exports.ghmattimysql:execute('INSERT INTO owned_vehicles (owner,  plate, vehiclename, purchase_price) VALUES (@owner,  @plate,  @vehiclename, @buy_price)',{
             ['@owner']   = player,
             ['@plate']   = platew,
-            ['@name'] = name,
             ['@vehiclename'] = vehicle,
             ['@buy_price'] = price,
         })
@@ -151,9 +156,11 @@ function PayVehicleFinance(vehicleplate)
       })
 
       xPlayer.removeMoney(vehicletotalamount / 12)
+      cash = xPlayer.getMoney()
+      TriggerClientEvent('banking:removeCash', source, vehicletotalamount / 12)
+      TriggerClientEvent('banking:updateCash', source, cash)
     else
-        TriggerClientEvent('notification', user.source, 'It is Not The Due Date for The Payment', 2)
-        print('faggot alert')
+        TriggerClientEvent('notification', source, 'It is Not The Due Date for The Payment', 2)
     end
       end)
 end

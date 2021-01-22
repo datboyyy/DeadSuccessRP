@@ -24,15 +24,17 @@ AddEventHandler('playerDropped', function(pData)
 end)
 
 function startCall(phoneNumber, callerID, receiverID)
-    if activeCallsByNumber[phoneNumber] then
-        --busy
-    else
+    --My Fix For Broken Calls
+    --[[if activeCallsByNumber[phoneNumber] then
+        print(activeCallsByNumber[phoneNumber])
+    else]]--
+        print(phoneNumber, callerID, receiverID)
         activeCallsByNumber[phoneNumber] = {caller = callerID, receiver = receiverID}
         activeCallsBySource[callerID] = phoneNumber
         activeCallsBySource[receiverID] = phoneNumber
         TriggerClientEvent('lol:voice:phone:call:start2', tonumber(callerID), tonumber(phoneNumber), tonumber(receiverID))
         TriggerClientEvent('lol:voice:phone:call:start2', tonumber(receiverID), tonumber(phoneNumber), tonumber(callerID))
-    end
+   -- end
 end
 
 function endCall(phoneNumber)
