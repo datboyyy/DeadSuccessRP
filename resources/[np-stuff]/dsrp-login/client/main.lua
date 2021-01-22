@@ -27,6 +27,7 @@ Citizen.CreateThread(function()
             TriggerEvent("kashactersC:WelcomePage")
             TriggerEvent("kashactersC:SetupCharacters")
             TriggerServerEvent("kGetWeather")
+            TriggerServerEvent("npstash:RequestStashHouses")
             return -- break the loop
         end
     end

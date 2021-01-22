@@ -137,6 +137,7 @@ function ListOwnedCarsMenu()
 		if #ownedCars == 0 then
 			exports['mythic_notify']:SendAlert('error', _U('garage_nocars'), 5000)
 		else
+			print(json.encode(ownedCars))
 			for _,v in pairs(ownedCars) do
 				if Config.UseVehicleNamesLua then
 					local hashVehicule = v.vehicle.model

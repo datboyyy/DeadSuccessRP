@@ -82,8 +82,7 @@ end)
 RegisterServerEvent("mdt:getOffenderDetails")
 AddEventHandler("mdt:getOffenderDetails", function(offender)
 	local usource = source
-	GetLicenses(offender.identifier, function(licenses) offender.licenses = licenses end)
-	while offender.licenses == nil do Citizen.Wait(0) end
+
 	MySQL.Async.fetchAll('SELECT * FROM `user_mdt` WHERE `char_id` = @id', {
 		['@id'] = offender.id
 	}, function(result)
@@ -124,8 +123,7 @@ AddEventHandler("mdt:getOffenderDetailsById", function(char_id)
 		['@id'] = char_id
 	}, function(result)
 		local offender = result[1]
-		GetLicenses(offender.identifier, function(licenses) offender.licenses = licenses end)
-		while offender.licenses == nil do Citizen.Wait(0) end
+
 		MySQL.Async.fetchAll('SELECT * FROM `user_mdt` WHERE `char_id` = @id', {
 			['@id'] = offender.id
 		}, function(result)
@@ -171,13 +169,13 @@ AddEventHandler("mdt:saveOffenderChanges", function(id, changes, identifier)
 				['@mugshot_url'] = changes.mugshot_url
 			})
 		end
-		for i = 1, #changes.licenses_removed do
+	--[[	for i = 1, #changes.licenses_removed do
 			local license = changes.licenses_removed[i]
 			MySQL.Async.execute('DELETE FROM `user_licenses` WHERE `type` = @type AND `owner` = @identifier', {
 				['@type'] = license.type,
 				['@identifier'] = identifier
 			})
-		end
+		end]]--
 
 		for conviction, amount in pairs(changes.convictions) do	
 			MySQL.Async.execute('UPDATE `user_convictions` SET `count` = @count WHERE `char_id` = @id AND `offense` = @offense', {
@@ -424,7 +422,7 @@ AddEventHandler("mdt:getReportDetailsById", function(query, _source)
 	end)
 end)
 
-function GetLicenses(identifier, cb)
+--[[function GetLicenses(identifier, cb)
 	MySQL.Async.fetchAll('SELECT * FROM user_licenses WHERE owner = @owner', {
 		['@owner'] = identifier
 	}, function(result)
@@ -458,7 +456,7 @@ function GetLicenses(identifier, cb)
 		end)
 
 	end)
-end
+end]]--
 
 function GetCharacterName(source)
 	local result = MySQL.Sync.fetchAll('SELECT firstname, lastname FROM users WHERE identifier = @identifier', {

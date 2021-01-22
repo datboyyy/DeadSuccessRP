@@ -6,13 +6,21 @@ client_scripts {
 }
 
 server_scripts {
-    "server.lua"
+    "server.lua",
 }
 
 data_file 'DLC_ITYP_REQUEST' 'stream/def_props.ytyp'
 data_file 'DLC_ITYP_REQUEST' 'stream/traphouse_shell.ytyp'
+data_file 'DLC_ITYP_REQUEST' 'stream/shellpropsv15.ytyp'
 
 -- files {
 -- 'stream/slbBuildings/def_props.ytyp',
 -- 'stream/slb2k11_court_small.ydr',
 -- }
+
+
+this_is_a_map 'yes'
+
+files {
+      'shellpropsv15.ytyp'
+}

@@ -26,6 +26,7 @@ $(document).on('click', '.garage-cardetails-footer', function(e){
 
 $(document).on('click', '.garage-paybutton', function(e){
     e.preventDefault();
+    console.log()
 });
 
 SetupGarageVehicles = function(Vehicles) {

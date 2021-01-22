@@ -893,7 +893,7 @@ function AttemptDropOff()
         TriggerEvent("inventory:removeItem",weed12oz, 1)
         TriggerEvent("notification","Drop off success!")
 
-        TriggerEvent("player:receiveItem","band", 4)
+        TriggerEvent("player:receiveItem","band", math.random(6,8))
         TriggerEvent("inventory:removeItem","weed12oz",1)
           ClearBlips()
 
