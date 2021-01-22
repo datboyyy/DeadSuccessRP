@@ -144,76 +144,91 @@ ESX.RegisterServerCallback('qb-crypto:server:GetCryptoData', function(source, cb
     cb(CryptoData)
 end)
 
+ESX.RegisterServerCallback('qb-crypto:server:GetCryptoData', function(source, cb)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    
+    local CryptoData = {
+        History = Crypto.History["qbit"],
+        Worth = Crypto.Worth["qbit"],
+        Portfolio = xPlayer.getCrypto(),
+        WalletId = xPlayer.getIBAN(),
+    }
+
+    cb(CryptoData)
+end)
+
 ESX.RegisterServerCallback('qb-crypto:server:BuyCrypto', function(source, cb, data)
     local xPlayer = ESX.GetPlayerFromId(source)
 
-    if tonumber(data.Price) <= 0 then
+    if tonumber(data.Coins) <= 0 then
     	cb(false)
+        return
     end    
     if xPlayer.getBank() >= tonumber(data.Price) then
+    	print("Bought")
+        xPlayer.removeBank(tonumber(data.Price))
+        xPlayer.addCrypto(tonumber(data.Coins))        
+        TriggerClientEvent('MI-phone:client:AddTransaction', source, Player, data, "You bought "..tonumber(data.Coins).." Bitcoin!", "Purchase")
         local CryptoData = {
             History = Crypto.History["qbit"],
             Worth = Crypto.Worth["qbit"],
             Portfolio = xPlayer.getCrypto() + tonumber(data.Coins),
             WalletId = xPlayer.getIBAN(),
         }
-        xPlayer.removeBank(tonumber(data.Price))
-        TriggerClientEvent('MI-phone:client:AddTransaction', source, Player, data, "You bought "..tonumber(data.Coins).." Qbit('s)!", "Purchase")
-        xPlayer.addCrypto(tonumber(data.Coins))        
         cb(CryptoData)
     else
         cb(false)
     end
 end)
-
-
 
 ESX.RegisterServerCallback('qb-crypto:server:SellCrypto', function(source, cb, data)
     local xPlayer = ESX.GetPlayerFromId(source)
 
     if tonumber(data.Coins) <= 0 then
     	cb(false)
+        return
     end
     if xPlayer.getCrypto() >= tonumber(data.Coins) then
+        xPlayer.removeCrypto(tonumber(data.Coins))
+        xPlayer.addBank(tonumber(data.Price))
+        TriggerClientEvent('MI-phone:client:AddTransaction', source, Player, data, "You sold "..tonumber(data.Coins).." Bitcoin", "Sale")
         local CryptoData = {
             History = Crypto.History["qbit"],
             Worth = Crypto.Worth["qbit"],
             Portfolio = xPlayer.getCrypto() - tonumber(data.Coins),
             WalletId = xPlayer.getIBAN(),
         }
-        xPlayer.removeCrypto(tonumber(data.Coins))
-        TriggerClientEvent('MI-phone:client:AddTransaction', source, Player, data, "You sold "..tonumber(data.Coins).." Qbit('s)!", "Sale")
-        xPlayer.addMoney(tonumber(data.Price))
         cb(CryptoData)
     else
         cb(false)
     end
 end)
 
-
 ESX.RegisterServerCallback('qb-crypto:server:TransferCrypto', function(source, cb, data)
     local xPlayer = ESX.GetPlayerFromId(source)
 
+    if tonumber(data.Coins) <= 0 then
+        cb("notvalid")
+        return
+    end
     if xPlayer.getCrypto() >= tonumber(data.Coins) then
 
         ExecuteSql(false, "SELECT * FROM `users` WHERE `iban` = '"..data.WalletId.."'", function(result)
             if result[1] ~= nil then
-                local CryptoData = {
-                    History = Crypto.History["qbit"],
-                    Worth = Crypto.Worth["qbit"],
-                    Portfolio = xPlayer.getCrypto() - tonumber(data.Coins),
-                    WalletId = xPlayer.getIBAN(),
-                }
+
                 local Target = ESX.GetPlayerFromIdentifier(result[1].identifier)
 
                 if Target ~= nil then
                     xPlayer.removeCrypto(tonumber(data.Coins))
-                    print("Removing " ..data.Coins .."x Crypto")
-                    TriggerClientEvent('MI-phone:client:AddTransaction', source, Player, data, "You transfered "..tonumber(data.Coins).." Qbit('s)!", "Sale")
-
                     Target.addCrypto(tonumber(data.Coins))
-                    print("Adding " ..data.Coins .."x Crypto")
-                    TriggerClientEvent('MI-phone:client:AddTransaction', Target.source, Player, data, "There are "..tonumber(data.Coins).." Qbit('s) credited!", "Purchase")
+                    TriggerClientEvent('MI-phone:client:AddTransaction', source, Player, data, "You transfered "..tonumber(data.Coins).." Bitcoin!", "Sale")
+                    TriggerClientEvent('MI-phone:client:AddTransaction', Target.source, Player, data, "There are "..tonumber(data.Coins).." Bitcoin credited!", "Purchase")
+	                local CryptoData = {
+	                    History = Crypto.History["qbit"],
+	                    Worth = Crypto.Worth["qbit"],
+	                    Portfolio = xPlayer.getCrypto() - tonumber(data.Coins),
+	                    WalletId = xPlayer.getIBAN(),
+	                }
                     cb(CryptoData)
                 else
                     cb("notvalid")

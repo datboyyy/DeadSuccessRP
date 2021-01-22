@@ -426,78 +426,78 @@ local vehshopOwner = {
             title = "imports",
             name = "imports",
             buttons = {
-                {name = "Taxi Cab", costs = 4000, description = {}, model = "M5E60"},
-                {name = "News Rumpo", costs = 4000, description = {}, model = "MBW124"},
+                {name = "BMW M5 E60", costs = 84000, description = {}, model = "M5E60"},
+                {name = "S600", costs = 220000, description = {}, model = "MBW124"},
 
-                {name = "Taxi Cab", costs = 4000, description = {}, model = "NIS13"},
-                {name = "News Rumpo", costs = 4000, description = {}, model = "PANAMERA17TURBO"},
+                {name = "Nissan Silvia 13", costs = 190000, description = {}, model = "NIS13"},
+                {name = "Porsche panamera 17", costs = 120000, description = {}, model = "PANAMERA17TURBO"},
 
-                {name = "Taxi Cab", costs = 4000, description = {}, model = "RCF"},
-                {name = "News Rumpo", costs = 4000, description = {}, model = "RUDIHARLEY"},
+                {name = "Lexus RCF", costs = 290000, description = {}, model = "RCF"},
+                {name = "Harley Davidson", costs = 66000, description = {}, model = "RUDIHARLEY"},
 
-                {name = "Taxi Cab", costs = 4000, description = {}, model = "S15RB"},
-                {name = "News Rumpo", costs = 4000, description = {}, model = "SRT8B"},
+                {name = "Nissan S15", costs = 220000, description = {}, model = "S15RB"},
+                {name = "Demon Hawk", costs = 120000, description = {}, model = "SRT8B"},
 
-                {name = "Taxi Cab", costs = 4000, description = {}, model = "WRAITH"},
-                {name = "News Rumpo", costs = 4000, description = {}, model = "bdragon"},
+                {name = "Royce Wraith", costs = 320000, description = {}, model = "WRAITH"},
+                {name = "Bentley SS18", costs = 128000, description = {}, model = "bdragon"},
 
-                {name = "Taxi Cab", costs = 4000, description = {}, model = "c63"},
-                {name = "News Rumpo", costs = 4000, description = {}, model = "c7"},
+                {name = "AMG c63", costs = 230000, description = {}, model = "c63"},
+                {name = "Corvette C7", costs = 115000, description = {}, model = "c7"},
 
-                {name = "Taxi Cab", costs = 4000, description = {}, model = "esv"},
-                {name = "News Rumpo", costs = 4000, description = {}, model = "exor"},
+                {name = "Cadilac Escalade", costs = 180000, description = {}, model = "esv"},
+                {name = "Chevrolet ZL1", costs = 60000, description = {}, model = "exor"},
 
-                {name = "Taxi Cab", costs = 4000, description = {}, model = "f150"},
-                {name = "News Rumpo", costs = 4000, description = {}, model = "fc3s"},
+                {name = "Ford Raptor F150", costs = 76000, description = {}, model = "f150"},
+                {name = "Mazda RS7", costs = 130000, description = {}, model = "fc3s"},
 
-                {name = "Taxi Cab", costs = 4000, description = {}, model = "filthynsx"},
-                {name = "News Rumpo", costs = 4000, description = {}, model = "fnfrx7"},
+                {name = "Acura NSX", costs = 550000, description = {}, model = "filthynsx"},
+                {name = "RX-7", costs = 125000, description = {}, model = "fnfrx7"},
 
-                {name = "Taxi Cab", costs = 4000, description = {}, model = "gt63"},
-                {name = "News Rumpo", costs = 4000, description = {}, model = "gtr"},
-
-                
-                {name = "Taxi Cab", costs = 4000, description = {}, model = "m4"},
-                {name = "News Rumpo", costs = 4000, description = {}, model = "mustang19"},
+                {name = "AMG GT 63", costs = 215000, description = {}, model = "gt63"},
+                {name = "Nissan GTR", costs = 150000, description = {}, model = "gtr"},
 
                 
-                {name = "Taxi Cab", costs = 4000, description = {}, model = "r1"},
-                {name = "News Rumpo", costs = 4000, description = {}, model = "rmodmustang"},
+                {name = "BMW M4", costs = 234000, description = {}, model = "m4"},
+                {name = "2019 Mustang", costs = 130000, description = {}, model = "mustang19"},
 
                 
-                {name = "Taxi Cab", costs = 4000, description = {}, model = "z2879"},
-                {name = "News Rumpo", costs = 4000, description = {}, model = "gtr"},
+                {name = "Yamaha R1", costs = 98000, description = {}, model = "r1"},
+                {name = "Mustang A", costs = 240000, description = {}, model = "rmodmustang"},
 
                 
-                {name = "Taxi Cab", costs = 4000, description = {}, model = "z32"},
-                {name = "News Rumpo", costs = 4000, description = {}, model = "zx10"},
-
-                {name = "Taxi Cab", costs = 4000, description = {}, model = "300zw"},
-                {name = "News Rumpo", costs = 4000, description = {}, model = "650SLW"},
+                {name = "Camaro Z28", costs = 110000, description = {}, model = "z2879"},
+                
 
                 
-                {name = "Taxi Cab", costs = 4000, description = {}, model = "69CHARGER"},
-                {name = "News Rumpo", costs = 4000, description = {}, model = "911TURBOS"},
+                {name = "Nissan 300ZX", costs = 230000, description = {}, model = "z32"},
+                {name = "Ninja H2 ZX10", costs = 98000, description = {}, model = "zx10"},
 
-                {name = "Taxi Cab", costs = 4000, description = {}, model = "918"},
-                {name = "News Rumpo", costs = 4000, description = {}, model = "AUDIRS6TK"},
-
-                
-                {name = "Taxi Cab", costs = 4000, description = {}, model = "DC5"},
-                {name = "News Rumpo", costs = 4000, description = {}, model = "DELSOLEG"},
-
-                {name = "Taxi Cab", costs = 4000, description = {}, model = "ER34"},
-                {name = "News Rumpo", costs = 4000, description = {}, model = "EVO10"},
+                {name = "Zlayworks 300ZX", costs = 700000, description = {}, model = "300zw"},
+                {name = "Mclaren 650SL", costs = 650000, description = {}, model = "650SLW"},
 
                 
-                {name = "Taxi Cab", costs = 4000, description = {}, model = "FK8"},
-                {name = "News Rumpo", costs = 4000, description = {}, model = "GOLFP"},
+                {name = "1969 CHARGER", costs = 85000, description = {}, model = "69CHARGER"},
+                {name = "911 TURBO S", costs = 240000, description = {}, model = "911TURBOS"},
 
-                {name = "Taxi Cab", costs = 4000, description = {}, model = "GTRC"},
-                {name = "News Rumpo", costs = 4000, description = {}, model = "LP700R"},
+                {name = "Porcshe 918", costs = 650000, description = {}, model = "918"},
+                {name = "Audi RS6", costs = 170000, description = {}, model = "AUDIRS6TK"},
 
-                {name = "Taxi Cab", costs = 4000, description = {}, model = "LWGTR"},
-                {name = "BMW M2", costs = 4000, description = {}, model = "M235"},
+                
+                {name = "Honda Interger Type-R", costs = 67000, description = {}, model = "DC5"},
+                {name = "Toyota Supra Turbo", costs = 130000, description = {}, model = "DELSOLEG"},
+
+                {name = "Skyline Sedan4Door", costs = 135000, description = {}, model = "ER34"},
+                {name = "Lancer", costs = 90000, description = {}, model = "EVO10"},
+
+                
+                {name = "Honda Type-R FK8", costs = 150000, description = {}, model = "FK8"},
+                {name = "Golf FP", costs = 80000, description = {}, model = "GOLFP"},
+
+                {name = "Merc-GTRC", costs = 109000, description = {}, model = "GTRC"},
+                {name = "LP700R", costs = 1000000, description = {}, model = "LP700R"},
+
+                {name = "LW GTR", costs = 250000, description = {}, model = "LWGTR"},
+                {name = "BMW M2", costs = 175000, description = {}, model = "M235"},
             }
         },
         ["compacts"] = {

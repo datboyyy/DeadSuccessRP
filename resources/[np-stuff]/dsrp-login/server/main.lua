@@ -3,20 +3,19 @@ ESX = nil
 
 TriggerEvent('esx:getSharAVACedObject', function(obj) ESX = obj end)
 local IdentifierTables = {
-    {table = "user_licenses", column = "owner"},
     {table = "owned_vehicles", column = "owner"}, 
-    {table = "phone_messages", column = "owner"}, 
-    {table = "user_licenses", column = "owner"},
     {table = "characters", column = "identifier"},
     {table = "users", column = "identifier"},
-    {table = "user_accounts", column = "identifier"},
     {table = "user_inventory2", column = "name"},
+    {table = "user_inventory_ammo", column = "steam"},
     {table = "character_current", column = "cid"},
     {table = "character_face", column = "cid"},
     {table = "character_outfits", column = "cid"},
     {table = "playerstattoos", column = "identifier"},
-    {table = "pw_motels", column = "ident"},
-    {table = "phone_contacts", column = "identifier"},
+    {table = "player_mails", column = "identifier"},
+    --{table = "pw_motels", column = "ident"},
+    {table = "phone_messages2", column = "identifier"},
+    {table = "player_contacts", column = "identifier"},
 }
 
 RegisterServerEvent("kashactersS:SetupCharacters")
