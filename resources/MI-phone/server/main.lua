@@ -1100,6 +1100,9 @@ ESX.RegisterServerCallback('MI-phone:server:GetGarageVehicles', function(source,
                     plate = v.plate,
                     garage = v.garage,
                     state = v.stored,
+                    financed = v.financed,
+                    paymentdue = v.last_payment,
+                    paymentsleft = v.payments_left,
                 }
 
                 table.insert(Vehicles, vehdata)

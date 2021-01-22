@@ -167,6 +167,43 @@
     font-size: 1.2vh;
 }
 
+.vehicle-financed {
+    position: relative;
+    width: 100%;
+    background-color: rgb(54, 54, 54);
+    padding: .8vh;
+    color: white;
+    font-family: 'Heebo', sans-serif;
+    border-bottom: .1vh solid #fff;
+    margin-bottom: 1vh;
+    font-size: 1.2vh;
+}
+
+.vehicle-last_payment {
+    position: relative;
+    width: 100%;
+    background-color: rgb(54, 54, 54);
+    padding: .8vh;
+    color: white;
+    font-family: 'Heebo', sans-serif;
+    border-bottom: .1vh solid #fff;
+    margin-bottom: 1vh;
+    font-size: 1.2vh;
+}
+
+.vehicle-paymentsleft {
+    position: relative;
+    width: 100%;
+    background-color: rgb(54, 54, 54);
+    padding: .8vh;
+    color: white;
+    font-family: 'Heebo', sans-serif;
+    border-bottom: .1vh solid #fff;
+    margin-bottom: 1vh;
+    font-size: 1.2vh;
+}
+
+
 .vehicle-engine {
     position: relative;
     width: 100%;
@@ -213,4 +250,22 @@
 
 .garage-cardetails-footer:hover {
     background-color: rgb(212, 212, 212);
+}
+
+.garage-paybutton {
+    position: absolute;
+    bottom: 10;
+    width: 100%;
+    height: 5vh;
+    background-color: rgb(233, 233, 233);
+    border-radius: .3vh;
+    transition: .05s linear;
+    text-align: center;
+    line-height: 5vh;
+    font-family: 'Heebo', sans-serif;
+    font-size: 1.4vh;
+}
+
+.garage-paybutton:hover {
+    background-color: rgb(64, 255, 0);
 }

@@ -1,0 +1,8 @@
+-- Dumping structure for table gtav_rp2.logs
+CREATE TABLE IF NOT EXISTS `logs` (
+  `type` text DEFAULT NULL,
+  `log` text DEFAULT NULL,
+  `data` text DEFAULT NULL,
+  `cid` int(11) DEFAULT NULL,
+  `steam_id` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
