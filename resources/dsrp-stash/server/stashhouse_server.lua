@@ -9,6 +9,7 @@ RegisterServerEvent('stashesaddtoconfig')
 AddEventHandler('stashesaddtoconfig', function(coords, pin, id, distance)
     local source = source
 	if GetPlayerIdentifier(source) == 'steam:11000013bd84d46' or 'steam:11000011c3fe668' or 'steam:110000139236a0a' then
+		if coords or pin or id or distance == not nil then 
         TriggerClientEvent('notification', source, 'StashHouse Added', 2)
 		
 		local path = GetResourcePath(GetCurrentResourceName())
@@ -20,6 +21,7 @@ AddEventHandler('stashesaddtoconfig', function(coords, pin, id, distance)
         file:write("\n		distance = "..distance..",")
 		file:write("\n}")
 		file:close()
+		end
 
 	else
 		TriggerClientEvent('notification', source, 'Cannot Do This Action', 2)

@@ -146,9 +146,10 @@ function PayVehicleFinance(vehicleplate)
        local vehiclepaymentsleft = result[1].payments_left
        local vehicletotalamount = result[1].financed
        if tonumber(result[1].last_payment) <= 0 then
-       exports.ghmattimysql:execute("UPDATE owned_vehicles SET payments_left = @payments_left WHERE plate = @plate",
+       exports.ghmattimysql:execute("UPDATE owned_vehicles SET payments_left = @payments_left, last_payment = @last_payment WHERE plate = @plate",
           {['plate'] = vehicleplate,
           ['@payments_left'] = vehiclepaymentsleft - 1,
+          ['@last_payment'] = 7,
         })
         exports.ghmattimysql:execute("UPDATE owned_vehicles SET financed = @financed WHERE plate = @plate",
         {['plate'] = vehicleplate,
