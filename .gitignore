@@ -2,3 +2,7 @@ cache
 cache/files/monitor/resource.rpf
 polyzone_created_zones.txt
 polyzone_created_zones.txt
+resources/[Scripts]/[ea]/EasyAdmin/banlist.json
+resources/[Scripts]/[ea]/EasyAdmin/banlist.json
+resources/[system]/ghmattimysql/config.json
+resources/[vehicles]/carsounds.rar
